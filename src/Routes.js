@@ -18,7 +18,7 @@ const routes = (isAuthenticated) => [
     path: "/",
     element: !isAuthenticated ? <PublicLayout /> : <Navigate to="/home" />,
     children: [
-      { path: "login", element: <div>LOGIN <Login/></div>}
+      { path: "login", element: <Login/>}
     ],
   },
   {
