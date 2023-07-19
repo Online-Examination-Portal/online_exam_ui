@@ -4,6 +4,7 @@ import PublicLayout from "./hoc/PublicLayout";
 import { Navigate } from "react-router-dom";
 import ProtectedLayout from "./hoc/ProtectedLayout";
 import Login from './pages/Public/Login';
+import SignUp from './pages/Public/Signup';
 
 const routes = (isAuthenticated) => [
   {
@@ -18,7 +19,8 @@ const routes = (isAuthenticated) => [
     path: "/",
     element: !isAuthenticated ? <PublicLayout /> : <Navigate to="/home" />,
     children: [
-      { path: "login", element: <div>LOGIN <Login/></div>}
+      { path: "login", element:  <Login/>},
+      { path: "signup", element:  <SignUp/>}
     ],
   },
   {

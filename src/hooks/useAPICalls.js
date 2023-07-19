@@ -16,7 +16,7 @@ const useAPICall = (defaultData, defaultError) => {
     body,
     config = {},
     params,
-  }) => {
+  }) => { 
     // merging all the configurations
     const axiosConfigObject = {
       ...config,
