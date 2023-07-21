@@ -5,13 +5,14 @@ import { Navigate } from "react-router-dom";
 import ProtectedLayout from "./hoc/ProtectedLayout";
 import Login from './pages/Public/Login';
 import SignUp from './pages/Public/Signup';
+import Home from './pages/Private/Home';
 
 const routes = (isAuthenticated) => [
   {
     path: "/",
-    element: isAuthenticated ? <ProtectedLayout /> : <Navigate to="/login" />,
+    element: !isAuthenticated ? <ProtectedLayout /> : <Navigate to="/login" />,
     children: [
-      { path: "home", element: <div>HOME</div> },
+      { path: "home", element: <div><Home/></div> },
     ],
   },
   {
