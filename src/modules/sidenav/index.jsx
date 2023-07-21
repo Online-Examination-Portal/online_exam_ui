@@ -14,15 +14,16 @@ const SideNav = () => {
             flexDirection : 'column',
             width: '300px',
             position: 'sticky',
-            alignItems: 'center'
+            alignItems: 'center',
+            border: 1
         }}>
-            <Typography variant='h4' sx={{mt: 6, mb: 8, fontWeight:'bold'}}>
+            <Typography variant='h4' sx={{mt: 6, mb: 15, fontWeight:'bold'}}>
                 LOGO                
             </Typography>
             <Box 
             sx={{ display : 'flex',
                   flexDirection : 'column',
-                  gap : 40
+                  gap : 30
         }}
             >
                 <Box
@@ -31,67 +32,68 @@ const SideNav = () => {
                  gap : 5
     }}
     >
-            <Typography sx={{
+            <Box sx={{
                     display: "flex",
                     flexDirection: "row",
                 }}
                 >
                 <HomeIcon />
-                <Box sx={{
+                <Typography sx={{
                     mx: 2,
                 }}>
                      Home 
-                </Box>    
-            </Typography>
-            <Typography sx={{
+                </Typography>    
+            </Box>
+            <Box sx={{
                     display: "flex",
                     flexDirection: "row",
                 }}
                 >
                 <BookIcon />
-                <Box sx={{
+                <Typography sx={{
                     mx: 2,
                 }}>
                      Teachers 
-                </Box>
-            </Typography>
-            <Typography sx={{
+                </Typography>
+            </Box>
+            <Box sx={{
                     display: "flex",
                     flexDirection: "row",
                 }}
                 >
                 <AccountBoxIcon />
-                <Box sx={{
+                <Typography sx={{
                     mx: 2,
                 }}>
                      Students 
-                </Box>
-            </Typography>
-            <Typography sx={{
+                </Typography>
+            </Box>
+            <Box sx={{
                     display: "flex",
                     flexDirection: "row",
                 }}
                 >
                 <CollectionsBookmarkIcon />
-                <Box sx={{
+                <Typography sx={{
                     mx: 2,
                 }}>
                      Courses 
-                </Box>
-            </Typography>
+                </Typography>
             </Box>
-            <Typography sx={{
+            </Box>
+            <Box sx={{
                     display: "flex",
                     flexDirection: "row",
+                    height: "12vh"
                 }}
                 >
                 <LogoutIcon />
-                <Box sx={{
+                <Typography sx={{
                     mx: 2,
                 }}>
                      Logout 
-                </Box>
-            </Typography>
+                </Typography>
+            </Box>
             </Box>
         </Box>
     )
