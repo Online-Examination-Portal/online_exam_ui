@@ -34,10 +34,10 @@ const ImpUpdates = () => {
           </TableHead>
           <TableBody>
             {impData.map((data) => (
-              <TableRow key={data.id}>
+              <TableRow key={data.id} sx={{ '&:hover': { backgroundColor: '#f5f5f5' } }}>
                 <TableCell>{data.update}</TableCell>
                 <TableCell>
-                  <Box>
+                  <Box sx={{ visibility: 'hidden', '&:hover': { visibility: 'visible' } }}>
                     <IconButton sx={{ color: "primary.main" }}>
                       <DeleteOutlineOutlinedIcon />
                     </IconButton>

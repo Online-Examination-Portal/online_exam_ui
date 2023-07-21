@@ -1,6 +1,6 @@
 import React from "react";
 import insightsData from "./data/insightsData";
-import { Box, Card, CardContent, IconButton, Typography } from "@mui/material";
+import { Box, Card, CardContent, SvgIcon, Typography } from "@mui/material";
 
 const InsightsCard = () => {
   return (
@@ -13,7 +13,7 @@ const InsightsCard = () => {
       {insightsData.map((data) => (
         <Card variant="outlined" sx={{ width: "25%" }}>
           <CardContent>
-            <IconButton sx={{ color: "primary.main" }}>{data.icon}</IconButton>
+            <SvgIcon sx={{ color: "primary.main" }}>{data.icon}</SvgIcon>
             <Box sx={{ float: "right" }}>
               <Typography variant="h5">{data.heading}</Typography>
               <Typography
