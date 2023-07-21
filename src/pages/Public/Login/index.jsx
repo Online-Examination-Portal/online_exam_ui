@@ -15,7 +15,7 @@ const Login =() => {
       <Typography variant="h3" gutterBottom>
         Log in to your account
       </Typography>
-      <Typography variant="h7" gutterBottom>
+      <Typography variant="h6" gutterBottom>
         Welcome back! Please enter your details 
       </Typography>
       <Box
