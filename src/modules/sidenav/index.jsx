@@ -5,6 +5,7 @@ import BookIcon from '@mui/icons-material/Book';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { Link } from 'react-router-dom';
 
 const SideNav = () => {
     return(
@@ -17,22 +18,24 @@ const SideNav = () => {
             alignItems: 'center',
             border: 1
         }}>
-            <Typography variant='h4' sx={{mt: 6, mb: 15, fontWeight:'bold'}}>
+            <Typography variant='h3' sx={{mt: 6, mb: 15, fontWeight:'bold', color:"success.main"}}>
                 LOGO                
             </Typography>
             <Box 
             sx={{ display : 'flex',
                   flexDirection : 'column',
-                  gap : 30
+                  gap : 30,
+                  color:"success.main",
         }}
             >
-                <Box
+                <Box 
                  sx={{ display : 'flex',
                  flexDirection : 'column',
                  gap : 5
     }}
     >
-            <Box sx={{
+            <Box component={Link} to = '/home'
+            sx={{
                     display: "flex",
                     flexDirection: "row",
                 }}
@@ -44,7 +47,8 @@ const SideNav = () => {
                      Home 
                 </Typography>    
             </Box>
-            <Box sx={{
+            <Box component={Link} to = '/teachers'
+             sx={{
                     display: "flex",
                     flexDirection: "row",
                 }}
@@ -56,7 +60,8 @@ const SideNav = () => {
                      Teachers 
                 </Typography>
             </Box>
-            <Box sx={{
+            <Box component={Link} to = '/students'
+            sx={{
                     display: "flex",
                     flexDirection: "row",
                 }}
@@ -68,7 +73,8 @@ const SideNav = () => {
                      Students 
                 </Typography>
             </Box>
-            <Box sx={{
+            <Box component={Link} to = '/courses'
+            sx={{
                     display: "flex",
                     flexDirection: "row",
                 }}
@@ -84,7 +90,8 @@ const SideNav = () => {
             <Box sx={{
                     display: "flex",
                     flexDirection: "row",
-                    height: "12vh"
+                    height: "12vh",
+                    color:"error.main"
                 }}
                 >
                 <LogoutIcon />
