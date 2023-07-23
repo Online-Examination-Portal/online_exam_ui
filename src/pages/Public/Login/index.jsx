@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Box, Typography, TextField, Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import './login.css'
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -14,11 +15,11 @@ const Login = () => {
 
   return (
     <Box
+      className="login"
       sx={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        mt: 6,
       }}
     >
       <Typography variant="h3" gutterBottom>
@@ -59,11 +60,11 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button variant="contained" type="submit" onClick={handleSubmit}>
+        <Button className="button" sx={{bgcolor: "#357a38"}}  variant="contained" type="submit" onClick={handleSubmit}>
           Sign In
         </Button>
       </Box>
-      <Typography variant="h7" sx={{ mt: 2 }}>
+      <Typography variant="h7" sx={{ mt: 2}}>
         Don't have an account ?
         <Button>
           <Link to="/signup">Sign Up</Link>

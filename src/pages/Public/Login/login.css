@@ -1,0 +1,9 @@
+.login{
+    background: linear-gradient(45deg,#a58bbb 10%, #8a3fcc 30%, #4b06b9 90%);
+    height: 100vh;
+    /* color: white; */
+    background-image: url('D:\Web Development\Online_exam\online_exam_ui\public\bg2.jpg');
+    background-repeat: no-repeat;
+    background-size: 35% auto;
+}
+

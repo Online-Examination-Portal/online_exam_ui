@@ -9,7 +9,11 @@ import {
   Radio,
   FormLabel,
   FormControlLabel,
+  Select,
+  MenuItem, 
+  InputLabel
 } from "@mui/material";
+
 import dayjs from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
@@ -25,6 +29,9 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [phoneNo, setPhoneNo] = useState("");
   const [dob, setDob] = useState(dayjs("2022-04-17"));
+  const [orgName, setOrgName] = useState("");
+  const [role, setRole] = useState("");
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,6 +42,8 @@ const SignUp = () => {
     console.log("Password:", password);
     console.log("Phone no.:", phoneNo);
     console.log("DOB:", dob);
+    console.log("Organization Name: ", orgName)
+    console.log("Role: ", role)
   };
 
   return (
@@ -118,7 +127,6 @@ const SignUp = () => {
             <FormControlLabel value="other" control={<Radio />} label="Other" />
           </RadioGroup>
         </FormControl>
-
         <TextField
           id="password"
           label="Password"
@@ -126,8 +134,8 @@ const SignUp = () => {
           variant="outlined"
           InputLabelProps={{
             shrink: true,
-          }}
-          sx={{ mb: 4 }}
+          }} 
+          sx={{ mb: 4 }} 
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
@@ -156,6 +164,31 @@ const SignUp = () => {
           value={phoneNo}
           onChange={(e) => setPhoneNo(e.target.value)}
         />
+        <TextField
+          id="org_name"
+          label="Organization Name"
+          type="text"
+          variant="outlined"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          sx={{ mb: 4 }}
+          value={orgName}
+          onChange={(e) => setOrgName(e.target.value)}
+        />
+         <FormControl>
+          <InputLabel>Role</InputLabel>
+          <Select
+          id="role"
+          sx={{ mb: 4 }}
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
+          >
+          <MenuItem value={0}>Teacher</MenuItem>
+          <MenuItem value={1}>Student</MenuItem>
+          <MenuItem value={2}>Admin</MenuItem>
+          </Select>
+        </FormControl>
         <Button variant="contained" type="submit" onClick={handleSubmit}>
           Sign Up
         </Button>

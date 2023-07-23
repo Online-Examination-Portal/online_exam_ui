@@ -16,7 +16,7 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import MarkEmailReadOutlinedIcon from "@mui/icons-material/MarkEmailReadOutlined";
 
 const ImpUpdates = () => {
-  return (
+  return ( 
     <Paper sx={{ overflow: "hidden", mt: 4, mb: 10 }}>
       <TableContainer sx={{ maxHeight: 400 }}>
         <Table stickyHeader sx={{ width: "75%" }}>
@@ -25,6 +25,9 @@ const ImpUpdates = () => {
               <TableCell sx={{ fontWeight: "bold" }}>
                 Important Updates
               </TableCell>
+              {/* <TableCell sx={{ fontWeight: "bold" }}>
+                Date
+              </TableCell> */}
               <TableCell>
                 <Button variant="contained" sx={{ borderRadius: "18px" }}>
                   20 unread updates
