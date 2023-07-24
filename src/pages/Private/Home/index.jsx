@@ -8,7 +8,7 @@ const Home = () => {
     <Box
       sx={{
         width: "80%",
-        float: "right",
+        padding: 4,
       }}
     >
       <Typography
