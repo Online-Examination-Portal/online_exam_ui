@@ -4,7 +4,7 @@ import ImpUpdates from "../../../components/private/home/importantUpdates";
 import InsightsCard from "../../../components/private/home/insightsCard";
 
 const Home = () => {
-  return (
+  return ( 
     <Box
       sx={{
         width: "80%",

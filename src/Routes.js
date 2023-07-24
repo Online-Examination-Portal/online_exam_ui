@@ -12,7 +12,10 @@ const routes = (isAuthenticated) => [
     path: "/",
     element: !isAuthenticated ? <ProtectedLayout /> : <Navigate to="/login" />,
     children: [
-      { path: "home", element: <div><Home/></div> },
+      { path: "home", element: <div><Home /></div> },
+      { path: "teachers", element: <div>Teachers</div> },
+      { path: "students", element: <div>Students</div> },
+      { path: "courses", element: <div>Courses</div> },
     ],
   },
   {

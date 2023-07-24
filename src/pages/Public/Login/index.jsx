@@ -64,7 +64,7 @@ const Login = () => {
           Sign In
         </Button>
       </Box>
-      <Typography variant="h7" sx={{ mt: 2}}>
+      <Typography variant="h6" sx={{ mt: 2 }}>
         Don't have an account ?
         <Button>
           <Link to="/signup">Sign Up</Link>
