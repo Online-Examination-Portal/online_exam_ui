@@ -7,8 +7,8 @@
 
 
 .child{
-    background-image: url('D:\Web Development\Online_exam\online_exam_ui\src\assets\fonts\Inter\bg2.png'),
-                      url('D:\Web Development\Online_exam\online_exam_ui\src\assets\fonts\Inter\bg1.png');
+    background-image: url('D:\Web Development\Online_exam\online_exam_ui\src\assets\image\bg1.png'),
+                      url('D:\Web Development\Online_exam\online_exam_ui\src\assets\image\bg1.png');
     background-repeat: no-repeat;
     background-size: 90% auto, 30% auto;
     background-position: left  bottom, right top; 
