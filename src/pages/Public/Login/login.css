@@ -1,35 +1,25 @@
-.parent{
-    background: linear-gradient(45deg,#a58bbb 10%, #8a3fcc 30%, #4b06b9 90%);
-    height: 100vh;
-    position: relative;
-
+.parent {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, #a58bbb 10%, #8a3fcc 30%, #4b06b9 90%);
 }
 
-
-.child{
-    background-image: url('D:\Web Development\Online_exam\online_exam_ui\src\assets\image\bg1.png'),
-                      url('D:\Web Development\Online_exam\online_exam_ui\src\assets\image\bg1.png');
-    background-repeat: no-repeat;
-    background-size: 90% auto, 30% auto;
-    background-position: left  bottom, right top; 
-    position: absolute;
-    bottom: 0;
-    top: 0;
-
-
+.parent .top_image {
+  top: 0;
+  right: 0;
+  width: auto;
+  height: 50%;
+  position: absolute;
 }
 
-/* .parent{
-    background-color: linear-gradient(45deg,#a58bbb 10%, #8a3fcc 30%, #4b06b9 90%);
-    height: 100vh;
-    background-image: url('D:\Web Development\Online_exam\online_exam_ui\src\assets\fonts\Inter\bg2.jpg'),
-                      url('D:\Web Development\Online_exam\online_exam_ui\src\assets\fonts\Inter\bg1.jpg');
-    background-repeat: no-repeat;
-    background-size: 30% auto, 25% auto;
-    background-position: left  bottom, right top; 
-    justify-content: center;
-} */
-
-
-
-
+.parent .bottom_image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 50%;
+  width: auto;
+}

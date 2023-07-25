@@ -42,7 +42,7 @@ const impData = [
   {
     id: 9,
     update: "New Student registered",
-    date: "07 Jun"
+    date: "08 Jun"
   },
   {
     id: 10,

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   IconButton,
   Paper,
@@ -11,23 +11,24 @@ import {
   Typography,
 } from "@mui/material";
 import impData from "./data/impData";
-import DeleteIcon from '@mui/icons-material/Delete';
-import MarkEmailReadIcon from '@mui/icons-material/MarkEmailRead';
+import DeleteIcon from "@mui/icons-material/Delete";
+import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
 
 const ImpUpdates = () => {
   return (
-    <Paper sx={{ overflow: "hidden", mt: '64px',}}>
+    <Paper
+      sx={{ overflow: "hidden", margin: "0 32px 32px 32px", flex: "1 1 auto" }}
+    >
       <Box
         sx={{
           display: "flex",
           padding: "8px 16px",
           alignItems: "center",
           justifyContent: "space-between",
-          backgroundColor: "#f5f5f5"
-          
+          backgroundColor: "#f5f5f5",
         }}
       >
-        <Typography variant="body1" sx={{ fontWeight: "bold",  }}>
+        <Typography variant="body1" sx={{ fontWeight: "bold" }}>
           Important Updates
         </Typography>
         <Typography
@@ -42,9 +43,9 @@ const ImpUpdates = () => {
           20 unread updates
         </Typography>
       </Box>
-      <TableContainer sx={{ maxHeight: 400, }}>
-        <Table stickyHeader sx={{ width: "100%",  }}>
-          <TableBody sx={{padding: "",}}>
+      <TableContainer sx={{ maxHeight: 400 }}>
+        <Table stickyHeader sx={{ width: "100%" }}>
+          <TableBody>
             {impData.map((data) => (
               <TableRow
                 key={data.id}
@@ -54,12 +55,12 @@ const ImpUpdates = () => {
                 <TableCell>{data.date}</TableCell>
                 <TableCell>
                   <Box
-                    // sx={{
-                    //   visibility: "hidden",
-                    //   "&:hover": { visibility: "visible" },
-                    // }}
+                  // sx={{
+                  //   visibility: "hidden",
+                  //   "&:hover": { visibility: "visible" },
+                  // }}
                   >
-                    <IconButton color="primary" >
+                    <IconButton color="primary">
                       <DeleteIcon />
                     </IconButton>
                     <IconButton color="primary">
@@ -74,6 +75,12 @@ const ImpUpdates = () => {
       </TableContainer>
     </Paper>
   );
+};
+
+const CustomeTableRow = () => {
+  const [isIconsVisible, setIsIconVisible] = useState(false);
+
+  return <></>;
 };
 
 export default ImpUpdates;

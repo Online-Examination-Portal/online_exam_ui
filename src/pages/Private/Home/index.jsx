@@ -4,30 +4,33 @@ import ImpUpdates from "../../../components/private/home/importantUpdates";
 import InsightsCard from "../../../components/private/home/insightsCard";
 
 const Home = () => {
-  return ( 
+  return (
     <Box
-      className= "home" 
+      className="home"
       sx={{
         width: "80%",
-        padding: 4,
+        display: "flex",
+        height: "100vh",
         bgcolor: "#F1FAFF",
-        // paddingTop: 10,
+        flexFlow: "column",
       }}
     >
-      <Typography
-        variant="h2"
-        color=" #194D6B"
-        sx={{ "& span": { color: "primary.main" }, mt: 10 }}
-      >
-        Hello,
-        <span>Abc</span>
-      </Typography>
-      <Typography variant="h6" sx={{ mb: 4, color: "#4E90B5" }}>
-        Track your team progress here.
-      </Typography>
-      <Typography variant="h6" sx={{color: "#4E90B5" }}>
-        Insights
-      </Typography>
+      <Box sx={{ padding: "16px 32px", flex: "0 1 auto" }}>
+        <Typography
+          variant="h2"
+          color=" #194D6B"
+          sx={{ "& span": { color: "primary.main" } }}
+        >
+          Hello,
+          <span>Abc</span>
+        </Typography>
+        <Typography variant="h6" sx={{ mb: 4, color: "#4E90B5" }}>
+          Track your team progress here.
+        </Typography>
+        <Typography variant="h6" sx={{ color: "#4E90B5" }}>
+          Insights
+        </Typography>
+      </Box>
       <InsightsCard />
       <ImpUpdates />
     </Box>

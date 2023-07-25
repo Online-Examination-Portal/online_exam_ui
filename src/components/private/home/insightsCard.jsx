@@ -10,8 +10,10 @@ const InsightsCard = () => {
   return (
     <Box
       sx={{
+        flex: "0 1 auto",
         display: "flex",
         flexDirection: "row",
+        padding: "0 32px 16px 32px"
       }}
     >
       
