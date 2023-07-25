@@ -1,8 +1,8 @@
 import React from "react";
 import insightsData from "./data/insightsData";
-import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined";
-import BookOutlinedIcon from "@mui/icons-material/BookOutlined";
-import CollectionsBookmarkOutlinedIcon from "@mui/icons-material/CollectionsBookmarkOutlined";
+import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
+import BookIcon from "@mui/icons-material/Book";
+import CollectionsBookmarkIcon from "@mui/icons-material/CollectionsBookmark";
 
 import { Box, Typography } from "@mui/material";
 
@@ -14,6 +14,7 @@ const InsightsCard = () => {
         flexDirection: "row",
       }}
     >
+      
       {insightsData.map((data, i) => (
         <Box
           key={`card_${data.id}`}
@@ -26,8 +27,9 @@ const InsightsCard = () => {
             border: "1px solid grey",
             borderRadius: "4px",
             padding: "8px",
+            backgroundColor: "#ffffff",
           }}
-        >
+        > 
           <Box
             sx={{
               width: "50px",
@@ -40,13 +42,13 @@ const InsightsCard = () => {
             }}
           >
             {data.id === "1" ? (
-              <BookOutlinedIcon size="small" color="primary" />
+              <BookIcon size="small" color="primary" />
             ) : null}
             {data.id === "2" ? (
-              <AssignmentIndOutlinedIcon size="small" color="primary" />
+              <AssignmentIndIcon size="small" color="primary" />
             ) : null}
             {data.id === "3" ? (
-              <CollectionsBookmarkOutlinedIcon size="small" color="primary" />
+              <CollectionsBookmarkIcon size="small" color="primary" />
             ) : null}
           </Box>
           <Box

@@ -14,12 +14,16 @@ const Login = () => {
   };
 
   return (
+    <Box 
+    className="parent"
+    >
     <Box
-      className="login"
+      className='child' 
       sx={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        justifyContent: 'center'
       }}
     >
       <Typography variant="h3" gutterBottom>
@@ -33,7 +37,7 @@ const Login = () => {
           display: "flex",
           flexDirection: "column",
           mt: 4,
-          width: "50%",
+          width: "100%",
         }}
       >
         <TextField
@@ -60,7 +64,7 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button className="button" sx={{bgcolor: "#357a38"}}  variant="contained" type="submit" onClick={handleSubmit}>
+        <Button className="button"  variant="contained" type="submit" onClick={handleSubmit}>
           Sign In
         </Button>
       </Box>
@@ -70,6 +74,8 @@ const Login = () => {
           <Link to="/signup">Sign Up</Link>
         </Button>
       </Typography>
+      
+    </Box>
     </Box>
   );
 };
