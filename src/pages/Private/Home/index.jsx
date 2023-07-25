@@ -21,7 +21,7 @@ const Home = () => {
           color=" #194D6B"
           sx={{ "& span": { color: "primary.main" } }}
         >
-          Hello,
+          Hello, 
           <span>Abc</span>
         </Typography>
         <Typography variant="h6" sx={{ mb: 4, color: "#4E90B5" }}>

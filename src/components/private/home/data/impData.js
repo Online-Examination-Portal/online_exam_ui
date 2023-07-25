@@ -41,13 +41,18 @@ const impData = [
   },
   {
     id: 9,
-    update: "New Student registered",
+    update: "English 2 - Question Paper",
     date: "08 Jun"
   },
   {
     id: 10,
-    update: "Results are ready",
+    update: "English 2 - Question Paper",
     date: "07 Jun"
+  },
+  {
+    id: 11,
+    update: "English 2 - Question Paper",
+    date: "11 Jun"
   },
 ];
 

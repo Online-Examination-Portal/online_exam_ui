@@ -8,10 +8,10 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { Link } from "react-router-dom";
 
 const SideNav = () => {
-  const [currentUrl, setCurrentUrl] = useState("");
+  // const [currentUrl, setCurrentUrl] = useState("");
   return (
     <Box
-      sx={{
+      sx={{ 
         width: "20%",
         height: "100vh",
         display: "flex",
