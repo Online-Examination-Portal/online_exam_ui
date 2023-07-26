@@ -23,7 +23,6 @@ import { Link } from "react-router-dom";
 import './register.css';
 import topImage from "../../../assets/image/bg1.png";
 import downImage from "../../../assets/image/bg2.png";
-//D:\Web Development\Online_exam\online_exam_ui\src\pages\Public\Login\login.css
 
 const SignUp = () => {
   const [firstName, setFirstName] = useState("");
