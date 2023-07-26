@@ -7,13 +7,14 @@ import CollectionsBookmarkIcon from "@mui/icons-material/CollectionsBookmark";
 import { Box, Typography } from "@mui/material";
 
 const InsightsCard = () => {
-  return (
+  return ( 
     <Box
       sx={{
         flex: "0 1 auto",
         display: "flex",
         flexDirection: "row",
-        padding: "0 32px 16px 32px"
+        padding: "0 32px 16px 32px",
+        
       }}
     >
       
@@ -26,10 +27,11 @@ const InsightsCard = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            border: "1px solid grey",
+            // border: "1px solid grey",
             borderRadius: "4px",
             padding: "8px",
             backgroundColor: "#ffffff",
+            boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.2)',
           }}
         > 
           <Box

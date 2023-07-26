@@ -8,10 +8,19 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { Link } from "react-router-dom";
 
 const SideNav = () => {
-  const [currentUrl, setCurrentUrl] = useState("");
+  const [activeLink, setActiveLink] = useState(null);
+
+  const handleLinkClick = (link) => {
+    setActiveLink(link); // Set the clicked link as active
+  };
+
+  const isLinkActive = (link) => {
+    return link === activeLink;
+  };
+
   return (
     <Box
-      sx={{
+      sx={{ 
         width: "20%",
         height: "100vh",
         display: "flex",
@@ -20,12 +29,11 @@ const SideNav = () => {
       }}
     >
       <Box sx={{ mt: "10%", mb: 15, flex: "0 1 auto" }}>
-        <Typography variant="h3" color="success" sx={{ fontWeight: "700" }}>
+        <Typography variant="h3" color="secondary" sx={{ fontWeight: "700" }}>
           LOGO
         </Typography>
       </Box>
       <Box
-        color="success"
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -33,19 +41,22 @@ const SideNav = () => {
           flex: "1 1 auto",
         }}
       >
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
           <Box
             component={Link}
             to="/home"
+            onClick={() => handleLinkClick("home")}
             sx={{
               display: "flex",
               flexDirection: "row",
               textDecoration: "none",
             }}
           >
-            <HomeIcon color="primary" />
+            <HomeIcon
+              color={isLinkActive("home") ? "secondary" : "primary"}
+            />
             <Typography
-              color="primary"
+              color={isLinkActive("home") ? "secondary" : "primary"}
               sx={{
                 mx: 2,
                 fontWeight: 600,
@@ -57,15 +68,21 @@ const SideNav = () => {
           <Box
             component={Link}
             to="/teachers"
+            onClick={() => handleLinkClick("teachers")}
             sx={{
               display: "flex",
               flexDirection: "row",
+              textDecoration: "none",
             }}
           >
-            <BookIcon />
+            <BookIcon
+              color={isLinkActive("teachers") ? "secondary" : "primary"}
+            />
             <Typography
+              color={isLinkActive("teachers") ? "secondary" : "primary"}
               sx={{
                 mx: 2,
+                fontWeight: 600,
               }}
             >
               Teachers
@@ -74,15 +91,21 @@ const SideNav = () => {
           <Box
             component={Link}
             to="/students"
+            onClick={() => handleLinkClick("students")}
             sx={{
               display: "flex",
               flexDirection: "row",
+              textDecoration: "none",
             }}
           >
-            <AccountBoxIcon />
+            <AccountBoxIcon
+              color={isLinkActive("students") ? "secondary" : "primary"}
+            />
             <Typography
+              color={isLinkActive("students") ? "secondary" : "primary"}
               sx={{
                 mx: 2,
+                fontWeight: 600,
               }}
             >
               Students
@@ -91,15 +114,21 @@ const SideNav = () => {
           <Box
             component={Link}
             to="/courses"
+            onClick={() => handleLinkClick("courses")}
             sx={{
               display: "flex",
               flexDirection: "row",
+              textDecoration: "none",
             }}
           >
-            <CollectionsBookmarkIcon />
+            <CollectionsBookmarkIcon
+              color={isLinkActive("courses") ? "secondary" : "primary"}
+            />
             <Typography
+              color={isLinkActive("courses") ? "secondary" : "primary"}
               sx={{
                 mx: 2,
+                fontWeight: 600,
               }}
             >
               Courses
@@ -111,7 +140,7 @@ const SideNav = () => {
           sx={{
             display: "flex",
             flexDirection: "row",
-            mb: "10%",
+            mb: "50%",
           }}
         >
           <LogoutIcon color="error" />
@@ -128,4 +157,5 @@ const SideNav = () => {
     </Box>
   );
 };
+
 export default SideNav;

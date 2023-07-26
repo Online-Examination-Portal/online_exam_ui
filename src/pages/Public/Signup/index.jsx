@@ -20,6 +20,10 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Link } from "react-router-dom";
+import './register.css';
+import topImage from "../../../assets/image/bg1.png";
+import downImage from "../../../assets/image/bg2.png";
+//D:\Web Development\Online_exam\online_exam_ui\src\pages\Public\Login\login.css
 
 const SignUp = () => {
   const [firstName, setFirstName] = useState("");
@@ -30,7 +34,7 @@ const SignUp = () => {
   const [phoneNo, setPhoneNo] = useState("");
   const [dob, setDob] = useState(dayjs("2022-04-17"));
   const [orgName, setOrgName] = useState("");
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState(""); 
   
 
   const handleSubmit = (e) => {
@@ -47,12 +51,16 @@ const SignUp = () => {
   };
 
   return (
+    <Box className='container' >
+      <img src={topImage} alt="top_image" className="top_image"/>
+      <img src={downImage} alt="top_image" className="bottom_image"/>
     <Box
       sx={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        mt: 6,
+        justifyContent: "center",
+        width: "40%",
       }}
     >
       <Typography variant="h3" gutterBottom>
@@ -62,8 +70,8 @@ const SignUp = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          mt: 4,
-          width: "auto",
+          // mt: 4,
+          width: "80%",
         }}
       >
         <Box
@@ -74,38 +82,31 @@ const SignUp = () => {
             mb: 4,
           }}
         >
+          <InputLabel>First Name</InputLabel>
           <TextField
             id="first_name"
-            label="First name"
+            placeholder="First Name"
             type="text"
             variant="outlined"
-            InputLabelProps={{
-              shrink: true,
-            }}
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
+          {/* <InputLabel>Last Name</InputLabel> */}
           <TextField
             id="last_name"
-            label="Last name"
+            placeholder="Last Name"
             type="text"
             variant="outlined"
-            InputLabelProps={{
-              shrink: true,
-            }}
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
           />
         </Box>
-
+        <InputLabel>E-mail</InputLabel>
         <TextField
           id="email"
-          label="Email"
+          placeholder="Email"
           type="email"
           variant="outlined"
-          InputLabelProps={{
-            shrink: true,
-          }}
           sx={{ mb: 4 }}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -199,6 +200,7 @@ const SignUp = () => {
           <Link to="/login">Login</Link>
         </Button>
       </Typography>
+    </Box>
     </Box>
   );
 };
