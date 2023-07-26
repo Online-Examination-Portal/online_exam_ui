@@ -1,16 +1,19 @@
-import React, { useState } from "react";
-import { Box, Typography, TextField, Button, InputLabel } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import "./login.css";
+import { useNavigate } from "react-router-dom";
+import usePostLogin from "./data/usePostLogin";
 import topImage from "../../../assets/image/bg1.png";
 import downImage from "../../../assets/image/bg2.png";
-import usePostLogin from "./data/usePostLogin";
+import AppBackdrop from "../../../components/common/AppBackdrop";
+import AppSnackbar from "../../../components/common/AppSnackbar";
+import { Box, Typography, TextField, Button, InputLabel } from "@mui/material";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [, , , login] = usePostLogin();
+  const [snackbarState, setSnackbarState] = useState(false);
+  const [data, isError, isLoading, login] = usePostLogin();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,81 +24,112 @@ const Login = () => {
     login(authDetails);
   };
 
+  useEffect(() => {
+    if (data) {
+    } else if (isError !== "") {
+      setSnackbarState(true);
+    }
+  }, [isError, data, isLoading]);
+
   return (
-    <Box className="outer_container">
-      <img src={topImage} alt="top_image" className="top_image" />
-      <img src={downImage} alt="top_image" className="bottom_image" />
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "40%",
-          color: "white",
-        }}
-      >
-        <Typography variant="h2">Log in to your account</Typography>
-        <Typography variant="h6" gutterBottom>
-          Welcome back! Please enter your details
-        </Typography>
+    <React.Fragment>
+      <Box className="outer_container">
+        <img src={topImage} alt="top_image" className="top_image" />
+        <img src={downImage} alt="top_image" className="bottom_image" />
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
-            mt: "54px",
-            width: "80%",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "40%",
+            color: "white",
           }}
         >
-          <InputLabel sx={{ color: "white" }}>E-mail</InputLabel>
-          <TextField
-            id="email"
-            placeholder="Enter your email"
-            type="email"
-            variant="outlined"
-            size="small"
-            sx={{ mb: "30px", bgcolor: "white", borderRadius: "6px" }}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <InputLabel sx={{ color: "white" }}>Password</InputLabel>
-          <TextField
-            id="password"
-            placeholder="Enter your password"
-            type="password"
-            size="small"
-            sx={{ mb: "30px", bgcolor: "white", borderRadius: "6px" }}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <Button
-            variant="contained"
-            type="submit"
-            size="normal"
-            onClick={handleSubmit}
+          <Typography variant="h2" sx={{ textAlign: "center" }}>
+            Log in to your account
+          </Typography>
+          <Typography variant="h6" gutterBottom sx={{ textAlign: "center" }}>
+            Welcome back! Please enter your details
+          </Typography>
+          <Box
             sx={{
-              color: "white",
-              backgroundColor: "#8AC926",
-              "&:hover": {
-                backgroundColor: "#4BB543",
-              },
-              fontFamily: "Inter-Regular",
+              display: "flex",
+              flexDirection: "column",
+              mt: "54px",
+              width: "80%",
             }}
           >
-            Sign In
-          </Button>
-        </Box>
-        <Typography variant="h6" sx={{ mt: "39px", color: "black" }}>
-          Don't have an account ?
-          <Button
-            sx={{ color: "#fff", fontFamily: "Inter-Regular" }}
-            onClick={() => navigate("/signup")}
+            <InputLabel sx={{ color: "white" }}>E-mail</InputLabel>
+            <TextField
+              id="email"
+              placeholder="Enter your email"
+              type="email"
+              variant="outlined"
+              size="small"
+              sx={{ mb: "30px", bgcolor: "white", borderRadius: "6px" }}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <InputLabel sx={{ color: "white" }}>Password</InputLabel>
+            <TextField
+              id="password"
+              placeholder="Enter your password"
+              type="password"
+              size="small"
+              sx={{ mb: "30px", bgcolor: "white", borderRadius: "6px" }}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Button
+              variant="contained"
+              type="submit"
+              size="normal"
+              onClick={handleSubmit}
+              sx={{
+                color: "white",
+                backgroundColor: "#8AC926",
+                "&:hover": {
+                  backgroundColor: "#4BB543",
+                },
+                fontFamily: "Inter-Regular",
+              }}
+            >
+              Sign In
+            </Button>
+          </Box>
+          <Box
+            sx={{
+              mt: "39px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
           >
-            Sign Up
-          </Button>
-        </Typography>
+            <Typography variant="body2" sx={{ color: "black" }}>
+              Don't have an account ?
+            </Typography>
+            <Button
+              sx={{ color: "#fff", fontFamily: "Inter-Regular" }}
+              onClick={() => navigate("/signup")}
+            >
+              Register
+            </Button>
+          </Box>
+        </Box>
       </Box>
-    </Box>
+      <AppBackdrop open={isLoading} />
+      {snackbarState ? (
+        <AppSnackbar
+          open={snackbarState ? true : false}
+          setOpen={(state) => setSnackbarState(state)}
+          message={
+            snackbarState ? isError : "Invalid Credentials, Please try again"
+          }
+          severity={"error"}
+        />
+      ) : null}
+    </React.Fragment>
   );
 };
 
