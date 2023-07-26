@@ -1,0 +1,1 @@
+export const LOGIN = `${process.env.REACT_APP_ENDPOINT}/accounts/api/login/`

@@ -1,0 +1,114 @@
+import React, { useState } from "react";
+import {
+  IconButton,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+  Box,
+  Typography,
+} from "@mui/material";
+import impData from "./data/impData";
+import DeleteIcon from "@mui/icons-material/Delete";
+import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
+
+const ImpUpdates = (isIconsVisible) => {
+  return (
+    <Paper
+      sx={{
+        overflow: "hidden",
+        margin: "32px 32px 32px 32px",
+        flex: "1 1 auto",
+      }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          padding: "8px 16px",
+          alignItems: "center",
+          justifyContent: "space-between",
+          backgroundColor: "#f5f5f5",
+        }}
+      >
+        <Typography variant="body1" color="primary" sx={{ fontWeight: "bold" }}>
+          Important Updates
+        </Typography>
+        <Typography
+          variant="caption"
+          sx={{
+            backgroundColor: "#007CFF",
+            borderRadius: "18px",
+            color: "#ffffff",
+            padding: "4px 8px",
+          }}
+        >
+          20 unread updates
+        </Typography>
+      </Box>
+      <TableContainer sx={{ maxHeight: 250 }}>
+        <Table stickyHeader sx={{ width: "100%" }}>
+          <TableBody>
+            {impData.map((data) => (
+
+              // <CustomTableRow>
+              
+                <TableRow
+                  key={data.id}
+                  sx={{ "&:hover": { backgroundColor: "#f5f5f5" } }}
+                  
+                > 
+                { isIconsVisible === 'false'  ? (
+                  <>
+                   <TableCell>{data.update}</TableCell>
+                  <TableCell>{data.date}</TableCell>
+                  </>
+
+                ) : 
+                <>
+                  <TableCell>{data.update}</TableCell>
+                  <TableCell>{data.date}</TableCell>
+                  <CustomTableRow/>
+                </>
+                }
+                </TableRow>
+              //  </CustomTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Paper>
+  );
+};
+
+const CustomTableRow = () => {
+  const [isIconsVisible, setIsIconVisible] = useState(false);
+
+  return (
+    <>
+    
+      <TableRow
+        onMouseEnter={() => setIsIconVisible(true)}
+        onMouseLeave={() => setIsIconVisible(false)}
+      >
+        <TableCell>
+          {isIconsVisible  &&(
+            <Box>
+              <IconButton color="primary">
+                <DeleteIcon/>
+              </IconButton>
+              <IconButton color="primary">
+                <MarkEmailReadIcon/>
+              </IconButton>
+            </Box>
+          )}
+        </TableCell>
+      </TableRow>
+    
+      
+    </>
+  );
+};
+
+export default ImpUpdates;
