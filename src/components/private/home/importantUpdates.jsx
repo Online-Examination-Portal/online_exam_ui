@@ -51,29 +51,7 @@ const ImpUpdates = (isIconsVisible) => {
         <Table stickyHeader sx={{ width: "100%" }}>
           <TableBody>
             {impData.map((data) => (
-
-              // <CustomTableRow>
-              
-                <TableRow
-                  key={data.id}
-                  sx={{ "&:hover": { backgroundColor: "#f5f5f5" } }}
-                  
-                > 
-                { isIconsVisible === 'false'  ? (
-                  <>
-                   <TableCell>{data.update}</TableCell>
-                  <TableCell>{data.date}</TableCell>
-                  </>
-
-                ) : 
-                <>
-                  <TableCell>{data.update}</TableCell>
-                  <TableCell>{data.date}</TableCell>
-                  <CustomTableRow/>
-                </>
-                }
-                </TableRow>
-              //  </CustomTableRow>
+              <CustomTableRow key={data.id} data={data} />
             ))}
           </TableBody>
         </Table>
@@ -82,32 +60,30 @@ const ImpUpdates = (isIconsVisible) => {
   );
 };
 
-const CustomTableRow = () => {
+const CustomTableRow = ({ data }) => {
   const [isIconsVisible, setIsIconVisible] = useState(false);
 
   return (
-    <>
-    
-      <TableRow
-        onMouseEnter={() => setIsIconVisible(true)}
-        onMouseLeave={() => setIsIconVisible(false)}
-      >
-        <TableCell>
-          {isIconsVisible  &&(
-            <Box>
-              <IconButton color="primary">
-                <DeleteIcon/>
-              </IconButton>
-              <IconButton color="primary">
-                <MarkEmailReadIcon/>
-              </IconButton>
-            </Box>
-          )}
-        </TableCell>
-      </TableRow>
-    
-      
-    </>
+    <TableRow
+      onMouseEnter={() => setIsIconVisible(true)}
+      onMouseLeave={() => setIsIconVisible(false)}
+      sx={{ "&:hover": { backgroundColor: "#f5f5f5" } }}
+    >
+      <TableCell>{data.update}</TableCell>
+      <TableCell>{data.date}</TableCell>
+      <TableCell>
+        {isIconsVisible && (
+          <Box>
+            <IconButton color="primary">
+              <DeleteIcon />
+            </IconButton>
+            <IconButton color="primary">
+              <MarkEmailReadIcon />
+            </IconButton>
+          </Box>
+        )}
+      </TableCell>
+    </TableRow>
   );
 };
 
