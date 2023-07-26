@@ -1,4 +1,4 @@
-import useAPICall from "../../../../hooks/useAPICall";
+import useAPICall from "../../../../hooks/useAPICalls";
 import en from "../../../../Lang/en.json";
 import { LOGIN } from "../../../../utilities/apis";
 

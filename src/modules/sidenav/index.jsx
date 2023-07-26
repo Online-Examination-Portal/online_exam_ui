@@ -1,26 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Typography } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import BookIcon from "@mui/icons-material/Book";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import CollectionsBookmarkIcon from "@mui/icons-material/CollectionsBookmark";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const SideNav = () => {
+  const location = useLocation();
   const [activeLink, setActiveLink] = useState(null);
 
-  const handleLinkClick = (link) => {
-    setActiveLink(link); // Set the clicked link as active
-  };
-
-  const isLinkActive = (link) => {
-    return link === activeLink;
-  };
+  useEffect(() => {
+    setActiveLink(location.pathname.split("/")[1]);
+  }, [location]);
 
   return (
     <Box
-      sx={{ 
+      sx={{
         width: "20%",
         height: "100vh",
         display: "flex",
@@ -45,18 +42,15 @@ const SideNav = () => {
           <Box
             component={Link}
             to="/home"
-            onClick={() => handleLinkClick("home")}
             sx={{
               display: "flex",
               flexDirection: "row",
               textDecoration: "none",
             }}
           >
-            <HomeIcon
-              color={isLinkActive("home") ? "secondary" : "primary"}
-            />
+            <HomeIcon color={activeLink === "home" ? "secondary" : "primary"} />
             <Typography
-              color={isLinkActive("home") ? "secondary" : "primary"}
+              color={activeLink === "home" ? "secondary" : "primary"}
               sx={{
                 mx: 2,
                 fontWeight: 600,
@@ -68,7 +62,6 @@ const SideNav = () => {
           <Box
             component={Link}
             to="/teachers"
-            onClick={() => handleLinkClick("teachers")}
             sx={{
               display: "flex",
               flexDirection: "row",
@@ -76,10 +69,10 @@ const SideNav = () => {
             }}
           >
             <BookIcon
-              color={isLinkActive("teachers") ? "secondary" : "primary"}
+              color={activeLink === "teachers" ? "secondary" : "primary"}
             />
             <Typography
-              color={isLinkActive("teachers") ? "secondary" : "primary"}
+              color={activeLink === "teachers" ? "secondary" : "primary"}
               sx={{
                 mx: 2,
                 fontWeight: 600,
@@ -91,7 +84,6 @@ const SideNav = () => {
           <Box
             component={Link}
             to="/students"
-            onClick={() => handleLinkClick("students")}
             sx={{
               display: "flex",
               flexDirection: "row",
@@ -99,10 +91,10 @@ const SideNav = () => {
             }}
           >
             <AccountBoxIcon
-              color={isLinkActive("students") ? "secondary" : "primary"}
+              color={activeLink === "students" ? "secondary" : "primary"}
             />
             <Typography
-              color={isLinkActive("students") ? "secondary" : "primary"}
+              color={activeLink === "students" ? "secondary" : "primary"}
               sx={{
                 mx: 2,
                 fontWeight: 600,
@@ -114,7 +106,6 @@ const SideNav = () => {
           <Box
             component={Link}
             to="/courses"
-            onClick={() => handleLinkClick("courses")}
             sx={{
               display: "flex",
               flexDirection: "row",
@@ -122,10 +113,10 @@ const SideNav = () => {
             }}
           >
             <CollectionsBookmarkIcon
-              color={isLinkActive("courses") ? "secondary" : "primary"}
+              color={activeLink === "courses" ? "secondary" : "primary"}
             />
             <Typography
-              color={isLinkActive("courses") ? "secondary" : "primary"}
+              color={activeLink === "courses" ? "secondary" : "primary"}
               sx={{
                 mx: 2,
                 fontWeight: 600,

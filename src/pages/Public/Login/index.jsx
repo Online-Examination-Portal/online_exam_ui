@@ -1,24 +1,30 @@
 import React, { useState } from "react";
 import { Box, Typography, TextField, Button, InputLabel } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./login.css";
 import topImage from "../../../assets/image/bg1.png";
 import downImage from "../../../assets/image/bg2.png";
+import usePostLogin from "./data/usePostLogin";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [, , , login] = usePostLogin();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
+    const authDetails = {
+      email: email,
+      password: password,
+    };
+    login(authDetails);
   };
 
   return (
     <Box className="outer_container">
-      <img src={topImage} alt="top_image" className="top_image"/>
-      <img src={downImage} alt="top_image" className="bottom_image"/>
+      <img src={topImage} alt="top_image" className="top_image" />
+      <img src={downImage} alt="top_image" className="bottom_image" />
       <Box
         sx={{
           display: "flex",
@@ -26,13 +32,10 @@ const Login = () => {
           alignItems: "center",
           justifyContent: "center",
           width: "40%",
-          color: 'white',
-          
+          color: "white",
         }}
       >
-        <Typography variant="h2">
-          Log in to your account
-        </Typography>
+        <Typography variant="h2">Log in to your account</Typography>
         <Typography variant="h6" gutterBottom>
           Welcome back! Please enter your details
         </Typography>
@@ -40,29 +43,28 @@ const Login = () => {
           sx={{
             display: "flex",
             flexDirection: "column",
-            mt: '54px',
+            mt: "54px",
             width: "80%",
-            
           }}
         >
-          <InputLabel sx={{color: 'white'}}>E-mail</InputLabel>
+          <InputLabel sx={{ color: "white" }}>E-mail</InputLabel>
           <TextField
             id="email"
             placeholder="Enter your email"
             type="email"
             variant="outlined"
             size="small"
-            sx={{mb: '30px', bgcolor: 'white', borderRadius: '6px', }}
+            sx={{ mb: "30px", bgcolor: "white", borderRadius: "6px" }}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <InputLabel sx={{color: 'white'}}>Password</InputLabel>
+          <InputLabel sx={{ color: "white" }}>Password</InputLabel>
           <TextField
             id="password"
             placeholder="Enter your password"
             type="password"
             size="small"
-            sx={{ mb: '30px' ,bgcolor: 'white', borderRadius: '6px'}}
+            sx={{ mb: "30px", bgcolor: "white", borderRadius: "6px" }}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -72,20 +74,24 @@ const Login = () => {
             size="normal"
             onClick={handleSubmit}
             sx={{
-              color: 'white',                 
-          backgroundColor: '#8AC926',     
-          '&:hover': {
-            backgroundColor: '#4BB543',   
-          },
+              color: "white",
+              backgroundColor: "#8AC926",
+              "&:hover": {
+                backgroundColor: "#4BB543",
+              },
+              fontFamily: "Inter-Regular",
             }}
           >
             Sign In
           </Button>
         </Box>
-        <Typography variant="h6" sx={{ mt: '39px', color: 'black' }}>
+        <Typography variant="h6" sx={{ mt: "39px", color: "black" }}>
           Don't have an account ?
-          <Button>
-            <Link to="/signup">Sign Up</Link>
+          <Button
+            sx={{ color: "#fff", fontFamily: "Inter-Regular" }}
+            onClick={() => navigate("/signup")}
+          >
+            Sign Up
           </Button>
         </Typography>
       </Box>
