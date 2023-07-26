@@ -6,8 +6,8 @@ const usePostLogin = () => {
   const [data, error, isLoading, callGetData, setSuccessData, setError] =
     useAPICall(undefined, "");
 
-  const defaultFallback = () => {
-    setError(en.something_went_wrong);
+  const defaultFallback = (msg = en.something_went_wrong) => {
+    setError(msg);
     setSuccessData(undefined);
   };
 
@@ -15,14 +15,15 @@ const usePostLogin = () => {
     {
       status_code: 200,
       status_txt: "OK",
-      callBack: (res, token) => {
-        const data = res.doc;
-        if (data && token && typeof data === "object") {
-          setSuccessData(data);
-          sessionStorage.setItem("token", token);
-        } else {
-          defaultFallback();
-        }
+      callBack: (res) => {
+        console.log(res)
+        // const data = res.doc;
+        // if (data && typeof data === "object") {
+        //   setSuccessData(data);
+        //   // sessionStorage.setItem("token", token);
+        // } else {
+        //   defaultFallback();
+        // }
       },
     },
     {
