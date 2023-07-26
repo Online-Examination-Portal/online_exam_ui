@@ -47,7 +47,7 @@ const Login = () => {
             width: "80%",
           }}
         >
-          <InputLabel sx={{ color: "white" }}>E-mail</InputLabel>
+          <InputLabel sx={{ color: "white", fontSize: '14px' }}>E-mail</InputLabel>
           <TextField
             id="email"
             placeholder="Enter your email"
@@ -58,7 +58,7 @@ const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <InputLabel sx={{ color: "white" }}>Password</InputLabel>
+          <InputLabel sx={{ color: "white", fontSize: '14px' }}>Password</InputLabel>
           <TextField
             id="password"
             placeholder="Enter your password"

@@ -5,7 +5,9 @@
     position: relative;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(225deg, #17D2FB 0%, rgba(255, 255, 255, 0.87) 100%); 
+    background: linear-gradient(225deg, #17D2FB 0%, rgba(255, 255, 255, 0.87) 100%);
+    
+    
 }
 
   
@@ -25,6 +27,7 @@
     width: auto;
   }
   
+
   
   
   
