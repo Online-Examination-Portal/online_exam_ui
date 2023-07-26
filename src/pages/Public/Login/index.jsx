@@ -16,11 +16,10 @@ const Login = () => {
   };
 
   return (
-    <Box className="parent outer_container">
+    <Box className="outer_container">
       <img src={topImage} alt="top_image" className="top_image"/>
       <img src={downImage} alt="top_image" className="bottom_image"/>
       <Box
-        className="child"
         sx={{
           display: "flex",
           flexDirection: "column",
