@@ -20,12 +20,11 @@ const SideNav = () => {
       }}
     >
       <Box sx={{ mt: "10%", mb: 15, flex: "0 1 auto" }}>
-        <Typography variant="h3" color="success" sx={{ fontWeight: "700" }}>
+        <Typography variant="h3" color="secondary" sx={{ fontWeight: "700" }}>
           LOGO
         </Typography>
       </Box>
       <Box
-        color="success"
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -33,7 +32,7 @@ const SideNav = () => {
           flex: "1 1 auto",
         }}
       >
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
           <Box
             component={Link}
             to="/home"
@@ -60,12 +59,15 @@ const SideNav = () => {
             sx={{
               display: "flex",
               flexDirection: "row",
+              textDecoration: "none",
             }}
           >
-            <BookIcon />
+            <BookIcon color="primary"/>
             <Typography
+            color="primary"
               sx={{
                 mx: 2,
+                fontWeight: 600
               }}
             >
               Teachers
@@ -77,12 +79,15 @@ const SideNav = () => {
             sx={{
               display: "flex",
               flexDirection: "row",
+              textDecoration: "none",
             }}
           >
-            <AccountBoxIcon />
+            <AccountBoxIcon color="primary" />
             <Typography
+            color="primary"
               sx={{
                 mx: 2,
+                fontWeight: 600
               }}
             >
               Students
@@ -94,12 +99,15 @@ const SideNav = () => {
             sx={{
               display: "flex",
               flexDirection: "row",
+              textDecoration: "none",
             }}
           >
-            <CollectionsBookmarkIcon />
+            <CollectionsBookmarkIcon color="primary" />
             <Typography
+            color="primary"
               sx={{
                 mx: 2,
+                fontWeight: 600
               }}
             >
               Courses
@@ -111,7 +119,7 @@ const SideNav = () => {
           sx={{
             display: "flex",
             flexDirection: "row",
-            mb: "10%",
+            mb: "50%",
           }}
         >
           <LogoutIcon color="error" />
