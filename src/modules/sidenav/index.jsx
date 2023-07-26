@@ -8,7 +8,16 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { Link } from "react-router-dom";
 
 const SideNav = () => {
-  const [currentUrl, setCurrentUrl] = useState("");
+  const [activeLink, setActiveLink] = useState(null);
+
+  const handleLinkClick = (link) => {
+    setActiveLink(link); // Set the clicked link as active
+  };
+
+  const isLinkActive = (link) => {
+    return link === activeLink;
+  };
+
   return (
     <Box
       sx={{
@@ -36,15 +45,18 @@ const SideNav = () => {
           <Box
             component={Link}
             to="/home"
+            onClick={() => handleLinkClick("home")}
             sx={{
               display: "flex",
               flexDirection: "row",
               textDecoration: "none",
             }}
           >
-            <HomeIcon color="primary" />
+            <HomeIcon
+              color={isLinkActive("home") ? "secondary" : "primary"}
+            />
             <Typography
-              color="primary"
+              color={isLinkActive("home") ? "secondary" : "primary"}
               sx={{
                 mx: 2,
                 fontWeight: 600,
@@ -56,18 +68,21 @@ const SideNav = () => {
           <Box
             component={Link}
             to="/teachers"
+            onClick={() => handleLinkClick("teachers")}
             sx={{
               display: "flex",
               flexDirection: "row",
               textDecoration: "none",
             }}
           >
-            <BookIcon color="primary"/>
+            <BookIcon
+              color={isLinkActive("teachers") ? "secondary" : "primary"}
+            />
             <Typography
-            color="primary"
+              color={isLinkActive("teachers") ? "secondary" : "primary"}
               sx={{
                 mx: 2,
-                fontWeight: 600
+                fontWeight: 600,
               }}
             >
               Teachers
@@ -76,18 +91,21 @@ const SideNav = () => {
           <Box
             component={Link}
             to="/students"
+            onClick={() => handleLinkClick("students")}
             sx={{
               display: "flex",
               flexDirection: "row",
               textDecoration: "none",
             }}
           >
-            <AccountBoxIcon color="primary" />
+            <AccountBoxIcon
+              color={isLinkActive("students") ? "secondary" : "primary"}
+            />
             <Typography
-            color="primary"
+              color={isLinkActive("students") ? "secondary" : "primary"}
               sx={{
                 mx: 2,
-                fontWeight: 600
+                fontWeight: 600,
               }}
             >
               Students
@@ -96,18 +114,21 @@ const SideNav = () => {
           <Box
             component={Link}
             to="/courses"
+            onClick={() => handleLinkClick("courses")}
             sx={{
               display: "flex",
               flexDirection: "row",
               textDecoration: "none",
             }}
           >
-            <CollectionsBookmarkIcon color="primary" />
+            <CollectionsBookmarkIcon
+              color={isLinkActive("courses") ? "secondary" : "primary"}
+            />
             <Typography
-            color="primary"
+              color={isLinkActive("courses") ? "secondary" : "primary"}
               sx={{
                 mx: 2,
-                fontWeight: 600
+                fontWeight: 600,
               }}
             >
               Courses
@@ -136,4 +157,5 @@ const SideNav = () => {
     </Box>
   );
 };
+
 export default SideNav;
