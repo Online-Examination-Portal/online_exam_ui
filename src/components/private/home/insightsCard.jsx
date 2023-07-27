@@ -13,25 +13,24 @@ const InsightsCard = () => {
         flex: "0 1 auto",
         display: "flex",
         flexDirection: "row",
-        padding: "0 32px 16px 32px"
+        padding: "0 32px 16px 32px",
       }}
     >
-      
       {insightsData.map((data, i) => (
         <Box
           key={`card_${data.id}`}
           variant="outlined"
           sx={{
             width: "33%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            border: "1px solid grey",
-            borderRadius: "4px",
             padding: "8px",
+            display: "flex",
+            borderRadius: "4px",
+            alignItems: "center",
+            justifyContent: "center",
             backgroundColor: "#ffffff",
+            boxShadow: "0px 1px 2px 0px rgba(78, 144, 181, 0.54)",
           }}
-        > 
+        >
           <Box
             sx={{
               width: "50px",
@@ -43,9 +42,7 @@ const InsightsCard = () => {
               backgroundColor: "#F1FAFF",
             }}
           >
-            {data.id === "1" ? (
-              <BookIcon size="small" color="primary" />
-            ) : null}
+            {data.id === "1" ? <BookIcon size="small" color="primary" /> : null}
             {data.id === "2" ? (
               <AssignmentIndIcon size="small" color="primary" />
             ) : null}

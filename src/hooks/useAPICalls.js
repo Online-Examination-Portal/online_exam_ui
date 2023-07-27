@@ -47,7 +47,7 @@ const useAPICall = (defaultData, defaultError) => {
           if (statusID >= 0) {
             // running the callback
             if (statusObj[statusID]?.callBack) {
-              statusObj[statusID].callBack(res.data, res.headers.token);
+              statusObj[statusID].callBack(res?.data);
             } else {
               console.log("callback is not found for the status");
             }
@@ -65,7 +65,7 @@ const useAPICall = (defaultData, defaultError) => {
       //handling error from API
       .catch((err) => {
         console.log("API error", { err });
-        defaultFallback(err.response.data.errors);
+        defaultFallback(err?.message);
       })
       .finally(() => {
         //turning the loader off
