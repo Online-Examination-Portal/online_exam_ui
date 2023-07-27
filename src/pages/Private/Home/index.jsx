@@ -1,7 +1,8 @@
 import React from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import ImpUpdates from "../../../components/private/home/importantUpdates";
 import InsightsCard from "../../../components/private/home/insightsCard";
+import TeacherDrawer from "../../../components/private/teachers/drawer";
 
 const Home = () => {
   return (
@@ -21,17 +22,7 @@ const Home = () => {
           justifyContent: "flex-end",
         }}
       >
-        <Button
-          sx={{
-            color: "white",
-            backgroundColor: "#4E90B5",
-            "&:hover": {
-              backgroundColor: "#194D6B",
-            },
-          }}
-        >
-          + Add Teacher
-        </Button>
+        <TeacherDrawer/>
       </Box>
 
       <Box sx={{ padding: "16px 32px", flex: "0 1 auto" }}>
