@@ -50,7 +50,7 @@ const SignUp = () => {
   };
 
   return (
-    <Box className="container" sx={{}}>
+    <Box className="container">
       <img src={topImage} alt="top_image" className="top_image" />
       <img src={downImage} alt="top_image" className="bottom_image" />
       <Box
@@ -101,9 +101,10 @@ const SignUp = () => {
                 type="text"
                 size="small"
                 variant="outlined"
+                sx={{bgcolor: "white", borderRadius: '6px'}}
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
-              />{" "}
+              />
             </InputLabel>
             <InputLabel
               sx={{
@@ -120,6 +121,7 @@ const SignUp = () => {
                 type="text"
                 size="small"
                 variant="outlined"
+                sx={{bgcolor: "white", borderRadius: '6px'}}
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
               />
@@ -134,7 +136,7 @@ const SignUp = () => {
             type="email"
             size="small"
             variant="outlined"
-            sx={{ mb: "30px" }}
+            sx={{ mb: "30px", bgcolor: "white", borderRadius: '6px' }}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -171,7 +173,7 @@ const SignUp = () => {
             size="small"
             type="password"
             variant="outlined"
-            sx={{ mb: "30px" }}
+            sx={{ mb: "30px", bgcolor: "white", borderRadius: '6px' }}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -179,11 +181,11 @@ const SignUp = () => {
             Date of Birth
           </InputLabel>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoContainer components={["DatePicker"]}>
+            <DemoContainer components={["DatePicker"]} >
               <DatePicker
                 value={dob}
                 onChange={(value) => setDob(value)}
-                sx={{ mb: "30px" }}
+                sx={{ mb: "30px", bgcolor: "white", borderRadius: '6px', }}
               />
             </DemoContainer>
           </LocalizationProvider>
@@ -196,7 +198,7 @@ const SignUp = () => {
             type="number"
             size="small"
             variant="outlined"
-            sx={{ mb: "30px" }}
+            sx={{ mb: "30px", bgcolor: "white", borderRadius: '6px' }}
             value={phoneNo}
             onChange={(e) => setPhoneNo(e.target.value)}
           />
@@ -209,7 +211,7 @@ const SignUp = () => {
             type="text"
             size="small"
             variant="outlined"
-            sx={{ mb: "30px" }}
+            sx={{ mb: "30px", bgcolor: "white", borderRadius: '6px' }}
             value={orgName}
             onChange={(e) => setOrgName(e.target.value)}
           />
@@ -221,7 +223,7 @@ const SignUp = () => {
               id="role"
               placeholder="Role"
               size="small"
-              sx={{ mb: "30px" }}
+              sx={{ mb: "30px", bgcolor: "white", borderRadius: '6px' }}
               value={role}
               onChange={(e) => setRole(e.target.value)}
             >
