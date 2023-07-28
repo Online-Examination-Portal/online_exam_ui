@@ -14,7 +14,7 @@ import impData from "./data/impData";
 import DeleteIcon from "@mui/icons-material/Delete";
 import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
 
-const ImpUpdates = (isIconsVisible) => {
+const ImpUpdates = () => {
   return (
     <Paper
       sx={{
@@ -67,7 +67,7 @@ const CustomTableRow = ({ data }) => {
     <TableRow
       onMouseEnter={() => setIsIconVisible(true)}
       onMouseLeave={() => setIsIconVisible(false)}
-      sx={{ "&:hover": { backgroundColor: "#f5f5f5" } }}
+      sx={{ "&:hover": { backgroundColor: "#f5f5f5" }, }}
     >
       <TableCell>{data.update}</TableCell>
       <TableCell>{data.date}</TableCell>
