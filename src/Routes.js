@@ -6,6 +6,7 @@ import ProtectedLayout from "./hoc/ProtectedLayout";
 import Login from "./pages/Public/Login";
 import SignUp from "./pages/Public/Signup";
 import Home from "./pages/Private/Home";
+import Courses from "./pages/Private/Courses";
 
 const routes = (isAuthenticated) => [
   {
@@ -18,7 +19,7 @@ const routes = (isAuthenticated) => [
       },
       { path: "teachers", element: <>Teachers</> },
       { path: "students", element: <>Students</> },
-      { path: "courses", element: <>Courses</> },
+      { path: "courses", element: <Courses/> },
     ],
   },
   {

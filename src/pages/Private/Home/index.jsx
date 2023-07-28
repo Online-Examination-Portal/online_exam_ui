@@ -7,7 +7,6 @@ import TeacherDrawer from "../../../components/private/teachers/drawer";
 const Home = () => {
   return (
     <Box
-      className="home"
       sx={{
         width: "80%",
         display: "flex",
