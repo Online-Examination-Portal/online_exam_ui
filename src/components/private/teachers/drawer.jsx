@@ -7,8 +7,11 @@ import {
   SvgIcon,
   InputLabel,
   TextField,
+  IconButton,
 } from "@mui/material";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+import CloseIcon from "@mui/icons-material/Close";
+import Invitation from '../teachers/invitaion';
 
 const TeacherDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +48,9 @@ const TeacherDrawer = () => {
             <Typography variant="h4" sx={{ fontWeight: 600 }}>
               Add / Manage Teachers
             </Typography>
-            <Button onClick={toggleDrawer}>X</Button>
+            <IconButton onClick={toggleDrawer} color="secondary">
+              <CloseIcon />
+            </IconButton>
           </Box>
 
           <Box
@@ -62,10 +67,12 @@ const TeacherDrawer = () => {
                 height: "50px",
                 borderRadius: "50px",
                 backgroundColor: "#F1FAFF",
+                padding: "6px",
               }}
             >
               <PeopleAltIcon />
             </SvgIcon>
+
             <Box
               sx={{
                 display: "flex",
@@ -142,9 +149,16 @@ const TeacherDrawer = () => {
           </Box>
           <Box
             sx={{
+              padding: "15px 58px 0px 55px",
+            }}
+          >
+            <Invitation/>
+          </Box>
+          <Box
+            sx={{
               display: "flex",
               justifyContent: "flex-end",
-              padding: "200px 66px 0px 55px",
+              padding: "40px 66px 0px 55px",
             }}
           >
             <Button

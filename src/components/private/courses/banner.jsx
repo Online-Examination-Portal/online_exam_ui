@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, TextField, Typography } from '@mui/material';
 import courses from "../../../assets/image/courses.png";
-import './course.css'
+import './course.css';
 
 const Banner = () => {
     return(

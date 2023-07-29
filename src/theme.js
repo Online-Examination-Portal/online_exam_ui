@@ -60,7 +60,7 @@ export const theme = createTheme({
       lineHeight: "30px",
       letterSpacing: "0.2px",
       fontFamily: "Inter-Regular",
-    },
+    }, 
     h5: {
       fontSize: "20px",
       fontStyle: "normal",
