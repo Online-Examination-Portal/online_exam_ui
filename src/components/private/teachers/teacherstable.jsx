@@ -11,6 +11,7 @@ import {
   Box,
   Typography,
 } from "@mui/material";
+import ViewDetails from "./viewdetails";
 import teachersdata from "./data/teachersdata";
 import DeleteIcon from "@mui/icons-material/Delete";
 import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
@@ -20,30 +21,6 @@ const TeachersTable = () => {
     <Paper
       sx={{ overflow: "hidden", margin: "0 32px 32px 32px", flex: "1 1 auto" }}
     >
-      <Box
-        sx={{
-          display: "flex",
-          padding: "8px 16px",
-          alignItems: "center",
-          justifyContent: "space-between",
-          backgroundColor: "#f5f5f5",
-        }}
-      >
-        <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-          Important Updates
-        </Typography>
-        <Typography
-          variant="caption"
-          sx={{
-            backgroundColor: "#007CFF",
-            borderRadius: "18px",
-            color: "#ffffff",
-            padding: "4px 8px",
-          }}
-        >
-          20 unread updates
-        </Typography>
-      </Box>
       <TableContainer sx={{ maxHeight: 400 }}>
         <Table stickyHeader sx={{ width: "100%" }}>
             <TableHead>
@@ -76,7 +53,7 @@ const TeachersTable = () => {
                 <TableCell align="center">{data.name}</TableCell>
                 <TableCell align="center">{data.course}</TableCell>
                 <TableCell align="center">{data.totalbatch}</TableCell>
-                <TableCell align="center">{data.viewdetails}</TableCell>
+                <TableCell align="center">{<ViewDetails/>}</TableCell>
                 <TableCell>
                   <Box
                   // sx={{
