@@ -35,6 +35,7 @@ const useAPICall = (defaultData, defaultError) => {
     //axios call
     axios(axiosConfigObject)
       .then((res) => {
+        console.log(res)
         if (res?.status && res?.statusText) {
           //finding the matching status
           let statusID = statusObj.findIndex((status) => {

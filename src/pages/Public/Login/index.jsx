@@ -129,7 +129,7 @@ const Login = () => {
       <AppBackdrop open={isLoading} />
       {snackbarState ? (
         <AppSnackbar
-          open={snackbarState ? true : false}
+          open={snackbarState}
           setOpen={(state) => setSnackbarState(state)}
           message={isError}
           severity={"error"}

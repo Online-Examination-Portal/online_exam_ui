@@ -7,6 +7,7 @@ import Login from "./pages/Public/Login";
 import SignUp from "./pages/Public/Signup";
 import Home from "./pages/Private/Home";
 import Courses from "./pages/Private/Courses";
+import Teachers from "./pages/Private/Teachers";
 
 const routes = (isAuthenticated) => [
   {
