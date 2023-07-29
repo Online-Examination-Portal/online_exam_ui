@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { Box, Typography, TextField, Button, InputLabel } from "@mui/material";
+import React, { useState, useEffect, useContext } from "react";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import usePostLogin from "./data/usePostLogin";
@@ -8,8 +7,12 @@ import downImage from "../../../assets/image/bg2.png";
 import AppBackdrop from "../../../components/common/AppBackdrop";
 import AppSnackbar from "../../../components/common/AppSnackbar";
 import { Box, Typography, TextField, Button, InputLabel } from "@mui/material";
+import { UserDetailsContext } from "../../../App";
+import { AuthStateContext } from "../../../App";
 
 const Login = () => {
+  const { setUserDetails } = useContext(UserDetailsContext)
+  const { setIsAuthenticated } = useContext(AuthStateContext)
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,11 +30,15 @@ const Login = () => {
 
   useEffect(() => {
     if (data) {
+      setUserDetails(data)
+      setIsAuthenticated(true)
+      navigate("/home")
     } else if (isError !== "") {
       setSnackbarState(true);
     }
   }, [isError, data, isLoading]);
 
+  
   return (
     <React.Fragment>
       <Box className="outer_container">
@@ -124,9 +131,7 @@ const Login = () => {
         <AppSnackbar
           open={snackbarState ? true : false}
           setOpen={(state) => setSnackbarState(state)}
-          message={
-            snackbarState ? isError : "Invalid Credentials, Please try again"
-          }
+          message={isError}
           severity={"error"}
         />
       ) : null}

@@ -1,19 +1,33 @@
-import React, { useState, useEffect } from "react";
-import { Box, Typography } from "@mui/material";
+import React, { useState, useEffect, useContext } from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import BookIcon from "@mui/icons-material/Book";
-import AccountBoxIcon from "@mui/icons-material/AccountBox";
-import CollectionsBookmarkIcon from "@mui/icons-material/CollectionsBookmark";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { Link, useLocation } from "react-router-dom";
+import { Box, Button, Typography } from "@mui/material";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import CollectionsBookmarkIcon from "@mui/icons-material/CollectionsBookmark";
+
+import { AuthStateContext } from "./../../App";
+import { UserDetailsContext } from "./../../App";
 
 const SideNav = () => {
+  const navigate = useNavigate();
   const location = useLocation();
+  const { setIsAuthenticated } = useContext(AuthStateContext);
+  const { setUserDetails } = useContext(UserDetailsContext);
   const [activeLink, setActiveLink] = useState(null);
 
   useEffect(() => {
     setActiveLink(location.pathname.split("/")[1]);
   }, [location]);
+
+  const logout = () => {
+    navigate("/login");
+    setIsAuthenticated(false);
+    setUserDetails({});
+    sessionStorage.removeItem("userInfo");
+    sessionStorage.removeItem("token");
+  };
 
   return (
     <Box
@@ -126,24 +140,14 @@ const SideNav = () => {
             </Typography>
           </Box>
         </Box>
-
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            mb: "50%",
-          }}
+        <Button
+          sx={{ mx: 2 }}
+          onClick={logout}
+          startIcon={<LogoutIcon color="error" />}
+          color="error"
         >
-          <LogoutIcon color="error" />
-          <Typography
-            color="error"
-            sx={{
-              mx: 2,
-            }}
-          >
-            Logout
-          </Typography>
-        </Box>
+          Logout
+        </Button>
       </Box>
     </Box>
   );

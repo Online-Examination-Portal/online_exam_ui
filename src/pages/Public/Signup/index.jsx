@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Typography,
@@ -13,19 +13,41 @@ import {
   MenuItem,
   InputLabel,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 import dayjs from "dayjs";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { useNavigate } from "react-router-dom";
+
+// Import API data
+import useGetRoles from "./data/useGetRoles";
+import usePostRegister from "./data/usePostRegister";
+
+// Import Assets
 import "./register.css";
 import topImage from "../../../assets/image/bg1.png";
 import downImage from "../../../assets/image/bg2.png";
 
+// Import Components
+import AppSnackbar from "../../../components/common/AppSnackbar";
+import AppBackdrop from "./../../../components/common/AppBackdrop/index";
+
+import * as classes from "./styles";
+
 const SignUp = () => {
   const navigate = useNavigate();
+
+  const [roles, isRolesError, isRolesLoading, getRoles] = useGetRoles();
+  const [registerResponse, isRegisterError, isRegisterLoading, register] =
+    usePostRegister();
+
+  const [snackbarStates, setSnackbarStates] = useState({
+    open: false,
+    message: "",
+    severity: "success",
+  });
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -36,38 +58,50 @@ const SignUp = () => {
   const [orgName, setOrgName] = useState("");
   const [role, setRole] = useState("");
 
+  useEffect(() => {
+    if (isRolesError) {
+      setSnackbarStates({
+        open: true,
+        message: "Error! Unable to load user roles",
+        severity: "error",
+      });
+    }
+  }, [roles, isRolesError]);
+
+  useEffect(() => {
+    getRoles();
+  }, []);
+
+  const resetSnackbar = (state) => {
+    setSnackbarStates({
+      open: state,
+      message: "",
+      severity: "success",
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("First Name:", firstName);
-    console.log("Last Name:", lastName);
-    console.log("Email:", email);
-    console.log("gender:", gender);
-    console.log("Password:", password);
-    console.log("Phone no.:", phoneNo);
-    console.log("DOB:", dob);
-    console.log("Organization Name: ", orgName);
-    console.log("Role: ", role);
+    const userInfo = {
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      gender: gender,
+      password: password,
+      organization_name: orgName,
+      phone_number: phoneNo,
+      date_of_birth: dob,
+      role: role,
+      organization_id: "",
+    };
+    register(userInfo);
   };
 
   return (
     <Box className="container">
       <img src={topImage} alt="top_image" className="top_image" />
       <img src={downImage} alt="top_image" className="bottom_image" />
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "flex-start",
-          width: "40%",
-          height: "90%",
-          overflow: "auto",
-          scrollbarWidth: "none",
-          "&::-webkit-scrollbar": {
-            display: "none",
-          },
-        }}
-      >
+      <Box sx={classes.signupContainer}>
         <Typography variant="h2" sx={{ mb: "48px" }}>
           Sign Up
         </Typography>
@@ -101,7 +135,7 @@ const SignUp = () => {
                 type="text"
                 size="small"
                 variant="outlined"
-                sx={{bgcolor: "white", borderRadius: '6px'}}
+                sx={{ bgcolor: "white", borderRadius: "6px" }}
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
               />
@@ -121,7 +155,7 @@ const SignUp = () => {
                 type="text"
                 size="small"
                 variant="outlined"
-                sx={{bgcolor: "white", borderRadius: '6px'}}
+                sx={{ bgcolor: "white", borderRadius: "6px" }}
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
               />
@@ -136,7 +170,7 @@ const SignUp = () => {
             type="email"
             size="small"
             variant="outlined"
-            sx={{ mb: "30px", bgcolor: "white", borderRadius: '6px' }}
+            sx={{ mb: "30px", bgcolor: "white", borderRadius: "6px" }}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -173,7 +207,7 @@ const SignUp = () => {
             size="small"
             type="password"
             variant="outlined"
-            sx={{ mb: "30px", bgcolor: "white", borderRadius: '6px' }}
+            sx={{ mb: "30px", bgcolor: "white", borderRadius: "6px" }}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -181,11 +215,11 @@ const SignUp = () => {
             Date of Birth
           </InputLabel>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoContainer components={["DatePicker"]} >
+            <DemoContainer components={["DatePicker"]}>
               <DatePicker
                 value={dob}
                 onChange={(value) => setDob(value)}
-                sx={{ mb: "30px", bgcolor: "white", borderRadius: '6px', }}
+                sx={{ mb: "30px", bgcolor: "white", borderRadius: "6px" }}
               />
             </DemoContainer>
           </LocalizationProvider>
@@ -195,10 +229,9 @@ const SignUp = () => {
           <TextField
             id="phone_no"
             placeholder="Phone Number"
-            type="number"
             size="small"
             variant="outlined"
-            sx={{ mb: "30px", bgcolor: "white", borderRadius: '6px' }}
+            sx={{ mb: "30px", bgcolor: "white", borderRadius: "6px" }}
             value={phoneNo}
             onChange={(e) => setPhoneNo(e.target.value)}
           />
@@ -211,7 +244,7 @@ const SignUp = () => {
             type="text"
             size="small"
             variant="outlined"
-            sx={{ mb: "30px", bgcolor: "white", borderRadius: '6px' }}
+            sx={{ mb: "30px", bgcolor: "white", borderRadius: "6px" }}
             value={orgName}
             onChange={(e) => setOrgName(e.target.value)}
           />
@@ -219,20 +252,23 @@ const SignUp = () => {
             <FormLabel sx={{ color: "black", fontSize: "14px" }}>
               Role
             </FormLabel>
-            <Select
-              id="role"
-              placeholder="Role"
-              size="small"
-              sx={{ mb: "30px", bgcolor: "white", borderRadius: '6px' }}
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
-            >
-              <MenuItem value={0}>Teacher</MenuItem>
-              <MenuItem value={1}>Student</MenuItem>
-              <MenuItem value={2}>Admin</MenuItem>
-            </Select>
+            {!isRolesLoading && roles ? (
+              <Select
+                id="role"
+                placeholder="Role"
+                size="small"
+                sx={{ mb: "30px", bgcolor: "white", borderRadius: "6px" }}
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+              >
+                {Object.keys(roles).map((key) => (
+                  <MenuItem value={key}>{roles[key]}</MenuItem>
+                ))}
+              </Select>
+            ) : null}
           </FormControl>
           <Button
+            disabled={isRolesError}
             variant="contained"
             type="submit"
             onClick={handleSubmit}
@@ -258,6 +294,15 @@ const SignUp = () => {
           </Button>
         </Typography>
       </Box>
+      {snackbarStates.open ? (
+        <AppSnackbar
+          open={snackbarStates.open}
+          message={snackbarStates.message}
+          severity={snackbarStates.severity}
+          setOpen={(state) => resetSnackbar(state)}
+        />
+      ) : null}
+      {isRolesLoading ? <AppBackdrop open={isRolesLoading} /> : null}
     </Box>
   );
 };

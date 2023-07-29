@@ -11,15 +11,13 @@ import Courses from "./pages/Private/Courses";
 const routes = (isAuthenticated) => [
   {
     path: "/",
-    element: !isAuthenticated ? <ProtectedLayout /> : <Navigate to="/login" />,
+    element: isAuthenticated ? <ProtectedLayout /> : <Navigate to="/login" />,
     children: [
-      {
-        path: "home",
-        element: <Home />,
-      },
-      { path: "teachers", element: <>Teachers</> },
-      { path: "students", element: <>Students</> },
-      { path: "courses", element: <Courses/> },
+      { path: "", element: <Home />},
+      { path: "home", element: <Home /> },
+      { path: "teachers", element: <React.Fragment>Teachers</React.Fragment> },
+      { path: "students", element: <React.Fragment>Students</React.Fragment> },
+      { path: "courses", element: <Courses /> },
     ],
   },
   {
