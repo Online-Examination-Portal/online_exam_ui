@@ -1,20 +1,20 @@
-import en from "../../../../Lang/en.json";
-import { REGISTER } from "../../../../utilities/apis";
-import useAPICall from "../../../../hooks/useAPICalls";
+import useAPICall from "../../../hooks/useAPICalls";
+import en from "../../../Lang/en.json";
+import { VALIDATE_OTP } from "../../../utilities/apis";
 
-const usePostRegister = () => {
+const useValidateOtp = () => {
   const [data, error, isLoading, callGetData, setSuccessData, setError] =
     useAPICall(undefined, "");
 
   const defaultFallback = (msg = en.something_went_wrong) => {
-    setError(msg);
+    setError(true);
     setSuccessData(undefined);
   };
 
   const statusObj = [
     {
-      status_code: 201,
-      status_txt: "Created",
+      status_code: 200,
+      status_txt: "OK",
       callBack: (res) => {
         const data = res.data;
         if (data && typeof data === "object") {
@@ -36,8 +36,8 @@ const usePostRegister = () => {
     },
   ];
 
-  const postRegister = (body) => {
-    const url = REGISTER;
+  const validateOtp = (body) => {
+    const url = VALIDATE_OTP;
     callGetData({
       url,
       method: "post",
@@ -46,7 +46,7 @@ const usePostRegister = () => {
       body,
     });
   };
-  return [data, error, isLoading, postRegister, setSuccessData, setError];
+  return [data, error, isLoading, validateOtp, setSuccessData, setError];
 };
 
-export default usePostRegister;
+export default useValidateOtp;

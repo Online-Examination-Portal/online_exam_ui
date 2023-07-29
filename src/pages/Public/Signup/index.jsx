@@ -54,9 +54,24 @@ const SignUp = () => {
   const [gender, setGender] = useState("");
   const [password, setPassword] = useState("");
   const [phoneNo, setPhoneNo] = useState("");
-  const [dob, setDob] = useState(dayjs("2022-04-17"));
+  const [dob, setDob] = useState({});
   const [orgName, setOrgName] = useState("");
   const [role, setRole] = useState("");
+
+  useEffect(() => {
+    if (registerResponse) {
+      navigate("/validate", {
+        state: { userInfo: registerResponse },
+        replace: true,
+      });
+    } else if (isRegisterError !== "") {
+      setSnackbarStates({
+        open: true,
+        message: "Something went wrong",
+        severity: "error",
+      });
+    }
+  }, [registerResponse, isRegisterError, isRegisterLoading]);
 
   useEffect(() => {
     if (isRolesError) {
@@ -86,13 +101,13 @@ const SignUp = () => {
       first_name: firstName,
       last_name: lastName,
       email: email,
-      gender: gender,
+      gender: parseInt(gender),
       password: password,
       organization_name: orgName,
       phone_number: phoneNo,
-      date_of_birth: dob,
+      date_of_birth: dayjs(dob).format("YYYY-MM-DD"),
       role: role,
-      organization_id: "",
+      organization_id: 1,
     };
     register(userInfo);
   };
@@ -185,17 +200,9 @@ const SignUp = () => {
               value={gender}
               onChange={(e) => setGender(e.target.value)}
             >
-              <FormControlLabel value="male" control={<Radio />} label="Male" />
-              <FormControlLabel
-                value="female"
-                control={<Radio />}
-                label="Female"
-              />
-              <FormControlLabel
-                value="other"
-                control={<Radio />}
-                label="Other"
-              />
+              <FormControlLabel value="0" control={<Radio />} label="Male" />
+              <FormControlLabel value="1" control={<Radio />} label="Female" />
+              <FormControlLabel value="2" control={<Radio />} label="Other" />
             </RadioGroup>
           </FormControl>
           <InputLabel sx={{ color: "black", fontSize: "14px" }}>
@@ -214,11 +221,19 @@ const SignUp = () => {
           <InputLabel sx={{ color: "black", fontSize: "14px" }}>
             Date of Birth
           </InputLabel>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <LocalizationProvider fullWidth dateAdapter={AdapterDayjs}>
             <DemoContainer components={["DatePicker"]}>
               <DatePicker
+                slotProps={{
+                  textField: {
+                    fullWidth: true,
+                    size: "small",
+                  },
+                }}
                 value={dob}
-                onChange={(value) => setDob(value)}
+                onChange={(value) => {
+                  setDob(value);
+                }}
                 sx={{ mb: "30px", bgcolor: "white", borderRadius: "6px" }}
               />
             </DemoContainer>
@@ -262,13 +277,15 @@ const SignUp = () => {
                 onChange={(e) => setRole(e.target.value)}
               >
                 {Object.keys(roles).map((key) => (
-                  <MenuItem value={key}>{roles[key]}</MenuItem>
+                  <MenuItem key={key} value={key}>
+                    {roles[key]}
+                  </MenuItem>
                 ))}
               </Select>
             ) : null}
           </FormControl>
           <Button
-            disabled={isRolesError}
+            disabled={isRolesError === "" ? false : true}
             variant="contained"
             type="submit"
             onClick={handleSubmit}
@@ -302,7 +319,9 @@ const SignUp = () => {
           setOpen={(state) => resetSnackbar(state)}
         />
       ) : null}
-      {isRolesLoading ? <AppBackdrop open={isRolesLoading} /> : null}
+      {isRolesLoading || isRegisterLoading ? (
+        <AppBackdrop open={isRolesLoading} />
+      ) : null}
     </Box>
   );
 };

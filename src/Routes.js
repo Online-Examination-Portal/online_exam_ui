@@ -8,13 +8,14 @@ import SignUp from "./pages/Public/Signup";
 import Home from "./pages/Private/Home";
 import Courses from "./pages/Private/Courses";
 import Teachers from "./pages/Private/Teachers";
+import ValidateOtp from "./pages/Public/OtpValidator";
 
 const routes = (isAuthenticated) => [
   {
     path: "/",
     element: isAuthenticated ? <ProtectedLayout /> : <Navigate to="/login" />,
     children: [
-      { path: "", element: <Home />},
+      { path: "", element: <Home /> },
       { path: "home", element: <Home /> },
       { path: "teachers", element: <Teachers /> },
       { path: "students", element: <React.Fragment>Students</React.Fragment> },
@@ -28,6 +29,7 @@ const routes = (isAuthenticated) => [
     children: [
       { path: "login", element: <Login /> },
       { path: "signup", element: <SignUp /> },
+      { path: "validate", element: <ValidateOtp /> },
     ],
   },
   {
