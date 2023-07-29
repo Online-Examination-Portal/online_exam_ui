@@ -15,6 +15,8 @@ const Login = () => {
   const { setIsAuthenticated } = useContext(AuthStateContext)
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
+  const [isEmailValid, setIsEmailValid] = useState(true);
+
   const [password, setPassword] = useState("");
   const [snackbarState, setSnackbarState] = useState(false);
   const [data, isError, isLoading, login] = usePostLogin();
@@ -71,12 +73,15 @@ const Login = () => {
             <InputLabel sx={{ color: "white" }}>E-mail</InputLabel>
             <TextField
               id="email"
+              name="email"
+              error={!isEmailValid}
               placeholder="Enter your email"
               type="email"
               variant="outlined"
               size="small"
               sx={{ mb: "30px", bgcolor: "white", borderRadius: "6px" }}
               value={email}
+              helperText={isEmailValid ? "" : "Incorrect entry."}
               onChange={(e) => setEmail(e.target.value)}
             />
             <InputLabel sx={{ color: "white" }}>Password</InputLabel>

@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import ImpUpdates from "../../../components/private/home/importantUpdates";
 import InsightsCard from "../../../components/private/home/insightsCard";
-import TeacherDrawer from "../../../components/private/teachers/drawer";
+import TeacherDrawer from './../../../components/private/teachers/drawer';
 
 const Home = () => {
   return (
