@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import CloseIcon from "@mui/icons-material/Close";
-import Invitation from '../teachers/invitaion';
+import Invitation from "./invitation";
 
 const TeacherDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);

@@ -16,7 +16,7 @@ const routes = (isAuthenticated) => [
     children: [
       { path: "", element: <Home />},
       { path: "home", element: <Home /> },
-      { path: "teachers", element: <React.Fragment>Teachers</React.Fragment> },
+      { path: "teachers", element: <Teachers /> },
       { path: "students", element: <React.Fragment>Students</React.Fragment> },
       { path: "courses", element: <Courses /> },
     ],

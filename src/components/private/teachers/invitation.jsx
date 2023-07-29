@@ -9,7 +9,7 @@ import {
   Typography,
   Button,
 } from "@mui/material";
-import { invitationData } from "./inviationData";
+import { invitationData } from "./invitationData";
 
 const Invitation = () => {
   return (
