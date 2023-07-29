@@ -6,6 +6,7 @@ import ProtectedLayout from "./hoc/ProtectedLayout";
 import Login from "./pages/Public/Login";
 import SignUp from "./pages/Public/Signup";
 import Home from "./pages/Private/Home";
+import Teachers from "./pages/Private/Teachers";
 
 const routes = (isAuthenticated) => [
   {
@@ -16,7 +17,7 @@ const routes = (isAuthenticated) => [
         path: "home",
         element: <Home />,
       },
-      { path: "teachers", element: <>Teachers</> },
+      { path: "teachers", element: <Teachers/> },
       { path: "students", element: <>Students</> },
       { path: "courses", element: <>Courses</> },
     ],
