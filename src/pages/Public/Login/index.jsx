@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./login.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, redirect } from "react-router-dom";
 import usePostLogin from "./data/usePostLogin";
 import topImage from "../../../assets/image/bg1.png";
 import downImage from "../../../assets/image/bg2.png";
@@ -34,7 +34,7 @@ const Login = () => {
     if (data) {
       setUserDetails(data)
       setIsAuthenticated(true)
-      navigate("/home")
+      redirect("/home")
     } else if (isError !== "") {
       setSnackbarState(true);
     }
