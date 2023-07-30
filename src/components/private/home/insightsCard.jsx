@@ -22,7 +22,7 @@ const InsightsCard = () => {
           variant="outlined"
           sx={{
             width: "33%",
-            padding: "8px",
+            padding: "16px 8px",
             display: "flex",
             borderRadius: "4px",
             alignItems: "center",
@@ -37,9 +37,10 @@ const InsightsCard = () => {
               height: "50px",
               borderRadius: "50px",
               display: "flex",
-              justifyItems: "center",
+              justifyContent: "center",
               alignItems: "center",
               backgroundColor: "#F1FAFF",
+              mr: 1
             }}
           >
             {data.id === "1" ? <BookIcon size="small" color="primary" /> : null}
