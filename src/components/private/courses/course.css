@@ -1,10 +1,9 @@
-.banner_container{
-    position: relative;
+.banner_container {
+  position: relative;
+  z-index: 1;
+  width: calc(100% - 140px);
 }
 
-.banner_container .course_img{
-    position: absolute;
-    border-radius: 50%;
-    background: white;
-    box-shadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)';
+.course_img {
+  object-fit: contain;
 }
