@@ -5,7 +5,7 @@ export const signupContainer = {
   justifyContent: "flex-start",
   width: "40%",
   height: "90%",
-  overflow: "auto",
+  overflow: "auto", 
   scrollbarWidth: "none",
   "&::-webkit-scrollbar": {
     display: "none",

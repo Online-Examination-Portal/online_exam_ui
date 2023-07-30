@@ -47,7 +47,7 @@ const ImpUpdates = () => {
           20 unread updates
         </Typography>
       </Box>
-      <TableContainer sx={{ maxHeight: 250 }}>
+      <TableContainer sx={{ maxHeight: '80%'}}>
         <Table stickyHeader sx={{ width: "100%" }}>
           <TableBody>
             {impData.map((data) => (
