@@ -17,7 +17,7 @@ const Courses = () => {
   
        <Box sx={{
         positon: 'absolute',
-        display: 'flex',
+        display: 'flex', 
         flexDirection: 'column',
         overflow:'auto',
         scrollbarWidth: "none",

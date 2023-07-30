@@ -1,11 +1,12 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import TeachersTable from "../../../components/private/teachers/teacherstable";
+import TeacherDrawer from "../../../components/private/teachers/drawer";
 
 
 const Teachers = () => {
   return (
-    <Box
+    <Box 
       className="home"
       sx={{
         width: "80%",
@@ -15,7 +16,12 @@ const Teachers = () => {
         flexFlow: "column",
       }}
     >
-      <Box sx={{ padding: "16px 32px", flex: "0 1 auto" }}>
+      <Box sx={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        padding: "16px 32px", 
+      }}>
+      <Box sx={{ flex: "0 1 auto" }}>
         <Typography
           variant="h2"
           color=" #194D6B"
@@ -30,6 +36,17 @@ const Teachers = () => {
           Teacher's details
         </Typography>
       </Box>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "flex-end",
+        }}
+      >
+        <TeacherDrawer/>
+      </Box>
+      </Box>
+      
+
       <TeachersTable/>
     </Box>
   );

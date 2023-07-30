@@ -1,6 +1,7 @@
 import React from 'react'
-import { Box, TextField, Typography } from '@mui/material';
+import { Box, TextField, Typography, InputAdornment } from '@mui/material';
 import courses from "../../../assets/image/courses.png";
+import SearchIcon from '@mui/icons-material/Search';
 import './course.css';
 
 const Banner = () => {
@@ -11,9 +12,10 @@ const Banner = () => {
         display: 'flex',
         flexDirection: 'row',
        }}>
-        <img src={courses} alt='courses' className='course_img'/>
+
+        <img src={courses} alt='courses' className='course_img' />
         <Box>
-        <Box sx={{
+        <Box className='banner_container' sx={{
             // borderRadius: '500px 8px 8px 500px',
             borderRadius: '8px 8px 8px 8px',
             background: 'linear-gradient(270deg, #FF40B2 0%, #570076 75.52%)',
@@ -22,18 +24,19 @@ const Banner = () => {
             display: 'flex',
             padding: '20px 20px 20px 60px',
         }}>
-        <Typography variant='body1' sx={{"& span": {fontWeight: 600, fontSize: '24px', display: 'flex', flexDirection: 'column'}}}>
+        <Typography variant='body1' sx={{"& span": {fontWeight: 600, fontSize: '24px', display: 'flex', flexDirection: 'column', mt: 2}}}>
          Get the details of all the courses in your organization. You can edit and create new courses
          here. Manage teacher and students teaching and enrolled in the respective courses. <span>Total Active Courses: 09 </span> 
          </Typography>
         </Box>
-        <Box sx={{padding: '28px 60px 0px 407px',}}>
+        <Box sx={{padding: '28px 0px 0px 407px', display:'flex', justifyContent: 'flex-end'}}>
         <TextField
             id="search"
-            placeholder="search"
+            placeholder="Search Course"
             type="search"
             size="small"
             variant="outlined"
+            startAdornment={<InputAdornment position="start"><SearchIcon/></InputAdornment>}
             sx={{
                 width: '80%',
                 borderRadius: '8px',
