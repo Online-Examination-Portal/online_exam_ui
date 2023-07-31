@@ -13,7 +13,7 @@ import ValidateOtp from "./pages/Public/OtpValidator";
 const routes = (isAuthenticated) => [
   {
     path: "/",
-    element: isAuthenticated ? <ProtectedLayout /> : <Navigate to="/login" />,
+    element: !isAuthenticated ? <ProtectedLayout /> : <Navigate to="/login" />,
     children: [
       { path: "", element: <Home /> },
       { path: "home", element: <Home /> },

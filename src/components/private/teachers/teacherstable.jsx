@@ -21,7 +21,7 @@ const TeachersTable = () => {
     <Paper
       sx={{ overflow: "hidden", margin: "0 32px 32px 32px", flex: "1 1 auto" }}
     >
-      <TableContainer sx={{ maxHeight: 400 }}>
+      <TableContainer sx={{ height: "100%" }}>
         <Table stickyHeader sx={{ width: "100%" }}>
             <TableHead>
                 <TableRow sx={{ backgroundColor: "#007CFF",}}>
@@ -55,7 +55,7 @@ const TeachersTable = () => {
                 <TableCell align="center">{data.totalbatch}</TableCell>
                 <TableCell align="center">{<ViewDetails/>}</TableCell>
                 <TableCell>
-                  <Box
+                  {/* <Box
                   // sx={{
                   //   visibility: "hidden",
                   //   "&:hover": { visibility: "visible" },
@@ -67,7 +67,7 @@ const TeachersTable = () => {
                     <IconButton color="primary">
                       <MarkEmailReadIcon />
                     </IconButton>
-                  </Box>
+                  </Box> */}
                 </TableCell>
               </TableRow>
             ))}
