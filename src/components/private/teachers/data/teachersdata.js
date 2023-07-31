@@ -1,7 +1,7 @@
 const teachersdata = [
     {
       id: 1,
-      ID: "T0001",
+      ID: "T0001", 
       name: "John Doe",
       course: "English",
       totalbatch:"02",

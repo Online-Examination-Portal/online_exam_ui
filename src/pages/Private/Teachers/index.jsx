@@ -7,9 +7,9 @@ import TeacherDrawer from "../../../components/private/teachers/drawer";
 const Teachers = () => {
   return (
     <Box 
-      className="home"
+      className="home" 
       sx={{
-        width: "80%",
+        width: "80%", 
         display: "flex",
         height: "100vh",
         bgcolor: "#F1FAFF",
@@ -41,7 +41,7 @@ const Teachers = () => {
           display: "flex",
           justifyContent: "flex-end",
         }}
-      >
+      > 
         <TeacherDrawer/>
       </Box>
       </Box>

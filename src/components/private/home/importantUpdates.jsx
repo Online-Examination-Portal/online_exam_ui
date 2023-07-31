@@ -29,7 +29,7 @@ const ImpUpdates = () => {
           padding: "8px 16px",
           alignItems: "center",
           justifyContent: "space-between",
-          backgroundColor: "#f5f5f5",
+          backgroundColor: "#f5f5f5", 
         }}
       >
         <Typography variant="body1" color="primary" sx={{ fontWeight: "bold" }}>

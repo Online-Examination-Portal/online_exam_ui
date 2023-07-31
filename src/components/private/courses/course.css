@@ -3,7 +3,7 @@
   z-index: 1;
   width: calc(100% - 140px);
 }
-
+ 
 .course_img {
   object-fit: contain;
 }
