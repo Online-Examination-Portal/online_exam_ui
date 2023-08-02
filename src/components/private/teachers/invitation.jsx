@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {
   Paper,
   TableContainer,
-  Table,
+  Table, 
   TableBody,
   TableRow,
   TableCell,
@@ -17,15 +17,12 @@ import * as classes from './styles'
 
 const Invitation = () => {
   const [selectedValue, setSelectedValue] = useState("");
-  // const handleDropdownChange = (e) => {
-  //   selectedValue(e.target.value);
-  // };
 
   return (
     <TableContainer component={Paper} sx={{ maxHeight: "60%" }}>
       <Table stickyHeader sx={{ width: "100%" }}>
         <TableBody>
-          {invitationData.map((data) => (
+          {invitationData.rows.map((data) => (
             <TableRow key={data.id}>
               <TableCell sx={{ fontSize: "15px", color: "#4E90B5" }}>
                 {data.email}

@@ -7,7 +7,7 @@ const teachersdata = [
       totalbatch:"02",
       viewdetails:""
     },
-    {
+    { 
       id: 2,
       ID: "T0001",
       name: "John Doe",

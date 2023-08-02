@@ -10,13 +10,13 @@ import {
   Box,
   Typography,
 } from "@mui/material";
-import impData from "./data/impData";
 import DeleteIcon from "@mui/icons-material/Delete";
 import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
+import { updateImpUpdates } from "./data/impData";
 
 const ImpUpdates = () => {
   return (
-    <Paper
+    <Paper 
       sx={{
         overflow: "hidden",
         margin: "32px 32px 32px 32px",
@@ -50,7 +50,7 @@ const ImpUpdates = () => {
       <TableContainer sx={{ maxHeight: '80%'}}>
         <Table stickyHeader sx={{ width: "100%" }}>
           <TableBody>
-            {impData.map((data) => (
+            {updateImpUpdates.rows.map((data) => (
               <CustomTableRow key={data.id} data={data} />
             ))}
           </TableBody>

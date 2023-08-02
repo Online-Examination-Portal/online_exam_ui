@@ -4,7 +4,7 @@ export const invitationStatus = {
   padding: "4px 8px",
   color: "#454545",
   fontStyle: "italic",
-};
+}; 
 
 export const invitationRemove = {
   color: "#454545",

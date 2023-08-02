@@ -10,9 +10,28 @@ import React, { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
 import * as classes from "./styles";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 const CourseDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [textFields, setTextFields] = useState([""]);
+
+  const handleTextChange = (e, index) => {
+    const updatedTextFields = [...textFields]; //why shallow copy
+    updatedTextFields[index] = e.target.value;
+    setTextFields(updatedTextFields);
+  };
+
+  const handleAddTextField = () => {
+    setTextFields([...textFields, ""]);
+  };
+
+  const handleRemoveTextField = () => {
+    if (textFields.length > 1) {
+      const updatedTextFields = textFields.slice(0, -1);
+      setTextFields(updatedTextFields);
+    }
+  };
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
@@ -22,7 +41,7 @@ const CourseDrawer = () => {
       <Box>
         <Button onClick={toggleDrawer} sx={classes.addCourse}>
           + Add Courses
-        </Button> 
+        </Button>
         <Drawer anchor="right" open={isOpen} onClose={toggleDrawer}>
           <Box sx={classes.drawerHeader}>
             <Typography variant="h4" sx={{ fontWeight: 600 }}>
@@ -53,37 +72,43 @@ const CourseDrawer = () => {
                 shrink: true,
               }}
             />
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-              }}
-            >
+
+            <Box gap={4} sx={classes.addBatchTextFieldContainer}>
+              {textFields.map((value, index) => (
                 <TextField
-                id="add_batch"
-                label="Add Batch"
-                type="text"
-                variant="outlined"
-                size="small"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                sx={{ width: "90%" }}
-              />
-              
-              <IconButton sx={{ color: "#194D6B", bgcolor: "#F1FAFF" }}>
-                <AddIcon />
-              </IconButton>
+                  id="add_batch"
+                  key={index}
+                  label={`Add Batch ${index + 1}`}
+                  value={value}
+                  onChange={(e) => handleTextChange(e, index)}
+                  type="text"
+                  variant="outlined"
+                  size="small"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  sx={{ width: "90%" }}
+                />
+              ))}
+              <Box>
+                <IconButton
+                  onClick={handleAddTextField}
+                  sx={classes.addRemoveIcon}
+                >
+                  <AddIcon />
+                </IconButton>
+                {textFields.length > 1 && (
+                  <IconButton
+                    onClick={handleRemoveTextField}
+                    sx={classes.addRemoveIcon}
+                  >
+                    <RemoveIcon />
+                  </IconButton>
+                )}
+              </Box>
             </Box>
           </Box>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "flex-end",
-              padding: "260px 55px 0px 57px",
-            }}
-          >
+          <Box sx={classes.okButtonContainer}>
             <Button sx={classes.okButton}>Ok</Button>
           </Box>
         </Drawer>

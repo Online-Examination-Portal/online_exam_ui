@@ -6,11 +6,11 @@ import topImage from "../../../assets/image/bg1.png";
 import downImage from "../../../assets/image/bg2.png";
 import AppBackdrop from "../../../components/common/AppBackdrop";
 import AppSnackbar from "../../../components/common/AppSnackbar";
-import { Box, Typography, TextField, Button, InputLabel } from "@mui/material";
+import { Box, Typography, TextField, Button, InputLabel, FormControl, FormHelperText } from "@mui/material";
 import { UserDetailsContext } from "../../../App";
 import { AuthStateContext } from "../../../App";
 
-const Login = () => {
+const Login = () => { 
   const { setUserDetails } = useContext(UserDetailsContext)
   const { setIsAuthenticated } = useContext(AuthStateContext)
   const navigate = useNavigate();
@@ -62,7 +62,7 @@ const Login = () => {
           <Typography variant="h6" gutterBottom sx={{ textAlign: "center" }}>
             Welcome back! Please enter your details
           </Typography>
-          <Box
+          <Box 
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -70,7 +70,9 @@ const Login = () => {
               width: "80%",
             }}
           >
-            <InputLabel sx={{ color: "white" }}>E-mail</InputLabel>
+            
+            <InputLabel sx={{ color: "white",}}>E-mail</InputLabel>
+            {/* <FormControl error={isError}> */}
             <TextField
               id="email"
               name="email"
@@ -81,9 +83,18 @@ const Login = () => {
               size="small"
               sx={{ mb: "30px", bgcolor: "white", borderRadius: "6px" }}
               value={email}
-              helperText={isEmailValid ? "" : "Incorrect entry."}
+              helperText={isEmailValid ? "" : "Invalid Email"}
               onChange={(e) => setEmail(e.target.value)}
             />
+
+            {/* {isError ? (
+                <FormHelperText sx={{ fontFamily: "Cabin-Regular" }}>
+                  Invalid email
+                </FormHelperText>
+              ) : null} */}
+            {/* </FormControl> */}
+            
+            
             <InputLabel sx={{ color: "white" }}>Password</InputLabel>
             <TextField
               id="password"
@@ -94,6 +105,9 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            
+            
+            
             <Button
               variant="contained"
               type="submit"

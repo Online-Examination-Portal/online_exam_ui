@@ -19,7 +19,7 @@ export const panelContainer = {
   background: "#fff",
   height: "30vh",
 };
- 
+
 export const bannerOuterContainer = {
   position: "relative",
   padding: "0 60px 0px 166px",
@@ -97,6 +97,23 @@ export const drawerTextField = {
   width: "80%",
   display: "flex",
   flexDirection: "column",
+};
+
+export const addBatchTextFieldContainer = {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
+};
+
+export const addRemoveIcon = {
+  color: "#194D6B",
+  bgcolor: "#F1FAFF",
+};
+
+export const okButtonContainer = {
+  display: "flex",
+  justifyContent: "flex-end",
+  padding: "200px 55px 0px 57px",
 };
 
 export const okButton = {

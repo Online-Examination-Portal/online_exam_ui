@@ -10,7 +10,7 @@ const useValidateOtp = () => {
     setError(true);
     setSuccessData(undefined);
   };
-
+ 
   const statusObj = [
     {
       status_code: 200,
@@ -41,7 +41,7 @@ const useValidateOtp = () => {
     callGetData({
       url,
       method: "post",
-      statusObj,
+      statusObj, 
       defaultFallback,
       body,
     });
