@@ -13,6 +13,7 @@ import {
 import impData from "./data/impData";
 import DeleteIcon from "@mui/icons-material/Delete";
 import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
+import AppTextTooltip from "./../../common/AppTextTooltip/index";
 
 const ImpUpdates = () => {
   return (
@@ -47,8 +48,8 @@ const ImpUpdates = () => {
           20 unread updates
         </Typography>
       </Box>
-      <TableContainer sx={{ maxHeight: '80%'}}>
-        <Table stickyHeader sx={{ width: "100%" }}>
+      <TableContainer sx={{ maxHeight: "80%" }}>
+        <Table stickyHeader sx={{ width: "100%", padding: '8px 0' }}>
           <TableBody>
             {impData.map((data) => (
               <CustomTableRow key={data.id} data={data} />
@@ -67,19 +68,25 @@ const CustomTableRow = ({ data }) => {
     <TableRow
       onMouseEnter={() => setIsIconVisible(true)}
       onMouseLeave={() => setIsIconVisible(false)}
-      sx={{ "&:hover": { backgroundColor: "#f5f5f5" }, }}
+      sx={{ "&:hover": { backgroundColor: "#f5f5f5" } }}
     >
-      <TableCell>{data.update}</TableCell>
+      <TableCell sx={{ cursor: "pointer" }}>
+        {data.update}
+      </TableCell>
       <TableCell>{data.date}</TableCell>
       <TableCell>
         {isIconsVisible && (
-          <Box>
-            <IconButton color="primary">
-              <DeleteIcon />
-            </IconButton>
-            <IconButton color="primary">
-              <MarkEmailReadIcon />
-            </IconButton>
+          <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+            <AppTextTooltip title="delete">
+              <IconButton color="primary">
+                <DeleteIcon />
+              </IconButton>
+            </AppTextTooltip>
+            <AppTextTooltip title={false ? "Mark as read" : "Mark as unread"}>
+              <IconButton color="primary">
+                <MarkEmailReadIcon />
+              </IconButton>
+            </AppTextTooltip>
           </Box>
         )}
       </TableCell>

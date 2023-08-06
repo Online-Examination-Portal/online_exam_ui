@@ -9,8 +9,8 @@ const Banner = () => {
     <Box
       sx={{
         position: "relative",
-        padding: "0 60px 0px 166px",
-        margin: "56px 0 0 0",
+        padding: "0 32px 0px 117px",
+        margin: "24px 0 0 0",
         display: "flex",
         flexDirection: "column",
         alignItems: "space-between",
@@ -22,30 +22,30 @@ const Banner = () => {
           background: "#fff",
           zIndex: "10",
           top: 0,
-          left: "60px",
-          width: "212px",
+          left: "32px",
+          width: "170px",
           position: "absolute",
           borderRadius: "50%",
           boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
           overflow: "hidden",
         }}
       >
-        <img src={courses} alt="courses" className="course_img" />
+        <img src={courses} width="100%" alt="courses" className="course_img" />
       </Box>
       <Box
         className="banner_container"
         sx={{
           color: "white",
           display: "flex",
-
+          flexDirection: "column",
           borderRadius: "8px 8px 8px 8px",
           boxShadow: "0px 0px 5px 0px rgba(7, 128, 0, 0.43)",
           background: "linear-gradient(270deg, #FF40B2 0%, #570076 75.52%)",
-          padding: "20px 20px 20px 120px",
+          padding: "8px 8px 8px 95px",
         }}
       >
         <Typography
-          variant="body1"
+          variant="caption"
           sx={{
             "& span": {
               fontWeight: 600,
@@ -59,8 +59,8 @@ const Banner = () => {
           Get the details of all the courses in your organization. You can edit
           and create new courses here. Manage teacher and students teaching and
           enrolled in the respective courses.{" "}
-          <span>Total Active Courses: 09 </span>
         </Typography>
+        <Typography sx={{ mt: 0 }}>Total Active Courses: 09 </Typography>
       </Box>
       <Box
         sx={{

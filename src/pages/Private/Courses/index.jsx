@@ -15,10 +15,10 @@ const Courses = () => {
               flexDirection: "column",
             }}
           >
-            <Typography variant="h3" color="secondary" fontWeight={700}>
+            <Typography variant="h3" color="secondary">
               Courses
             </Typography>
-            <Typography variant="h6" color="primary">
+            <Typography variant="body2" color="primary">
               Track your courses details here.
             </Typography>
           </Box>

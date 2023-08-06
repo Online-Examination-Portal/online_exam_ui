@@ -21,28 +21,17 @@ const TeachersTable = () => {
     <Paper
       sx={{ overflow: "hidden", margin: "0 32px 32px 32px", flex: "1 1 auto" }}
     >
-      <TableContainer sx={{ maxHeight: 400 }}>
+      <TableContainer sx={{ height: "100%" }}>
         <Table stickyHeader sx={{ width: "100%" }}>
-            <TableHead>
-                <TableRow sx={{ backgroundColor: "#007CFF",}}>
-                <TableCell align="center">
-                    Id
-                </TableCell>
-                <TableCell align="center">
-                    Name
-                </TableCell>
-                <TableCell align="center">
-                    Course
-                </TableCell>
-                <TableCell align="center">
-                    Total Batches
-                </TableCell>
-                <TableCell align="center">
-                    View Details
-                </TableCell>
-                </TableRow>
-                
-            </TableHead>
+          <TableHead>
+            <TableRow sx={{ backgroundColor: "#007CFF" }}>
+              <TableCell align="center">Id</TableCell>
+              <TableCell align="center">Name</TableCell>
+              <TableCell align="center">Course</TableCell>
+              <TableCell align="center">Total Batches</TableCell>
+              <TableCell align="center">View Details</TableCell>
+            </TableRow>
+          </TableHead>
           <TableBody>
             {teachersdata.map((data) => (
               <TableRow
@@ -53,9 +42,9 @@ const TeachersTable = () => {
                 <TableCell align="center">{data.name}</TableCell>
                 <TableCell align="center">{data.course}</TableCell>
                 <TableCell align="center">{data.totalbatch}</TableCell>
-                <TableCell align="center">{<ViewDetails/>}</TableCell>
-                <TableCell>
-                  <Box
+                <TableCell align="center">{<ViewDetails />}</TableCell>
+                {/*<TableCell>
+                   <Box
                   // sx={{
                   //   visibility: "hidden",
                   //   "&:hover": { visibility: "visible" },
@@ -67,8 +56,8 @@ const TeachersTable = () => {
                     <IconButton color="primary">
                       <MarkEmailReadIcon />
                     </IconButton>
-                  </Box>
-                </TableCell>
+                  </Box> 
+                </TableCell>*/}
               </TableRow>
             ))}
           </TableBody>

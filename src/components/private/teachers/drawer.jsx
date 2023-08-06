@@ -5,14 +5,14 @@ import {
   Button,
   Typography,
   SvgIcon,
-  InputLabel, 
+  InputLabel,
   TextField,
   IconButton,
 } from "@mui/material";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import CloseIcon from "@mui/icons-material/Close";
 import Invitation from "./invitation";
-
+import AddRoundedIcon from "@mui/icons-material/AddRounded";
 const TeacherDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -24,15 +24,17 @@ const TeacherDrawer = () => {
       <Box>
         <Button
           onClick={toggleDrawer}
+          startIcon={<AddRoundedIcon />}
           sx={{
             color: "white",
             backgroundColor: "#4E90B5",
+            fontFamily: "Cabin-Regular",
             "&:hover": {
               backgroundColor: "#194D6B",
             },
           }}
         >
-          + Add Teacher
+          Add Teacher
         </Button>
 
         <Drawer anchor="right" open={isOpen} onClose={toggleDrawer} sx={{}}>
@@ -152,7 +154,7 @@ const TeacherDrawer = () => {
               padding: "15px 58px 0px 55px",
             }}
           >
-            <Invitation/>
+            <Invitation />
           </Box>
           <Box
             sx={{
