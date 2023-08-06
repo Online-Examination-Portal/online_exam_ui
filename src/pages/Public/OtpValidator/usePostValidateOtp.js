@@ -41,7 +41,7 @@ const useValidateOtp = () => {
     callGetData({
       url,
       method: "post",
-      statusObj,
+      statusObj, 
       defaultFallback,
       body,
     });

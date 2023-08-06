@@ -1,13 +1,13 @@
 export const data = {
     count: 5,
-    columnNames: [
+    columnNames: [ 
         {
-            id: "id",
+            id: "id", 
             label: "Id",
             type: "static",
             sorting: false,
           },
-          {
+          { 
             id: "name",
             label: "Name",
             type: "static",

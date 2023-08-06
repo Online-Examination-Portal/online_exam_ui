@@ -4,18 +4,12 @@ export const courseContainer = {
   height: "100vh",
   bgcolor: "#F1FAFF",
   flexFlow: "column",
-  position: "relative",
 };
 
 export const innerContainer = {
   positon: "absolute",
-  display: "flex",
+  display: "flex", 
   flexDirection: "column",
-  overflow: "auto",
-  scrollbarWidth: "none",
-  "&::-webkit-scrollbar": {
-    display: "none",
-  },
 };
 
 export const headerContainer = {
@@ -23,3 +17,4 @@ export const headerContainer = {
   justifyContent: "space-between",
   padding: "28px 32px 0px 32px",
 };
+
