@@ -1,7 +1,7 @@
 .banner_container {
   position: relative;
   z-index: 1;
-  width: calc(100% - 140px);
+  width: calc(100% - 103px);
 }
 
 .course_img {

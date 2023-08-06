@@ -21,5 +21,5 @@ export const innerContainer = {
 export const headerContainer = {
   display: "flex",
   justifyContent: "space-between",
-  padding: "28px 60px 0px 60px",
+  padding: "28px 32px 0px 32px",
 };
