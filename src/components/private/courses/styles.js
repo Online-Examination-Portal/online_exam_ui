@@ -22,11 +22,11 @@ export const panelContainer = {
 
 export const bannerOuterContainer = {
   position: "relative",
-  padding: "0 60px 0px 166px",
-  margin: "38px 0 0 0",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "space-between",
+        padding: "0 32px 0px 117px",
+        margin: "24px 0 0 0",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "space-between",
 };
 
 export const bannerImageContainer = {
@@ -34,8 +34,8 @@ export const bannerImageContainer = {
   background: "#fff",
   zIndex: "10",
   top: 0,
-  left: "60px",
-  width: "212px",
+  left: "32px",
+  width: "170px",
   position: "absolute",
   borderRadius: "50%",
   boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
@@ -45,11 +45,11 @@ export const bannerImageContainer = {
 export const bannerTextBox = {
   color: "white",
   display: "flex",
-
+  flexDirection: "column",
   borderRadius: "8px 8px 8px 8px",
   boxShadow: "0px 0px 5px 0px rgba(7, 128, 0, 0.43)",
   background: "linear-gradient(270deg, #FF40B2 0%, #570076 75.52%)",
-  padding: "20px 20px 20px 120px",
+  padding: "8px 8px 8px 95px",
 };
 
 export const bannerText = {
@@ -59,7 +59,7 @@ export const bannerText = {
     display: "flex",
     flexDirection: "column",
     mt: 2,
-  },
+  }
 };
 
 export const searchBar = {
