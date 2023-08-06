@@ -12,12 +12,12 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
-import AppTextTooltip from "./../../common/AppTextTooltip/index";
+import AppTextTooltip from "./../../common/AppTextTooltip";
 import { updateImpUpdates } from "./data/impData";
 
 const ImpUpdates = () => {
   return (
-    <Paper 
+    <Paper
       sx={{
         overflow: "hidden",
         margin: "32px 32px 32px 32px",
@@ -30,7 +30,7 @@ const ImpUpdates = () => {
           padding: "8px 16px",
           alignItems: "center",
           justifyContent: "space-between",
-          backgroundColor: "#f5f5f5", 
+          backgroundColor: "#f5f5f5",
         }}
       >
         <Typography variant="body1" color="primary" sx={{ fontWeight: "bold" }}>
@@ -44,12 +44,12 @@ const ImpUpdates = () => {
             color: "#ffffff",
             padding: "4px 8px",
           }}
-        > 
+        >
           20 unread updates
         </Typography>
       </Box>
       <TableContainer sx={{ maxHeight: "80%" }}>
-        <Table stickyHeader sx={{ width: "100%", padding: '8px 0' }}>
+        <Table stickyHeader sx={{ width: "100%", padding: "8px 0" }}>
           <TableBody>
             {updateImpUpdates.rows.map((data) => (
               <CustomTableRow key={data.id} data={data} />
@@ -70,9 +70,7 @@ const CustomTableRow = ({ data }) => {
       onMouseLeave={() => setIsIconVisible(false)}
       sx={{ "&:hover": { backgroundColor: "#f5f5f5" } }}
     >
-      <TableCell sx={{ cursor: "pointer" }}>
-        {data.update}
-      </TableCell>
+      <TableCell sx={{ cursor: "pointer" }}>{data.update}</TableCell>
       <TableCell>{data.date}</TableCell>
       <TableCell>
         {isIconsVisible && (

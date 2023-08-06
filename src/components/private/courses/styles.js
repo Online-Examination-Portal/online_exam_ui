@@ -1,16 +1,21 @@
 export const courseBox = {
-  padding: "30px 60px 43px 60px",
+  padding: "30px 32px 32px 32px",
+  flex: "1 1 auto",
+  display: "flex",
+  flexDirection: "column",
 };
 
 export const listContainer = {
   display: "flex",
   justifyContent: "flex-end",
+  flex: "0 1 auto",
 };
 
 export const tabContainer = {
   border: "1px solid #4E90B5",
   borderRadius: "8px 8px 0px 0px",
   ml: 2,
+  padding: "8px",
 };
 
 export const panelContainer = {
@@ -18,15 +23,17 @@ export const panelContainer = {
   borderRadius: "8px 0px 8px 8px",
   background: "#fff",
   height: "30vh",
+  flex: "1 1 auto",
 };
 
 export const bannerOuterContainer = {
   position: "relative",
-        padding: "0 32px 0px 117px",
-        margin: "24px 0 0 0",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "space-between",
+  padding: "0 32px 0px 117px",
+  margin: "24px 0 0 0",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "space-between",
+  flex: "0 1 auto",
 };
 
 export const bannerImageContainer = {
@@ -53,13 +60,8 @@ export const bannerTextBox = {
 };
 
 export const bannerText = {
-  "& span": {
-    fontWeight: 600,
-    fontSize: "24px",
-    display: "flex",
-    flexDirection: "column",
-    mt: 2,
-  }
+  fontSize: "14px",
+  lineHeight: "16px",
 };
 
 export const searchBar = {
@@ -78,10 +80,11 @@ export const searchBarStyle = {
 export const addCourse = {
   color: "white",
   backgroundColor: "#4E90B5",
+  fontFamily: "Cabin-Regular",
   "&:hover": {
     backgroundColor: "#194D6B",
   },
-  borderRadius: "8px",
+  borderRadius: "4px",
 };
 
 export const drawerHeader = {

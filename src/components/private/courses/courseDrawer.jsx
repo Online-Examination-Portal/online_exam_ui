@@ -11,6 +11,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
 import * as classes from "./styles";
 import RemoveIcon from "@mui/icons-material/Remove";
+import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
 const CourseDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,8 +40,12 @@ const CourseDrawer = () => {
   return (
     <React.Fragment>
       <Box>
-        <Button onClick={toggleDrawer} sx={classes.addCourse}>
-          + Add Courses
+        <Button
+          startIcon={<AddRoundedIcon />}
+          onClick={toggleDrawer}
+          sx={classes.addCourse}
+        >
+          Add Courses
         </Button>
         <Drawer anchor="right" open={isOpen} onClose={toggleDrawer}>
           <Box sx={classes.drawerHeader}>

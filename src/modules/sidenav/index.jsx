@@ -6,7 +6,7 @@ import { Box, Button, Typography } from "@mui/material";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import CollectionsBookmarkIcon from "@mui/icons-material/CollectionsBookmark";
-
+import * as classes from "./style";
 import { AuthStateContext } from "./../../App";
 import { UserDetailsContext } from "./../../App";
 
@@ -39,13 +39,14 @@ const SideNav = () => {
         flexDirection: "column",
       }}
     >
-      <Box sx={{ mt: "10%", mb: 15, flex: "0 1 auto" }}>
+      <Box sx={{ mt: "10%", mb: 8, flex: "0 1 auto" }}>
         <Typography variant="h3" color="secondary" sx={{ fontWeight: "700" }}>
           LOGO
         </Typography>
       </Box>
       <Box
         sx={{
+          width: "100%",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
@@ -57,9 +58,11 @@ const SideNav = () => {
             component={Link}
             to="/home"
             sx={{
-              display: "flex",
-              flexDirection: "row",
-              textDecoration: "none",
+              ...classes.navItem,
+              borderLeft:
+                activeLink === "home"
+                  ? "3px solid #194D6B"
+                  : "3px solid #ffffff",
             }}
           >
             <HomeIcon color={activeLink === "home" ? "secondary" : "primary"} />
@@ -77,9 +80,11 @@ const SideNav = () => {
             component={Link}
             to="/teachers"
             sx={{
-              display: "flex",
-              flexDirection: "row",
-              textDecoration: "none",
+              ...classes.navItem,
+              borderLeft:
+                activeLink === "teachers"
+                  ? "3px solid #194D6B"
+                  : "3px solid #ffffff",
             }}
           >
             <BookIcon
@@ -99,9 +104,11 @@ const SideNav = () => {
             component={Link}
             to="/students"
             sx={{
-              display: "flex",
-              flexDirection: "row",
-              textDecoration: "none",
+              ...classes.navItem,
+              borderLeft:
+                activeLink === "students"
+                  ? "3px solid #194D6B"
+                  : "3px solid #ffffff",
             }}
           >
             <AccountBoxIcon
@@ -121,9 +128,11 @@ const SideNav = () => {
             component={Link}
             to="/courses"
             sx={{
-              display: "flex",
-              flexDirection: "row",
-              textDecoration: "none",
+              ...classes.navItem,
+              borderLeft:
+                activeLink === "courses"
+                  ? "3px solid #194D6B"
+                  : "3px solid #ffffff",
             }}
           >
             <CollectionsBookmarkIcon
@@ -141,7 +150,7 @@ const SideNav = () => {
           </Box>
         </Box>
         <Button
-          sx={{ mx: 2 }}
+          sx={{ my: 2, fontFamily: "Inter-SemiBold" }}
           onClick={logout}
           startIcon={<LogoutIcon color="error" />}
           color="error"

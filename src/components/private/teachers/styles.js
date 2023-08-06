@@ -20,6 +20,7 @@ export const addTeacherButton = {
   "&:hover": {
     backgroundColor: "#194D6B",
   },
+  borderRadius: "4px",
 };
 
 export const drawerTextContainer = {
