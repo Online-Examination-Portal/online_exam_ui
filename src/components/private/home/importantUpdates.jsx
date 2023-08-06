@@ -10,13 +10,13 @@ import {
   Box,
   Typography,
 } from "@mui/material";
-import impData from "./data/impData";
 import DeleteIcon from "@mui/icons-material/Delete";
 import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
+import { updateImpUpdates } from "./data/impData";
 
 const ImpUpdates = () => {
   return (
-    <Paper
+    <Paper 
       sx={{
         overflow: "hidden",
         margin: "32px 32px 32px 32px",
@@ -29,7 +29,7 @@ const ImpUpdates = () => {
           padding: "8px 16px",
           alignItems: "center",
           justifyContent: "space-between",
-          backgroundColor: "#f5f5f5",
+          backgroundColor: "#f5f5f5", 
         }}
       >
         <Typography variant="body1" color="primary" sx={{ fontWeight: "bold" }}>
@@ -43,14 +43,14 @@ const ImpUpdates = () => {
             color: "#ffffff",
             padding: "4px 8px",
           }}
-        >
+        > 
           20 unread updates
         </Typography>
       </Box>
       <TableContainer sx={{ maxHeight: '80%'}}>
         <Table stickyHeader sx={{ width: "100%" }}>
           <TableBody>
-            {impData.map((data) => (
+            {updateImpUpdates.rows.map((data) => (
               <CustomTableRow key={data.id} data={data} />
             ))}
           </TableBody>

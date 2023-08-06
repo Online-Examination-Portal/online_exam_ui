@@ -180,7 +180,7 @@ const SignUp = () => {
             E-mail
           </InputLabel>
           <TextField
-            id="email"
+            id="email" 
             placeholder="Email"
             type="email"
             size="small"
@@ -263,12 +263,12 @@ const SignUp = () => {
             value={orgName}
             onChange={(e) => setOrgName(e.target.value)}
           />
-          <FormControl>
+          <FormControl> 
             <FormLabel sx={{ color: "black", fontSize: "14px" }}>
               Role
             </FormLabel>
             {!isRolesLoading && roles ? (
-              <Select
+              <Select 
                 id="role"
                 placeholder="Role"
                 size="small"

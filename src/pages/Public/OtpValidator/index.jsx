@@ -6,7 +6,7 @@ import AppBackdrop from "../../../components/common/AppBackdrop";
 import {
   Box,
   Typography,
-  Button,
+  Button, 
   InputLabel,
   FormHelperText,
   FormControl,
@@ -67,7 +67,7 @@ const ValidateOtp = () => {
               />
               {isError ? (
                 <FormHelperText sx={{ fontFamily: "Cabin-Regular" }}>
-                  Invalid OTP
+                  Invalid OTP 
                 </FormHelperText>
               ) : null}
             </FormControl>
