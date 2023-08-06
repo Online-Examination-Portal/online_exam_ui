@@ -67,7 +67,7 @@ const ValidateOtp = () => {
               />
               {isError ? (
                 <FormHelperText sx={{ fontFamily: "Cabin-Regular" }}>
-                  Invalid OTP
+                  Invalid OTP 
                 </FormHelperText>
               ) : null}
             </FormControl>

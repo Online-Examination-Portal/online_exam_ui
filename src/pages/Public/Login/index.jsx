@@ -6,20 +6,32 @@ import topImage from "../../../assets/image/bg1.png";
 import downImage from "../../../assets/image/bg2.png";
 import AppBackdrop from "../../../components/common/AppBackdrop";
 import AppSnackbar from "../../../components/common/AppSnackbar";
-import { Box, Typography, TextField, Button, InputLabel, FormControl, FormHelperText } from "@mui/material";
+import {
+  Box,
+  Typography,
+  TextField,
+  Button,
+  InputLabel,
+  FormControl,
+  FormHelperText,
+} from "@mui/material";
 import { UserDetailsContext } from "../../../App";
 import { AuthStateContext } from "../../../App";
 
-const Login = () => { 
-  const { setUserDetails } = useContext(UserDetailsContext)
-  const { setIsAuthenticated } = useContext(AuthStateContext)
+const Login = () => {
+  const { setUserDetails } = useContext(UserDetailsContext);
+  const { setIsAuthenticated } = useContext(AuthStateContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [isEmailValid, setIsEmailValid] = useState(true);
-
   const [password, setPassword] = useState("");
   const [snackbarState, setSnackbarState] = useState(false);
   const [data, isError, isLoading, login] = usePostLogin();
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+    return emailRegex.test(email);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,19 +40,20 @@ const Login = () => {
       password: password,
     };
     login(authDetails);
+    setIsEmailValid(validateEmail(email));
   };
 
+  
   useEffect(() => {
     if (data) {
-      setUserDetails(data)
-      setIsAuthenticated(true)
-      redirect("/home")
+      setUserDetails(data);
+      setIsAuthenticated(true);
+      redirect("/home");
     } else if (isError !== "") {
       setSnackbarState(true);
     }
   }, [isError, data, isLoading]);
 
-  
   return (
     <React.Fragment>
       <Box className="outer_container">
@@ -62,7 +75,7 @@ const Login = () => {
           <Typography variant="h6" gutterBottom sx={{ textAlign: "center" }}>
             Welcome back! Please enter your details
           </Typography>
-          <Box 
+          <Box
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -70,31 +83,27 @@ const Login = () => {
               width: "80%",
             }}
           >
-            
-            <InputLabel sx={{ color: "white",}}>E-mail</InputLabel>
-            {/* <FormControl error={isError}> */}
-            <TextField
-              id="email"
-              name="email"
-              error={!isEmailValid}
-              placeholder="Enter your email"
-              type="email"
-              variant="outlined"
-              size="small"
-              sx={{ mb: "30px", bgcolor: "white", borderRadius: "6px" }}
-              value={email}
-              helperText={isEmailValid ? "" : "Invalid Email"}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-
-            {/* {isError ? (
+            <InputLabel sx={{ color: "white" }}>E-mail</InputLabel>
+            <FormControl error={isError} sx={{ mb: "30px" }}>
+              <TextField
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                type="email"
+                variant="outlined"
+                size="small"
+                sx={{ bgcolor: "white", borderRadius: "6px" }}
+                value={email}
+                // helperText={isEmailValid ? "" : "Invalid Email"}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              {!isEmailValid ? (
                 <FormHelperText sx={{ fontFamily: "Cabin-Regular" }}>
-                  Invalid email
+                  Invalid Email
                 </FormHelperText>
-              ) : null} */}
-            {/* </FormControl> */}
-            
-            
+              ) : null}
+            </FormControl>
+
             <InputLabel sx={{ color: "white" }}>Password</InputLabel>
             <TextField
               id="password"
@@ -105,9 +114,7 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            
-            
-            
+
             <Button
               variant="contained"
               type="submit"

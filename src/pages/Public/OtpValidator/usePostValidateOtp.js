@@ -10,7 +10,7 @@ const useValidateOtp = () => {
     setError(true);
     setSuccessData(undefined);
   };
- 
+
   const statusObj = [
     {
       status_code: 200,

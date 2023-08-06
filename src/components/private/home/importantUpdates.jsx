@@ -43,7 +43,7 @@ const ImpUpdates = () => {
             color: "#ffffff",
             padding: "4px 8px",
           }}
-        >
+        > 
           20 unread updates
         </Typography>
       </Box>

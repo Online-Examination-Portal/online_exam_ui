@@ -32,7 +32,7 @@ export const invitationData = {
             role: 'Teacher',
         },
         {
-            id: 3,
+            id: 3, 
             email: 'abc@gmail.com',
             status: "Pending invite",
             role: 'Teacher',

@@ -10,7 +10,7 @@ import {
   Button,
   FormControl,
   Select,
-  MenuItem,
+  MenuItem, 
 } from "@mui/material";
 import { invitationData } from "./invitationData";
 import * as classes from './styles'
