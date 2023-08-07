@@ -5,13 +5,15 @@ import {
   Button,
   Typography,
   SvgIcon,
-  InputLabel, 
+  InputLabel,
   TextField,
   IconButton,
 } from "@mui/material";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import CloseIcon from "@mui/icons-material/Close";
 import Invitation from "./invitation";
+import AddRoundedIcon from "@mui/icons-material/AddRounded";
+import * as classes from "./styles";
 
 const TeacherDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,28 +25,15 @@ const TeacherDrawer = () => {
     <React.Fragment>
       <Box>
         <Button
+          startIcon={<AddRoundedIcon />}
           onClick={toggleDrawer}
-          sx={{
-            color: "white",
-            backgroundColor: "#4E90B5",
-            "&:hover": {
-              backgroundColor: "#194D6B",
-            },
-          }}
+          sx={classes.addTeacherButton}
         >
-          + Add Teacher
+          Add Teacher
         </Button>
 
-        <Drawer anchor="right" open={isOpen} onClose={toggleDrawer} sx={{}}>
-          <Box
-            sx={{
-              gap: "400px",
-              display: "flex",
-              justifyContent: "space-between",
-              color: "#194D6B",
-              padding: "55px 55px 0px 55px ", //top right bottom left
-            }}
-          >
+        <Drawer anchor="right" open={isOpen} onClose={toggleDrawer}>
+          <Box sx={classes.drawerTextContainer}>
             <Typography variant="h4" sx={{ fontWeight: 600 }}>
               Add / Manage Teachers
             </Typography>
@@ -55,21 +44,12 @@ const TeacherDrawer = () => {
 
           <Box
             sx={{
-              padding: "30px 0px 0px 55px ",
+              padding: "20px 0px 0px 55px ",
               display: "flex",
               flexDirection: "row",
             }}
           >
-            <SvgIcon
-              color="primary"
-              sx={{
-                width: "50px",
-                height: "50px",
-                borderRadius: "50px",
-                backgroundColor: "#F1FAFF",
-                padding: "6px",
-              }}
-            >
+            <SvgIcon color="primary" sx={classes.icon}>
               <PeopleAltIcon />
             </SvgIcon>
 
@@ -89,14 +69,7 @@ const TeacherDrawer = () => {
               </Typography>
             </Box>
           </Box>
-          <Box
-            sx={{
-              padding: "40px 55px 0px 57px",
-              width: "85%",
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
+          <Box sx={classes.EmailIdBox}>
             <InputLabel sx={{ fontSize: "14px", color: "#4E90B5" }}>
               Email Ids
             </InputLabel>
@@ -106,35 +79,15 @@ const TeacherDrawer = () => {
               type="email"
               variant="outlined"
               size="small"
-              multiple
-              sx={{ borderRadius: "8px", border: "1px solid #4E90B5" }}
+              sx={classes.EmailTextField}
             />
           </Box>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "flex-end",
-              padding: "30px 66px 0px 55px",
-            }}
-          >
-            <Button
-              sx={{
-                backgroundColor: "#4E90B5",
-                "&:hover": {
-                  backgroundColor: "#194D6B",
-                },
-                borderRadius: "4px",
-                color: "white",
-                width: "20%",
-                height: "100%",
-              }}
-            >
-              Send Invite
-            </Button>
+          <Box sx={classes.inviteButtonBox}>
+            <Button sx={classes.sendInviteButton}>Send Invite</Button>
           </Box>
           <Box
             sx={{
-              padding: "55px 55px 0px 55px",
+              padding: "34px 55px 0px 55px",
             }}
           >
             <Typography variant="h6" color="#194D6B">
@@ -149,32 +102,13 @@ const TeacherDrawer = () => {
           </Box>
           <Box
             sx={{
-              padding: "15px 58px 0px 55px",
+              padding: "10px 58px 0px 55px",
             }}
           >
-            <Invitation/>
+            <Invitation />
           </Box>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "flex-end",
-              padding: "40px 66px 0px 55px",
-            }}
-          >
-            <Button
-              sx={{
-                backgroundColor: "#F1FAFF",
-                "&:hover": {
-                  backgroundColor: "#4E90B5",
-                },
-                color: "black",
-                borderRadius: "4px",
-                width: "20%",
-                height: "100%",
-              }}
-            >
-              Cancel
-            </Button>
+          <Box sx={classes.cancelButtonBox}>
+            <Button sx={classes.cancelButton}>Cancel</Button>
           </Box>
         </Drawer>
       </Box>

@@ -98,7 +98,7 @@ export const theme = createTheme({
       fontSize: "12px",
       fontStyle: "normal",
       letterSpacing: "0.3px",
-      fontFamily: "Cabin-Light",
+      fontFamily: "Inter-Regular",
     },
   },
 });

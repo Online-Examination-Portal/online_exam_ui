@@ -1,42 +1,33 @@
 import React from "react";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Banner from "../../../components/private/courses/banner";
 import CourseBox from "../../../components/private/courses/courseBox";
 import * as classes from "./styles";
+import CourseDrawer from "../../../components/private/courses/courseDrawer";
 
 const Courses = () => {
   return (
     <Box sx={classes.courseContainer}>
       <Box sx={classes.innerContainer}>
         <Box sx={classes.headerContainer}>
-          <Box
+          <Box 
             sx={{
               display: "flex",
               flexDirection: "column",
-            }}
+            }} 
           >
-            <Typography variant="h3" color="secondary" fontWeight={700}>
+            <Typography variant="h3" color="secondary">
               Courses
             </Typography>
-            <Typography variant="h6" color="primary">
+            <Typography variant="body2" color="primary">
               Track your courses details here.
             </Typography>
           </Box>
 
-          <Button
-            sx={{
-              color: "white",
-              backgroundColor: "#4E90B5",
-              "&:hover": {
-                backgroundColor: "#194D6B",
-              },
-              width: "15%",
-              height: "60%",
-              borderRadius: "8px",
-            }}
-          >
+          <CourseDrawer/>
+          {/* <Button sx={classes.buttonContainer} onClick={toggleDrawer}>
             + Add Courses
-          </Button>
+          </Button> */}
         </Box>
         <Banner />
         <CourseBox />
