@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import { UserDetailsContext } from "../../../App";
 import { AuthStateContext } from "../../../App";
+import * as classes from "./styles";
 
 const Login = () => {
   const { setUserDetails } = useContext(UserDetailsContext);
@@ -43,7 +44,6 @@ const Login = () => {
     setIsEmailValid(validateEmail(email));
   };
 
-  
   useEffect(() => {
     if (data) {
       setUserDetails(data);
@@ -59,31 +59,15 @@ const Login = () => {
       <Box className="outer_container">
         <img src={topImage} alt="top_image" className="top_image" />
         <img src={downImage} alt="top_image" className="bottom_image" />
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            width: "40%",
-            color: "white",
-          }}
-        >
+        <Box sx={classes.inner_container}>
           <Typography variant="h2" sx={{ textAlign: "center" }}>
             Log in to your account
           </Typography>
           <Typography variant="h6" gutterBottom sx={{ textAlign: "center" }}>
             Welcome back! Please enter your details
           </Typography>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              mt: "54px",
-              width: "80%",
-            }}
-          >
-            <InputLabel sx={{ color: "white" }}>E-mail</InputLabel>
+          <Box sx={classes.inputFieldBox}>
+            <InputLabel sx={classes.label}>E-mail</InputLabel>
             <FormControl error={isError} sx={{ mb: "30px" }}>
               <TextField
                 id="email"
@@ -92,9 +76,8 @@ const Login = () => {
                 type="email"
                 variant="outlined"
                 size="small"
-                sx={{ bgcolor: "white", borderRadius: "6px" }}
+                sx={classes.emailField}
                 value={email}
-                // helperText={isEmailValid ? "" : "Invalid Email"}
                 onChange={(e) => setEmail(e.target.value)}
               />
               {!isEmailValid ? (
@@ -104,13 +87,13 @@ const Login = () => {
               ) : null}
             </FormControl>
 
-            <InputLabel sx={{ color: "white" }}>Password</InputLabel>
+            <InputLabel sx={classes.label}>Password</InputLabel>
             <TextField
               id="password"
               placeholder="Enter your password"
               type="password"
               size="small"
-              sx={{ mb: "30px", bgcolor: "white", borderRadius: "6px" }}
+              sx={classes.passwordField}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -120,31 +103,17 @@ const Login = () => {
               type="submit"
               size="normal"
               onClick={handleSubmit}
-              sx={{
-                color: "white",
-                backgroundColor: "#8AC926",
-                "&:hover": {
-                  backgroundColor: "#4BB543",
-                },
-                fontFamily: "Inter-Regular",
-              }}
+              sx={classes.SignInButton}
             >
               Sign In
             </Button>
           </Box>
-          <Box
-            sx={{
-              mt: "39px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
+          <Box sx={classes.RegisterButtonBox}>
             <Typography variant="body2" sx={{ color: "black" }}>
               Don't have an account ?
             </Typography>
             <Button
-              sx={{ color: "#fff", fontFamily: "Inter-Regular" }}
+              sx={classes.RegisterButton}
               onClick={() => navigate("/signup")}
             >
               Register

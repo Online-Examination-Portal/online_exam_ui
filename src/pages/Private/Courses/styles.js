@@ -19,3 +19,8 @@ export const headerContainer = {
   padding: "28px 32px 0px 32px",
   flex: "0 1 auto",
 };
+
+export const headingContainer = {
+  display: "flex",
+  flexDirection: "column",
+};

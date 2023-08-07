@@ -23,7 +23,7 @@ const TeacherDrawer = () => {
   };
   return (
     <React.Fragment>
-      <Box>
+      <Box>  
         <Button
           startIcon={<AddRoundedIcon />}
           onClick={toggleDrawer}
@@ -43,22 +43,14 @@ const TeacherDrawer = () => {
           </Box>
 
           <Box
-            sx={{
-              padding: "20px 0px 0px 55px ",
-              display: "flex",
-              flexDirection: "row",
-            }}
+            sx={classes.inviteTeachersContainer}
           >
             <SvgIcon color="primary" sx={classes.icon}>
               <PeopleAltIcon />
             </SvgIcon>
 
             <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                padding: "0px 0px 0px 26px",
-              }}
+              sx={classes.inviteTeachersHeading}
             >
               <Typography color="#194D6B" variant="h6">
                 Invite Teachers
@@ -86,9 +78,7 @@ const TeacherDrawer = () => {
             <Button sx={classes.sendInviteButton}>Send Invite</Button>
           </Box>
           <Box
-            sx={{
-              padding: "34px 55px 0px 55px",
-            }}
+            sx={classes.ManageTeachersHeading}
           >
             <Typography variant="h6" color="#194D6B">
               Manage Teachers
@@ -101,9 +91,7 @@ const TeacherDrawer = () => {
             </Typography>
           </Box>
           <Box
-            sx={{
-              padding: "10px 58px 0px 55px",
-            }}
+            sx={classes.InvitationComponent}
           >
             <Invitation />
           </Box>

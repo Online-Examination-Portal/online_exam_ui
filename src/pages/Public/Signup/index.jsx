@@ -116,33 +116,13 @@ const SignUp = () => {
     <Box className="container">
       <img src={topImage} alt="top_image" className="top_image" />
       <img src={downImage} alt="top_image" className="bottom_image" />
-      <Box sx={classes.signupContainer}>
+      <Box sx={classes.signupOuterContainer}>
         <Typography variant="h2" sx={{ mb: "48px" }}>
           Sign Up
         </Typography>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            width: "80%",
-          }}
-        >
-          <Box
-            gap={6}
-            sx={{
-              mb: "30px",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <InputLabel
-              sx={{
-                color: "black",
-                fontSize: "14px",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
+        <Box sx={classes.signupInnerContainer}>
+          <Box gap={6} sx={classes.nameFieldBox}>
+            <InputLabel sx={classes.nameFieldLabel}>
               First Name
               <TextField
                 id="first_name"
@@ -150,19 +130,12 @@ const SignUp = () => {
                 type="text"
                 size="small"
                 variant="outlined"
-                sx={{ bgcolor: "white", borderRadius: "6px" }}
+                sx={classes.nameTextField}
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
               />
             </InputLabel>
-            <InputLabel
-              sx={{
-                color: "black",
-                fontSize: "14px",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
+            <InputLabel sx={classes.nameFieldLabel}>
               Last Name
               <TextField
                 id="last_name"
@@ -170,29 +143,25 @@ const SignUp = () => {
                 type="text"
                 size="small"
                 variant="outlined"
-                sx={{ bgcolor: "white", borderRadius: "6px" }}
+                sx={classes.nameTextField}
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
               />
             </InputLabel>
           </Box>
-          <InputLabel sx={{ color: "black", fontSize: "14px" }}>
-            E-mail
-          </InputLabel>
+          <InputLabel sx={classes.inputLabels}>E-mail</InputLabel>
           <TextField
-            id="email" 
+            id="email"
             placeholder="Email"
             type="email"
             size="small"
             variant="outlined"
-            sx={{ mb: "30px", bgcolor: "white", borderRadius: "6px" }}
+            sx={classes.textFields}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <FormControl>
-            <FormLabel sx={{ color: "black", fontSize: "14px" }}>
-              Gender
-            </FormLabel>
+            <FormLabel sx={classes.inputLabels}>Gender</FormLabel>
             <RadioGroup
               row
               size="small"
@@ -205,22 +174,18 @@ const SignUp = () => {
               <FormControlLabel value="2" control={<Radio />} label="Other" />
             </RadioGroup>
           </FormControl>
-          <InputLabel sx={{ color: "black", fontSize: "14px" }}>
-            Password
-          </InputLabel>
+          <InputLabel sx={classes.inputLabels}>Password</InputLabel>
           <TextField
             id="password"
             placeholder="Password"
             size="small"
             type="password"
             variant="outlined"
-            sx={{ mb: "30px", bgcolor: "white", borderRadius: "6px" }}
+            sx={classes.textFields}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <InputLabel sx={{ color: "black", fontSize: "14px" }}>
-            Date of Birth
-          </InputLabel>
+          <InputLabel sx={classes.inputLabels}>Date of Birth</InputLabel>
           <LocalizationProvider fullWidth dateAdapter={AdapterDayjs}>
             <DemoContainer components={["DatePicker"]}>
               <DatePicker
@@ -234,45 +199,39 @@ const SignUp = () => {
                 onChange={(value) => {
                   setDob(value);
                 }}
-                sx={{ mb: "30px", bgcolor: "white", borderRadius: "6px" }}
+                sx={classes.textFields}
               />
             </DemoContainer>
           </LocalizationProvider>
-          <InputLabel sx={{ color: "black", fontSize: "14px" }}>
-            Phone Number
-          </InputLabel>
+          <InputLabel sx={classes.inputLabels}>Phone Number</InputLabel>
           <TextField
             id="phone_no"
             placeholder="Phone Number"
             size="small"
             variant="outlined"
-            sx={{ mb: "30px", bgcolor: "white", borderRadius: "6px" }}
+            sx={classes.textFields}
             value={phoneNo}
             onChange={(e) => setPhoneNo(e.target.value)}
           />
-          <InputLabel sx={{ color: "black", fontSize: "14px" }}>
-            Organization Name
-          </InputLabel>
+          <InputLabel sx={classes.inputLabels}>Organization Name</InputLabel>
           <TextField
             id="org_name"
             placeholder="Organization Name"
             type="text"
             size="small"
             variant="outlined"
-            sx={{ mb: "30px", bgcolor: "white", borderRadius: "6px" }}
+            sx={classes.textFields}
             value={orgName}
             onChange={(e) => setOrgName(e.target.value)}
           />
-          <FormControl> 
-            <FormLabel sx={{ color: "black", fontSize: "14px" }}>
-              Role
-            </FormLabel>
+          <FormControl>
+            <FormLabel sx={classes.inputLabels}>Role</FormLabel>
             {!isRolesLoading && roles ? (
-              <Select 
+              <Select
                 id="role"
                 placeholder="Role"
                 size="small"
-                sx={{ mb: "30px", bgcolor: "white", borderRadius: "6px" }}
+                sx={classes.textFields}
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
               >
@@ -289,24 +248,14 @@ const SignUp = () => {
             variant="contained"
             type="submit"
             onClick={handleSubmit}
-            sx={{
-              color: "white",
-              backgroundColor: "#8AC926",
-              "&:hover": {
-                backgroundColor: "#4BB543",
-              },
-              fontFamily: "Inter-Regular",
-            }}
+            sx={classes.SignUpButton}
           >
             Sign Up
           </Button>
         </Box>
-        <Typography variant="h6" sx={{ mt: "24px", color: "black" }}>
+        <Typography variant="h6" sx={classes.typography}>
           Already have an account?
-          <Button
-            sx={{ color: "black", fontFamily: "Inter-Regular" }}
-            onClick={() => navigate("/login")}
-          >
+          <Button sx={classes.LoginButton} onClick={() => navigate("/login")}>
             Login
           </Button>
         </Typography>

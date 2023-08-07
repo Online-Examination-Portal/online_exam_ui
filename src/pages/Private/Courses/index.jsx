@@ -11,10 +11,7 @@ const Courses = () => {
       <Box sx={classes.innerContainer}>
         <Box sx={classes.headerContainer}>
           <Box 
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-            }} 
+            sx={classes.headingContainer} 
           >
             <Typography variant="h3" color="secondary">
               Courses
@@ -25,9 +22,6 @@ const Courses = () => {
           </Box>
 
           <CourseDrawer/>
-          {/* <Button sx={classes.buttonContainer} onClick={toggleDrawer}>
-            + Add Courses
-          </Button> */}
         </Box>
         <Banner />
         <CourseBox />

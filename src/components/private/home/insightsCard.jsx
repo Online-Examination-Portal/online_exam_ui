@@ -3,50 +3,25 @@ import insightsData from "./data/insightsData";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import BookIcon from "@mui/icons-material/Book";
 import CollectionsBookmarkIcon from "@mui/icons-material/CollectionsBookmark";
-
+import * as classes from './styles'
 import { Box, Typography } from "@mui/material";
 
 const InsightsCard = () => {
   return (
     <Box
-      sx={{
-        padding: "0 32px 16px 32px",
-      }}
+      sx={classes.insightsOuterContainer}
     >
       <Box
-        sx={{
-          flex: "0 1 auto",
-          display: "flex",
-          flexDirection: "row",
-          borderRadius: "4px",
-          boxShadow: "0px 1px 2px 0px rgba(78, 144, 181, 0.54)",
-        }}
+        sx={classes.insightsContainer}
       >
         {insightsData.map((data, i) => (
           <Box
             key={`card_${data.id}`}
             variant="outlined"
-            sx={{
-              width: "33%",
-              display: "flex",
-              padding: "16px 8px",
-              borderRadius: "4px",
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: "#ffffff",
-            }}
-          >
+            sx={classes.insightsMappedDataContainer}
+          > 
             <Box
-              sx={{
-                width: "50px",
-                height: "50px",
-                borderRadius: "50px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                backgroundColor: "#F1FAFF",
-                mr: 2,
-              }}
+              sx={classes.insightsIcons}
             >
               {data.id === "1" ? (
                 <BookIcon size="small" color="primary" />
@@ -59,18 +34,13 @@ const InsightsCard = () => {
               ) : null}
             </Box>
             <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "flex-start",
-                flexDirection: "column",
-              }}
+              sx={classes.insightsDataContainer}
             >
               <Typography variant="body2">{data.heading}</Typography>
               <Typography
                 color="primary"
                 variant="body1"
-                sx={{ fontWeight: "bold", fontFamily: "Inter-Bold" }}
+                sx={classes.insightsValue}
               >
                 {data.value}
               </Typography>

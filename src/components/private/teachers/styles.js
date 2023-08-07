@@ -3,7 +3,7 @@ export const invitationStatus = {
   borderRadius: "50px",
   padding: "4px 8px",
   color: "#454545",
-  fontStyle: "italic",
+  fontStyle: "italic", 
 };
 
 export const invitationRemove = {
@@ -31,12 +31,24 @@ export const drawerTextContainer = {
   padding: "40px 55px 0px 55px ", //top right bottom left
 };
 
+export const inviteTeachersContainer = {
+  padding: "20px 0px 0px 55px ",
+  display: "flex",
+  flexDirection: "row",
+};
+
 export const icon = {
   width: "50px",
   height: "50px",
   borderRadius: "50px",
   backgroundColor: "#F1FAFF",
   padding: "6px",
+};
+
+export const inviteTeachersHeading = {
+  display: "flex",
+  flexDirection: "column",
+  padding: "0px 0px 0px 26px",
 };
 
 export const EmailIdBox = {
@@ -67,6 +79,14 @@ export const sendInviteButton = {
   height: "100%",
 };
 
+export const ManageTeachersHeading = {
+  padding: "34px 55px 0px 55px",
+};
+
+export const InvitationComponent = {
+  padding: "10px 58px 0px 55px",
+}; 
+
 export const cancelButtonBox = {
   display: "flex",
   justifyContent: "flex-end",
@@ -81,4 +101,25 @@ export const cancelButton = {
   borderRadius: "4px",
   width: "20%",
   height: "100%",
+};
+
+export const roleInvitaion = {
+  bgcolor: "#E6E6E6",
+  borderRadius: "8px",
+  height: "28px",
+  width: "120px",
+};
+
+export const teachersPaperComponent = { 
+  overflow: "hidden", 
+  margin: "0 32px 32px 32px", 
+  flex: "1 1 auto" 
+};
+
+export const teachersTableBodyRow = { 
+  "&:hover": { backgroundColor: "#f5f5f5" } 
+};
+
+export const viewDetailsBtn = {
+  padding: "4px 8px",
 };

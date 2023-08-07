@@ -6,7 +6,7 @@ import {
   TableHead,
   TableBody,
   TableCell,
-  TableContainer,
+  TableContainer, 
   TableRow,
   Box,
   Typography,
@@ -15,11 +15,12 @@ import ViewDetails from "./viewdetails";
 import teachersdata from "./data/teachersdata";
 import DeleteIcon from "@mui/icons-material/Delete";
 import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
+import * as classes from './styles'
 
 const TeachersTable = () => {
   return (
     <Paper
-      sx={{ overflow: "hidden", margin: "0 32px 32px 32px", flex: "1 1 auto" }}
+      sx={classes.teachersPaperComponent}
     >
       <TableContainer sx={{ height: "100%" }}>
         <Table stickyHeader sx={{ width: "100%" }}>
@@ -36,7 +37,7 @@ const TeachersTable = () => {
             {teachersdata.map((data) => (
               <TableRow
                 key={data.id}
-                sx={{ "&:hover": { backgroundColor: "#f5f5f5" } }}
+                sx={classes.teachersTableBodyRow}
               >
                 <TableCell align="center">{data.ID}</TableCell>
                 <TableCell align="center">{data.name}</TableCell>

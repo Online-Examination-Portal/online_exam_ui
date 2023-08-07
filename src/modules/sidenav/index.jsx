@@ -31,29 +31,17 @@ const SideNav = () => {
 
   return (
     <Box
-      sx={{
-        width: "20%",
-        height: "100vh",
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "column",
-      }}
+      sx={classes.NavContainer}
     >
-      <Box sx={{ mt: "10%", mb: 8, flex: "0 1 auto" }}>
+      <Box sx={classes.logoContainer}>
         <Typography variant="h3" color="secondary" sx={{ fontWeight: "700" }}>
           LOGO
         </Typography>
       </Box>
       <Box
-        sx={{
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          flex: "1 1 auto",
-        }}
+        sx={classes.navItemsContainer}
       >
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
+        <Box sx={classes.navItemsInnerConatiner}>
           <Box
             component={Link}
             to="/home"
@@ -68,10 +56,7 @@ const SideNav = () => {
             <HomeIcon color={activeLink === "home" ? "secondary" : "primary"} />
             <Typography
               color={activeLink === "home" ? "secondary" : "primary"}
-              sx={{
-                mx: 2,
-                fontWeight: 600,
-              }}
+              sx={classes.navItems}
             >
               Home
             </Typography>
@@ -92,10 +77,7 @@ const SideNav = () => {
             />
             <Typography
               color={activeLink === "teachers" ? "secondary" : "primary"}
-              sx={{
-                mx: 2,
-                fontWeight: 600,
-              }}
+              sx={classes.navItems}
             >
               Teachers
             </Typography>
@@ -116,10 +98,7 @@ const SideNav = () => {
             />
             <Typography
               color={activeLink === "students" ? "secondary" : "primary"}
-              sx={{
-                mx: 2,
-                fontWeight: 600,
-              }}
+              sx={classes.navItems}
             >
               Students
             </Typography>
@@ -140,17 +119,14 @@ const SideNav = () => {
             />
             <Typography
               color={activeLink === "courses" ? "secondary" : "primary"}
-              sx={{
-                mx: 2,
-                fontWeight: 600,
-              }}
+              sx={classes.navItems}
             >
               Courses
             </Typography>
           </Box>
         </Box>
         <Button
-          sx={{ my: 2, fontFamily: "Inter-SemiBold" }}
+          sx={classes.logOutBtn}
           onClick={logout}
           startIcon={<LogoutIcon color="error" />}
           color="error"

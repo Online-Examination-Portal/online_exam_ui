@@ -10,11 +10,11 @@ import {
   Button,
   FormControl,
   Select,
-  MenuItem,
+  MenuItem, 
   Box,
   IconButton,
 } from "@mui/material";
-import { invitationData } from "./invitationData";
+import { invitationData } from "./data/invitationData";
 import * as classes from "./styles";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
@@ -53,12 +53,7 @@ const Invitation = () => {
                           onChange={(e) => setSelectedValue(e.target.value)}
                           displayEmpty
                           inputProps={{ "aria-label": "Without label" }}
-                          sx={{
-                            bgcolor: "#E6E6E6",
-                            borderRadius: "8px",
-                            height: "28px",
-                            width: "120px",
-                          }}
+                          sx={classes.roleInvitaion}
                         >
                           <MenuItem value="">
                             <em>Role</em>
@@ -74,7 +69,7 @@ const Invitation = () => {
                   </TableCell>
                 );
               })}
-            </TableRow>
+            </TableRow> 
           ))}
         </TableBody>
       </Table>

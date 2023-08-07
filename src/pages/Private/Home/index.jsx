@@ -2,24 +2,19 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import ImpUpdates from "../../../components/private/home/importantUpdates";
 import InsightsCard from "../../../components/private/home/insightsCard";
+import * as classes from './styles'
 
 const Home = () => {
   return (
     <Box
-      sx={{
-        width: "80%",
-        display: "flex",
-        height: "100vh",
-        bgcolor: "#F1FAFF",
-        flexFlow: "column",
-      }}
+      sx={classes.HomeContainer}
     >
 
-      <Box sx={{ padding: "16px 32px", flex: "0 1 auto" }}>
+      <Box sx={classes.homeHeader}>
         <Typography
           variant="h3"
           color="#194D6B"
-          sx={{ "& span": { color: "primary.main" } }}
+          sx={classes.heading}
         >
           Hello,{" "}
           <span> Abc</span>

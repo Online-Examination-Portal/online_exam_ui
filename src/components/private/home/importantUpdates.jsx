@@ -14,42 +14,28 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
 import AppTextTooltip from "./../../common/AppTextTooltip";
 import { updateImpUpdates } from "./data/impData";
+import * as classes from './styles'
 
 const ImpUpdates = () => {
   return (
     <Paper
-      sx={{
-        overflow: "hidden",
-        margin: "32px 32px 32px 32px",
-        flex: "1 1 auto",
-      }}
+      sx={classes.UpdatesPaperComponent}
     >
       <Box
-        sx={{
-          display: "flex",
-          padding: "8px 16px",
-          alignItems: "center",
-          justifyContent: "space-between",
-          backgroundColor: "#f5f5f5",
-        }}
+        sx={classes.updatesHeaderContainer}
       >
         <Typography variant="body1" color="primary" sx={{ fontWeight: "bold" }}>
           Important Updates
         </Typography>
         <Typography
           variant="caption"
-          sx={{
-            backgroundColor: "#007CFF",
-            borderRadius: "18px",
-            color: "#ffffff",
-            padding: "4px 8px",
-          }}
+          sx={classes.unreadUpdates}
         >
           20 unread updates
         </Typography>
       </Box>
       <TableContainer sx={{ maxHeight: "80%" }}>
-        <Table stickyHeader sx={{ width: "100%", padding: "8px 0" }}>
+        <Table stickyHeader sx={classes.updatesTable}>
           <TableBody>
             {updateImpUpdates.rows.map((row, i) => (
               <CustomTableRow key={i} row={row} />
@@ -68,7 +54,7 @@ const CustomTableRow = ({ row, i }) => {
     <TableRow
       onMouseEnter={() => setIsIconVisible(true)}
       onMouseLeave={() => setIsIconVisible(false)}
-      sx={{ "&:hover": { backgroundColor: "#f5f5f5" } }}
+      sx={classes.updatesTablerow}
     >
       {updateImpUpdates.columnName.map((column) => {
         const value = row[column.id];

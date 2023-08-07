@@ -4,7 +4,7 @@ export const courseBox = {
   display: "flex",
   flexDirection: "column",
 };
-
+ 
 export const listContainer = {
   display: "flex",
   justifyContent: "flex-end",
