@@ -31,7 +31,7 @@ const Invitation = () => {
                 const value = row[column.id];
                 return (
                   <TableCell>
-                    {column.type === "IconButton" && column.id === "profile" ? (
+                    {column.type === "IconButton" ? (
                       <IconButton sx={{color: "#4E90B5"}}>
                         <AccountCircleIcon />
                       </IconButton>

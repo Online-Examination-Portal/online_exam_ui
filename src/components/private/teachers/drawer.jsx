@@ -22,7 +22,7 @@ const TeacherDrawer = () => {
     setIsOpen(!isOpen);
   };
   return (
-    <React.Fragment>
+    <React.Fragment> 
       <Box>  
         <Button
           startIcon={<AddRoundedIcon />}
@@ -73,7 +73,7 @@ const TeacherDrawer = () => {
               size="small"
               sx={classes.EmailTextField}
             />
-          </Box>
+          </Box> 
           <Box sx={classes.inviteButtonBox}>
             <Button sx={classes.sendInviteButton}>Send Invite</Button>
           </Box>

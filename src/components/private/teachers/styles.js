@@ -5,7 +5,7 @@ export const invitationStatus = {
   color: "#454545",
   fontStyle: "italic", 
 };
-
+ 
 export const invitationRemove = {
   color: "#454545",
   fontFamily: "Cabin",
@@ -115,7 +115,7 @@ export const teachersPaperComponent = {
   margin: "0 32px 32px 32px", 
   flex: "1 1 auto" 
 };
-
+ 
 export const teachersTableBodyRow = { 
   "&:hover": { backgroundColor: "#f5f5f5" } 
 };

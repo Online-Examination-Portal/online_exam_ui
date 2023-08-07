@@ -20,3 +20,11 @@ export const teacherDrawerComponent = {
     display: "flex",
     justifyContent: "flex-end",
 };
+
+export const searchBarStyle = {
+  width: "100%",
+  height : '40px',
+  borderRadius: "8px",
+  border: "1px solid #4E90B5",
+  background: "#FFF",
+};

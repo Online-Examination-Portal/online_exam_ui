@@ -111,7 +111,7 @@ const CourseDrawer = () => {
                   </IconButton>
                 )}
               </Box>
-            </Box>
+            </Box> 
           </Box>
           <Box sx={classes.okButtonContainer}>
             <Button sx={classes.okButton}>Ok</Button>

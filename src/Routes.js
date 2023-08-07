@@ -9,6 +9,7 @@ import Home from "./pages/Private/Home";
 import Courses from "./pages/Private/Courses";
 import Teachers from "./pages/Private/Teachers";
 import ValidateOtp from "./pages/Public/OtpValidator";
+import Students from "./pages/Private/Students";
 
 const routes = (isAuthenticated) => [
   {
@@ -18,7 +19,7 @@ const routes = (isAuthenticated) => [
       { path: "", element: <Home /> },
       { path: "home", element: <Home /> },
       { path: "teachers", element: <Teachers /> },
-      { path: "students", element: <React.Fragment>Students</React.Fragment> },
+      { path: "students", element: <Students/> },
       { path: "courses", element: <Courses /> },
     ],
   },

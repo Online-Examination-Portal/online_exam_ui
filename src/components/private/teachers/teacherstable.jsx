@@ -31,7 +31,7 @@ const TeachersTable = () => {
               <TableCell align="center">Course</TableCell>
               <TableCell align="center">Total Batches</TableCell>
               <TableCell align="center">View Details</TableCell>
-            </TableRow>
+            </TableRow> 
           </TableHead>
           <TableBody>
             {teachersdata.map((data) => (
