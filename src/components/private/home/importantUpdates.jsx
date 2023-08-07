@@ -51,8 +51,8 @@ const ImpUpdates = () => {
       <TableContainer sx={{ maxHeight: "80%" }}>
         <Table stickyHeader sx={{ width: "100%", padding: "8px 0" }}>
           <TableBody>
-            {updateImpUpdates.rows.map((data) => (
-              <CustomTableRow key={data.id} data={data} />
+            {updateImpUpdates.rows.map((row, i) => (
+              <CustomTableRow key={i} row={row} />
             ))}
           </TableBody>
         </Table>
@@ -61,7 +61,7 @@ const ImpUpdates = () => {
   );
 };
 
-const CustomTableRow = ({ data }) => {
+const CustomTableRow = ({ row, i }) => {
   const [isIconsVisible, setIsIconVisible] = useState(false);
 
   return (
@@ -70,24 +70,41 @@ const CustomTableRow = ({ data }) => {
       onMouseLeave={() => setIsIconVisible(false)}
       sx={{ "&:hover": { backgroundColor: "#f5f5f5" } }}
     >
-      <TableCell sx={{ cursor: "pointer" }}>{data.update}</TableCell>
-      <TableCell>{data.date}</TableCell>
-      <TableCell> 
-        {isIconsVisible && (
-          <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-            <AppTextTooltip title="delete">
-              <IconButton color="primary">
-                <DeleteIcon />
-              </IconButton>
-            </AppTextTooltip>
-            <AppTextTooltip title={false ? "Mark as read" : "Mark as unread"}>
-              <IconButton color="primary">
-                <MarkEmailReadIcon />
-              </IconButton>
-            </AppTextTooltip>
-          </Box>
-        )}
-      </TableCell>
+      {updateImpUpdates.columnName.map((column) => {
+        const value = row[column.id];
+        return (
+          <TableCell>
+            {column.type === "url" ? (
+              <Box sx={{ cursor: "pointer" }}>{value}</Box>
+            ) : column.type === "timeStamp" ? (
+              value
+            ) : column.type === "IconButton" && column.id === "delete" ? (
+              isIconsVisible && (
+                <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+                  <AppTextTooltip title="delete">
+                    <IconButton color="primary">
+                      <DeleteIcon />
+                    </IconButton>
+                  </AppTextTooltip>
+                </Box>
+              )
+            ) : column.type === "IconButton" &&
+              column.id === "markReadUnread" ? (
+              isIconsVisible && (
+                <Box sx={{ display: "flex" }}>
+                  <AppTextTooltip
+                    title={false ? "Mark as read" : "Mark as unread"}
+                  >
+                    <IconButton color="primary">
+                      <MarkEmailReadIcon />
+                    </IconButton>
+                  </AppTextTooltip>
+                </Box>
+              )
+            ) : null}
+          </TableCell>
+        );
+      })}
     </TableRow>
   );
 };
