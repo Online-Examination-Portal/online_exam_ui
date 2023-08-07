@@ -1,16 +1,21 @@
 export const courseBox = {
-  padding: "30px 60px 43px 60px",
+  padding: "30px 32px 32px 32px",
+  flex: "1 1 auto",
+  display: "flex",
+  flexDirection: "column",
 };
 
 export const listContainer = {
   display: "flex",
   justifyContent: "flex-end",
+  flex: "0 1 auto",
 };
 
 export const tabContainer = {
   border: "1px solid #4E90B5",
   borderRadius: "8px 8px 0px 0px",
   ml: 2,
+  padding: "8px",
 };
 
 export const panelContainer = {
@@ -18,15 +23,17 @@ export const panelContainer = {
   borderRadius: "8px 0px 8px 8px",
   background: "#fff",
   height: "30vh",
+  flex: "1 1 auto",
 };
 
 export const bannerOuterContainer = {
   position: "relative",
-  padding: "0 60px 0px 166px",
-  margin: "38px 0 0 0",
+  padding: "0 32px 0px 117px",
+  margin: "24px 0 0 0",
   display: "flex",
   flexDirection: "column",
   alignItems: "space-between",
+  flex: "0 1 auto",
 };
 
 export const bannerImageContainer = {
@@ -34,8 +41,8 @@ export const bannerImageContainer = {
   background: "#fff",
   zIndex: "10",
   top: 0,
-  left: "60px",
-  width: "212px",
+  left: "32px",
+  width: "170px",
   position: "absolute",
   borderRadius: "50%",
   boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
@@ -45,21 +52,16 @@ export const bannerImageContainer = {
 export const bannerTextBox = {
   color: "white",
   display: "flex",
-
+  flexDirection: "column",
   borderRadius: "8px 8px 8px 8px",
   boxShadow: "0px 0px 5px 0px rgba(7, 128, 0, 0.43)",
   background: "linear-gradient(270deg, #FF40B2 0%, #570076 75.52%)",
-  padding: "20px 20px 20px 120px",
+  padding: "8px 8px 8px 95px",
 };
 
 export const bannerText = {
-  "& span": {
-    fontWeight: 600,
-    fontSize: "24px",
-    display: "flex",
-    flexDirection: "column",
-    mt: 2,
-  },
+  fontSize: "14px",
+  lineHeight: "16px",
 };
 
 export const searchBar = {
@@ -78,10 +80,11 @@ export const searchBarStyle = {
 export const addCourse = {
   color: "white",
   backgroundColor: "#4E90B5",
+  fontFamily: "Cabin-Regular",
   "&:hover": {
     backgroundColor: "#194D6B",
   },
-  borderRadius: "8px",
+  borderRadius: "4px",
 };
 
 export const drawerHeader = {

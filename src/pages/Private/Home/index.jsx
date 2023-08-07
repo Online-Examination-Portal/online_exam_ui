@@ -17,17 +17,17 @@ const Home = () => {
 
       <Box sx={{ padding: "16px 32px", flex: "0 1 auto" }}>
         <Typography
-          variant="h2"
-          color=" #194D6B"
+          variant="h3"
+          color="#194D6B"
           sx={{ "& span": { color: "primary.main" } }}
         >
-          Hello, 
-          <span>Abc</span>
+          Hello,{" "}
+          <span> Abc</span>
         </Typography>
-        <Typography variant="h6" sx={{ mb: 4, color: "#4E90B5" }}>
+        <Typography variant="body2" sx={{ mb: 4, color: "#4E90B5" }}>
           Track your team progress here.
         </Typography>
-        <Typography variant="h6" sx={{ color: "#4E90B5" }}>
+        <Typography variant="body1" sx={{ color: "#4E90B5" }}>
           Insights
         </Typography>
       </Box>

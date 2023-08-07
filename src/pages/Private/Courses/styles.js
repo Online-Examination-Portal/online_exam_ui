@@ -8,13 +8,14 @@ export const courseContainer = {
 
 export const innerContainer = {
   positon: "absolute",
-  display: "flex", 
-  flexDirection: "column",
+  display: "flex",
+  flexFlow: "column",
+  height: "100%",
 };
 
 export const headerContainer = {
   display: "flex",
   justifyContent: "space-between",
-  padding: "28px 60px 0px 60px",
+  padding: "28px 32px 0px 32px",
+  flex: "0 1 auto",
 };
-

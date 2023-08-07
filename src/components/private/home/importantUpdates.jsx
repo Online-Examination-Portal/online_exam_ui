@@ -12,11 +12,12 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
+import AppTextTooltip from "./../../common/AppTextTooltip";
 import { updateImpUpdates } from "./data/impData";
 
 const ImpUpdates = () => {
   return (
-    <Paper 
+    <Paper
       sx={{
         overflow: "hidden",
         margin: "32px 32px 32px 32px",
@@ -29,7 +30,7 @@ const ImpUpdates = () => {
           padding: "8px 16px",
           alignItems: "center",
           justifyContent: "space-between",
-          backgroundColor: "#f5f5f5", 
+          backgroundColor: "#f5f5f5",
         }}
       >
         <Typography variant="body1" color="primary" sx={{ fontWeight: "bold" }}>
@@ -43,12 +44,12 @@ const ImpUpdates = () => {
             color: "#ffffff",
             padding: "4px 8px",
           }}
-        > 
+        >
           20 unread updates
         </Typography>
       </Box>
-      <TableContainer sx={{ maxHeight: '80%'}}>
-        <Table stickyHeader sx={{ width: "100%" }}>
+      <TableContainer sx={{ maxHeight: "80%" }}>
+        <Table stickyHeader sx={{ width: "100%", padding: "8px 0" }}>
           <TableBody>
             {updateImpUpdates.rows.map((data) => (
               <CustomTableRow key={data.id} data={data} />
@@ -67,19 +68,23 @@ const CustomTableRow = ({ data }) => {
     <TableRow
       onMouseEnter={() => setIsIconVisible(true)}
       onMouseLeave={() => setIsIconVisible(false)}
-      sx={{ "&:hover": { backgroundColor: "#f5f5f5" }, }}
+      sx={{ "&:hover": { backgroundColor: "#f5f5f5" } }}
     >
-      <TableCell>{data.update}</TableCell>
+      <TableCell sx={{ cursor: "pointer" }}>{data.update}</TableCell>
       <TableCell>{data.date}</TableCell>
       <TableCell> 
         {isIconsVisible && (
-          <Box>
-            <IconButton color="primary">
-              <DeleteIcon />
-            </IconButton>
-            <IconButton color="primary">
-              <MarkEmailReadIcon />
-            </IconButton>
+          <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+            <AppTextTooltip title="delete">
+              <IconButton color="primary">
+                <DeleteIcon />
+              </IconButton>
+            </AppTextTooltip>
+            <AppTextTooltip title={false ? "Mark as read" : "Mark as unread"}>
+              <IconButton color="primary">
+                <MarkEmailReadIcon />
+              </IconButton>
+            </AppTextTooltip>
           </Box>
         )}
       </TableCell>

@@ -1,7 +1,7 @@
 import { Box, Tooltip } from "@mui/material";
 import React, { useRef, useState } from "react";
 import { ThemeProvider } from "@mui/material/styles";
-import { tooltipTheme } from "../../theme";
+import { tooltipTheme } from "../../../theme";
 
 const AppTooltip = ({ children, title }) => {
   const toolTipRef = useRef();

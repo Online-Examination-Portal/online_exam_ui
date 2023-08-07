@@ -7,11 +7,12 @@ import {
   SvgIcon,
   InputLabel,
   TextField,
-  IconButton, 
+  IconButton,
 } from "@mui/material";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import CloseIcon from "@mui/icons-material/Close";
 import Invitation from "./invitation";
+import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import * as classes from "./styles";
 
 const TeacherDrawer = () => {
@@ -23,8 +24,12 @@ const TeacherDrawer = () => {
   return (
     <React.Fragment>
       <Box>
-        <Button onClick={toggleDrawer} sx={classes.addTeacherButton}>
-          + Add Teacher
+        <Button
+          startIcon={<AddRoundedIcon />}
+          onClick={toggleDrawer}
+          sx={classes.addTeacherButton}
+        >
+          Add Teacher
         </Button>
 
         <Drawer anchor="right" open={isOpen} onClose={toggleDrawer}>

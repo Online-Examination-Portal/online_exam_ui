@@ -4,7 +4,7 @@ export const invitationStatus = {
   padding: "4px 8px",
   color: "#454545",
   fontStyle: "italic",
-}; 
+};
 
 export const invitationRemove = {
   color: "#454545",
@@ -16,9 +16,11 @@ export const invitationRemove = {
 export const addTeacherButton = {
   color: "white",
   backgroundColor: "#4E90B5",
+  fontFamily: "Cabin-Regular",
   "&:hover": {
     backgroundColor: "#194D6B",
   },
+  borderRadius: "4px",
 };
 
 export const drawerTextContainer = {
