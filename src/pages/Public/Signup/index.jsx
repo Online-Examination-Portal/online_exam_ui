@@ -107,7 +107,6 @@ const SignUp = () => {
       phone_number: phoneNo,
       date_of_birth: dayjs(dob).format("YYYY-MM-DD"),
       role: role,
-      organization_id: 1,
     };
     register(userInfo);
   };
@@ -200,9 +199,9 @@ const SignUp = () => {
               value={gender}
               onChange={(e) => setGender(e.target.value)}
             >
-              <FormControlLabel value="0" control={<Radio />} label="Male" />
-              <FormControlLabel value="1" control={<Radio />} label="Female" />
-              <FormControlLabel value="2" control={<Radio />} label="Other" />
+              <FormControlLabel value={0} control={<Radio />} label="Male" />
+              <FormControlLabel value={1} control={<Radio />} label="Female" />
+              <FormControlLabel value={2} control={<Radio />} label="Other" />
             </RadioGroup>
           </FormControl>
           <InputLabel sx={{ color: "black", fontSize: "14px" }}>
