@@ -7,7 +7,7 @@ export const updateImpUpdates = {
       type: "url", 
       sorting: false,
     },
-    {
+    { 
       id: "date",
       label: "Id",
       type: "timeStamp",

@@ -71,7 +71,7 @@ const CustomTableRow = ({ data }) => {
     >
       <TableCell>{data.update}</TableCell>
       <TableCell>{data.date}</TableCell>
-      <TableCell>
+      <TableCell> 
         {isIconsVisible && (
           <Box>
             <IconButton color="primary">
