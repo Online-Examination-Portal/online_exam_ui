@@ -1,17 +1,14 @@
 import React, { useState } from "react";
 import {
-  IconButton,
   Paper,
   Table,
   TableHead,
   TableBody,
   TableCell,
   TableContainer, 
-  TableRow,
-  Box,
-  Typography,
+  TableRow
 } from "@mui/material";
-import ViewDetails from "./viewdetails";
+import ViewDetails from "./ViewDetails.jsx";
 import teachersdata from "./data/teachersdata";
 import DeleteIcon from "@mui/icons-material/Delete";
 import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";

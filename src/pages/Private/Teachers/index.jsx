@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, InputAdornment, TextField } from "@mui/material";
-import TeachersTable from "../../../components/private/teachers/teacherstable";
-import TeacherDrawer from "../../../components/private/teachers/drawer";
+import TeachersTable from "../../../components/private/teachers/TeacherTable";
+import TeacherDrawer from "../../../modules/AddTeacherDrawer/index";
 import * as classes from "./styles";
 import SearchIcon from "@mui/icons-material/Search";
 
@@ -41,7 +41,6 @@ const Teachers = () => {
           <TeacherDrawer />
         </Box>
       </Box>
-
       <TeachersTable />
     </Box>
   );
