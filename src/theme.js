@@ -35,7 +35,7 @@ export const theme = createTheme({
       "Cabin-Regular",
       "Cabin-Medium",
       "Cabin-SemiBold",
-      "Cabin-Bold"
+      "Cabin-Bold",
     ].join(","),
 
     h1: {
@@ -64,7 +64,7 @@ export const theme = createTheme({
       lineHeight: "30px",
       letterSpacing: "0.2px",
       fontFamily: "Cabin-Regular",
-    }, 
+    },
     h5: {
       fontSize: "20px",
       fontStyle: "normal",

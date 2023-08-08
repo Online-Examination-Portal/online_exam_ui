@@ -19,7 +19,7 @@ const routes = (isAuthenticated) => [
       { path: "", element: <Home /> },
       { path: "home", element: <Home /> },
       { path: "teachers", element: <Teachers /> },
-      { path: "students", element: <Students/> },
+      { path: "students", element: <Students /> },
       { path: "courses", element: <Courses /> },
     ],
   },

@@ -7,7 +7,7 @@ import {
   SvgIcon,
   InputLabel,
   TextField,
-  IconButton,  
+  IconButton,
 } from "@mui/material";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import CloseIcon from "@mui/icons-material/Close";
@@ -22,8 +22,8 @@ const TeacherDrawer = () => {
     setIsOpen(!isOpen);
   };
   return (
-    <React.Fragment> 
-      <Box>  
+    <React.Fragment>
+      <Box>
         <Button
           startIcon={<AddRoundedIcon />}
           onClick={toggleDrawer}
@@ -41,17 +41,12 @@ const TeacherDrawer = () => {
               <CloseIcon />
             </IconButton>
           </Box>
-
-          <Box
-            sx={classes.inviteTeachersContainer}
-          >
+          <Box sx={classes.inviteTeachersContainer}>
             <SvgIcon color="primary" sx={classes.icon}>
               <PeopleAltIcon />
             </SvgIcon>
 
-            <Box
-              sx={classes.inviteTeachersHeading}
-            >
+            <Box sx={classes.inviteTeachersHeading}>
               <Typography color="#194D6B" variant="h6">
                 Invite Teachers
               </Typography>
@@ -73,13 +68,11 @@ const TeacherDrawer = () => {
               size="small"
               sx={classes.EmailTextField}
             />
-          </Box> 
+          </Box>
           <Box sx={classes.inviteButtonBox}>
             <Button sx={classes.sendInviteButton}>Send Invite</Button>
           </Box>
-          <Box
-            sx={classes.ManageTeachersHeading}
-          >
+          <Box sx={classes.ManageTeachersHeading}>
             <Typography variant="h6" color="#194D6B">
               Manage Teachers
             </Typography>
@@ -90,9 +83,7 @@ const TeacherDrawer = () => {
               completely remove a teacher from the organization.
             </Typography>
           </Box>
-          <Box
-            sx={classes.InvitationComponent}
-          >
+          <Box sx={classes.InvitationComponent}>
             <Invitation />
           </Box>
           <Box sx={classes.cancelButtonBox}>
