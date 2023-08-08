@@ -1,27 +1,19 @@
 import { Box, Button, Drawer, Typography, IconButton, TextField } from '@mui/material';
 import React, { useState } from 'react';
-import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import * as classes from './styles'
 import CloseIcon from "@mui/icons-material/Close";
 
 
-const StudentDrawer = () => {
+const StudentDetailsDrawer = () => {
     const [isOpen, setIsOpen] = useState(false);
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
   };
 
-    return(
-        <React.Fragment>
-            <Box> 
-            <Button
-          startIcon={<AddRoundedIcon />}
-          onClick={toggleDrawer}
-          sx={classes.addStudentButton}
-        >
-          Add Student
-        </Button>
+    return( 
+        <React.Fragment> 
+        <Box> 
         <Drawer anchor="right" open={isOpen} onClose={toggleDrawer}>
         <Box sx={classes.drawerHeader}>
             <Typography variant="h4" sx={{ fontWeight: 600 }}>
@@ -67,7 +59,7 @@ const StudentDrawer = () => {
               label="Batch Code"
               type="text"
               variant="outlined"
-              size="small"
+              size="small" 
               InputLabelProps={{
                 shrink: true,
               }}
@@ -116,4 +108,4 @@ const StudentDrawer = () => {
     )
 }
 
-export default StudentDrawer;
+export default StudentDetailsDrawer;

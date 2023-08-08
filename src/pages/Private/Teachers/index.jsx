@@ -1,11 +1,13 @@
 import React from "react";
-import { Box, Typography, InputAdornment, TextField } from "@mui/material";
+import { Box, Typography, InputAdornment, TextField, Button } from "@mui/material";
 import TeachersTable from "../../../components/private/teachers/teacherstable";
 import TeacherDrawer from "../../../components/private/teachers/drawer";
 import * as classes from "./styles";
 import SearchIcon from "@mui/icons-material/Search";
+import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
-const Teachers = () => {
+
+const Teachers = () => { 
   return (
     <Box sx={classes.teachersContainer}>
       <Box sx={classes.teachersheader}>
@@ -16,7 +18,24 @@ const Teachers = () => {
           <Typography variant="body2" sx={{ mb: 4, color: "#4E90B5" }}>
             Track your teacher's details here.
           </Typography>
-          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          </Box>
+          <Box>
+          <Button
+          startIcon={<AddRoundedIcon />}
+          onClick={TeacherDrawer.toggleDrawer}
+          sx={classes.addTeacherButton}
+        >
+          Add Teacher
+        </Button>
+          </Box>
+          </Box>
+
+          <Box sx={classes.teacherDrawerComponent}>
+          <TeacherDrawer />
+        </Box>
+      
+
+          <Box sx={{ display: "flex", justifyContent: "space-between", padding: "16px 32px" }}>
             <Typography variant="body1" sx={{ color: "#4E90B5" }}>
               Teacher's details
             </Typography>
@@ -36,11 +55,8 @@ const Teachers = () => {
               sx={classes.searchBarStyle}
             />
           </Box>
-        </Box>
-        <Box sx={classes.teacherDrawerComponent}>
-          <TeacherDrawer />
-        </Box>
-      </Box>
+        
+        
 
       <TeachersTable />
     </Box>

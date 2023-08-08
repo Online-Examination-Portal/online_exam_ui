@@ -10,7 +10,7 @@ export const studentsContainer = {
     display: "flex",
     justifyContent: "space-between",
     padding: "16px 32px",
-  };
+  }; 
   
   export const studentHeading = {
     "& span": { color: "primary.main" },
@@ -22,9 +22,17 @@ export const studentsContainer = {
   };
 
 export const searchBarStyle = {
-  width: "100%",
-  height : '40px',
   borderRadius: "8px",
   border: "1px solid #4E90B5",
   background: "#FFF",
+};
+
+export const addStudentButton = {
+  color: "white",
+  backgroundColor: "#4E90B5",
+  fontFamily: "Cabin-Regular",
+  "&:hover": {
+    backgroundColor: "#194D6B",
+  },
+  borderRadius: "4px",
 };

@@ -12,7 +12,6 @@ import {
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import CloseIcon from "@mui/icons-material/Close";
 import Invitation from "./invitation";
-import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import * as classes from "./styles";
 
 const TeacherDrawer = () => {
@@ -24,15 +23,7 @@ const TeacherDrawer = () => {
   return (
     <React.Fragment>
       <Box>
-        <Button
-          startIcon={<AddRoundedIcon />}
-          onClick={toggleDrawer}
-          sx={classes.addTeacherButton}
-        >
-          Add Teacher
-        </Button>
-
-        <Drawer anchor="right" open={isOpen} onClose={toggleDrawer}>
+      <Drawer anchor="right" open={isOpen} onClose={toggleDrawer}>
           <Box sx={classes.drawerTextContainer}>
             <Typography variant="h4" sx={{ fontWeight: 600 }}>
               Add / Manage Teachers
@@ -75,7 +66,7 @@ const TeacherDrawer = () => {
           <Box sx={classes.ManageTeachersHeading}>
             <Typography variant="h6" color="#194D6B">
               Manage Teachers
-            </Typography>
+            </Typography> 
             {/* Ask about break */}
             <Typography variant="caption">
               You can see the status of all the invites sent to the teachers and

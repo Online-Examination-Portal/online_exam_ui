@@ -13,15 +13,7 @@ export const invitationRemove = {
   fontSize: "12px",
 };
 
-export const addTeacherButton = {
-  color: "white",
-  backgroundColor: "#4E90B5",
-  fontFamily: "Cabin-Regular",
-  "&:hover": {
-    backgroundColor: "#194D6B",
-  },
-  borderRadius: "4px",
-};
+
 
 export const drawerTextContainer = {
   gap: "400px",
@@ -114,7 +106,7 @@ export const teachersPaperComponent = {
   overflow: "hidden", 
   margin: "0 32px 32px 32px", 
   flex: "1 1 auto" 
-};
+}; 
  
 export const teachersTableBodyRow = { 
   "&:hover": { backgroundColor: "#f5f5f5" } 

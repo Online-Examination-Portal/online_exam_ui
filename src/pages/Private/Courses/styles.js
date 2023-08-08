@@ -4,7 +4,7 @@ export const courseContainer = {
   height: "100vh",
   bgcolor: "#F1FAFF",
   flexFlow: "column",
-};
+}; 
 
 export const innerContainer = {
   positon: "absolute",
@@ -22,5 +22,16 @@ export const headerContainer = {
 
 export const headingContainer = {
   display: "flex",
-  flexDirection: "column",
+  justifyContent: 'space-between',
+  gap: '670px'
+};
+
+export const addCourse = {
+  color: "white",
+  backgroundColor: "#4E90B5",
+  fontFamily: "Cabin-Regular",
+  "&:hover": {
+    backgroundColor: "#194D6B",
+  },
+  borderRadius: "4px",
 };

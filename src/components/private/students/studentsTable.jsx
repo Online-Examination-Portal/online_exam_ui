@@ -11,6 +11,7 @@ import {
 import React from "react";
 import * as classes from "./styles";
 import { studentData } from "./data/studentData";
+import StudentDetailsDrawer from "../../../modules/StudentDetailsDrawer";
 
 const StudentsTable = () => {
   return (
@@ -39,8 +40,8 @@ const StudentsTable = () => {
                     <TableCell align="center">
                       {column.type === "static" ? (
                         value
-                      ) : column.type === "iconButton" ? (
-                        <Button variant="contained" sx={classes.viewDetailsBtn}>
+                      ) : column.type === "Button" ? (
+                        <Button variant="contained" sx={classes.viewDetailsBtn} onClick={StudentDetailsDrawer.toggleDrawer}>
                           {value}
                         </Button>
                       ) : null}
@@ -49,7 +50,7 @@ const StudentsTable = () => {
                 })}
               </TableRow>
             ))}
-          </TableBody>
+          </TableBody> 
         </Table>
       </TableContainer>
     </Paper>

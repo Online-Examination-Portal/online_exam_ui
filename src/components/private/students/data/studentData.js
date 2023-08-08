@@ -28,7 +28,7 @@ export const studentData = {
     {
       id: "view_details",
       label: "View Details",
-      type: "iconButton",
+      type: "Button",
       sorting: false,
     },
   ],
