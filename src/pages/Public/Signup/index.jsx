@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { validation } from "./validation";
 import {
   Box,
   Typography,
@@ -97,18 +98,41 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const userInfo = {
-      first_name: firstName,
-      last_name: lastName,
-      email: email,
-      gender: parseInt(gender),
-      password: password,
-      organization_name: orgName,
-      phone_number: phoneNo,
-      date_of_birth: dayjs(dob).format("YYYY-MM-DD"),
-      role: role,
+
+    const formData = {
+      firstName,
+      lastName,
+      email,
+      gender,
+      password,
+      phoneNo,
+      dob,
+      orgName,
+      role,
     };
-    register(userInfo);
+
+    const validationStatus = validation(formData);
+
+    if (validationStatus.isValid) {
+      const userInfo = {
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        gender: parseInt(gender),
+        password,
+        organization_name: orgName,
+        phone_number: phoneNo,
+        date_of_birth: dayjs(dob).format("YYYY-MM-DD"),
+        role,
+      };
+      register(userInfo);
+    } else {
+      setSnackbarStates({
+        open: true,
+        message: "Please fix the errors in the form",
+        severity: "error",
+      });
+    }
   };
 
   return (
@@ -199,9 +223,9 @@ const SignUp = () => {
               value={gender}
               onChange={(e) => setGender(e.target.value)}
             >
-              <FormControlLabel value={0} control={<Radio />} label="Male" />
-              <FormControlLabel value={1} control={<Radio />} label="Female" />
-              <FormControlLabel value={2} control={<Radio />} label="Other" />
+              <FormControlLabel value="0" control={<Radio />} label="Male" />
+              <FormControlLabel value="1" control={<Radio />} label="Female" />
+              <FormControlLabel value="2" control={<Radio />} label="Other" />
             </RadioGroup>
           </FormControl>
           <InputLabel sx={{ color: "black", fontSize: "14px" }}>
