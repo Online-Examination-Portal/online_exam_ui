@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, InputAdornment, TextField, Button } from "@mui/material";
-import TeachersTable from "../../../components/private/teachers/teacherstable";
-import TeacherDrawer from "../../../components/private/teachers/drawer";
+import TeachersTable from "../../../components/private/teachers/TeacherTable";
+import TeacherDrawer from "../../../modules/AddTeacherDrawer/index";
 import * as classes from "./styles";
 import SearchIcon from "@mui/icons-material/Search";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
@@ -19,7 +19,10 @@ const Teachers = () => {
             Track your teacher's details here.
           </Typography>
           </Box>
-          <Box>
+          <Box sx={classes.teacherDrawerComponent}>
+          <TeacherDrawer />
+        </Box>
+          {/* <Box>
           <Button
           startIcon={<AddRoundedIcon />}
           onClick={TeacherDrawer.toggleDrawer}
@@ -27,12 +30,12 @@ const Teachers = () => {
         >
           Add Teacher
         </Button>
-          </Box>
+          </Box> */}
           </Box>
 
-          <Box sx={classes.teacherDrawerComponent}>
+          {/* <Box sx={classes.teacherDrawerComponent}>
           <TeacherDrawer />
-        </Box>
+        </Box> */}
       
 
           <Box sx={{ display: "flex", justifyContent: "space-between", padding: "16px 32px" }}>

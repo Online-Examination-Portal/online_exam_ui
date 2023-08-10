@@ -35,4 +35,5 @@ export const addStudentButton = {
     backgroundColor: "#194D6B",
   },
   borderRadius: "4px",
+  height: '40px'
 };

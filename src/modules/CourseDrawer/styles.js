@@ -42,3 +42,20 @@ export const okButton = {
     height: "100%",
 };
   
+export const addCourse = {
+    color: "white",
+    backgroundColor: "#4E90B5",
+    fontFamily: "Cabin-Regular",
+    "&:hover": {
+      backgroundColor: "#194D6B",
+    },
+    borderRadius: "4px",
+  };
+
+  export const drawerContainer = {
+    padding: "16px",
+    height: "100vh",
+    display: "flex",
+    flexFlow: "column",
+  };
+  

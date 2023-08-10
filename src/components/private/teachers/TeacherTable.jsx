@@ -1,21 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import {
-  IconButton,
   Paper,
   Table,
   TableHead,
   TableBody,
   TableCell,
   TableContainer, 
-  TableRow,
-  Box,
-  Typography,
+  TableRow
 } from "@mui/material";
-import ViewDetails from "./viewdetails";
+// import ViewDetails from "./ViewDetails.jsx";
 import teachersdata from "./data/teachersdata";
-import DeleteIcon from "@mui/icons-material/Delete";
-import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
 import * as classes from './styles'
+import TeacherDetailsDrawer from "../../../modules/TeacherDetailsDrawer";
 
 const TeachersTable = () => {
   return (
@@ -43,7 +39,7 @@ const TeachersTable = () => {
                 <TableCell align="center">{data.name}</TableCell>
                 <TableCell align="center">{data.course}</TableCell>
                 <TableCell align="center">{data.totalbatch}</TableCell>
-                <TableCell align="center">{<ViewDetails />}</TableCell>
+                <TableCell align="center">{<TeacherDetailsDrawer/>}</TableCell>
                 {/*<TableCell>
                    <Box
                   // sx={{
@@ -66,12 +62,6 @@ const TeachersTable = () => {
       </TableContainer>
     </Paper>
   );
-};
-
-const CustomeTableRow = () => {
-  const [isIconsVisible, setIsIconVisible] = useState(false);
-
-  return <></>;
 };
 
 export default TeachersTable;

@@ -1,16 +1,18 @@
 import {
     Box,
     Button,
-    Drawer,
     Typography,
     IconButton,
-    TextField,
+    TextField, 
   } from "@mui/material";
   import React, { useState } from "react";
   import CloseIcon from "@mui/icons-material/Close";
   import AddIcon from "@mui/icons-material/Add";
   import RemoveIcon from "@mui/icons-material/Remove";
   import * as classes from './styles'
+  import AddRoundedIcon from "@mui/icons-material/AddRounded";
+  import { EditServiceStyledDrawer } from "../../components/common/styledDrawers";
+
   
   const CourseDrawer = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -39,7 +41,21 @@ import {
     return (
       <React.Fragment>
         <Box>
-          <Drawer anchor="right" open={isOpen} onClose={toggleDrawer}>
+        <Button
+            startIcon={<AddRoundedIcon />}
+            onClick={toggleDrawer}
+            sx={classes.addCourse}
+          >
+            Add Courses 
+          </Button>
+
+          <EditServiceStyledDrawer
+          anchor="right"
+          open={isOpen}
+          onClose={toggleDrawer}
+        >
+          <Box sx={classes.drawerContainer}>
+          {/* <Drawer anchor="right" open={isOpen} onClose={toggleDrawer}> */}
             <Box sx={classes.drawerHeader}>
               <Typography variant="h4" sx={{ fontWeight: 600 }}>
                 Add Course
@@ -108,7 +124,8 @@ import {
             <Box sx={classes.okButtonContainer}>
               <Button sx={classes.okButton}>Ok</Button>
             </Box>
-          </Drawer>
+            </Box>
+            </EditServiceStyledDrawer>
         </Box>
       </React.Fragment>
     );

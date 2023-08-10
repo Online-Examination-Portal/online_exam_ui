@@ -13,6 +13,6 @@ function ViewDetails( ){
          View Details
       </Typography>
       </Button>
-    ) 
+    )  
 }
 export default ViewDetails

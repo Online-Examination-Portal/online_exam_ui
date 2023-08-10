@@ -26,12 +26,3 @@ export const headingContainer = {
   gap: '670px'
 };
 
-export const addCourse = {
-  color: "white",
-  backgroundColor: "#4E90B5",
-  fontFamily: "Cabin-Regular",
-  "&:hover": {
-    backgroundColor: "#194D6B",
-  },
-  borderRadius: "4px",
-};

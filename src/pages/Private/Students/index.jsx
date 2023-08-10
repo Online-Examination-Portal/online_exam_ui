@@ -1,10 +1,10 @@
 import React from "react";
-import { Box, TextField, Typography, InputAdornment, Button } from "@mui/material";
+import { Box, TextField, Typography, InputAdornment} from "@mui/material";
 import * as classes from "./styles";
 import StudentsTable from "../../../components/private/students/studentsTable";
 import SearchIcon from "@mui/icons-material/Search";
-import AddRoundedIcon from "@mui/icons-material/AddRounded";
-import StudentDetailsDrawer from "../../../modules/StudentDetailsDrawer";
+import AddStudentDrawer from "../../../modules/AddStudentDrawer";
+// import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
 const Students = () => {
   return (
@@ -18,20 +18,18 @@ const Students = () => {
             Track your student's details here.
           </Typography>
           </Box>
-          <Box>
-          <Button
+          {/* <Button
           startIcon={<AddRoundedIcon />}
-          onClick={StudentDetailsDrawer.toggleDrawer}
+          onClick={AddStudentDrawer.toggleDrawer}
           sx={classes.addStudentButton}
         > 
           Add Student
-        </Button>
-          </Box>
-          </Box>
-
+        </Button> */}
           <Box sx={classes.studentDrawerComponent}>
-          <StudentDetailsDrawer/>
+          <AddStudentDrawer/>
           </Box>
+          </Box>
+          
 
           <Box sx={{ display: "flex", justifyContent: "space-between", padding: "16px 32px", }}>
             <Typography variant="body1" sx={{ color: "#4E90B5" }}>

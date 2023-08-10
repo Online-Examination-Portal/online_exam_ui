@@ -1,5 +1,4 @@
 import {
-  Button,
   Paper,
   Table,
   TableBody,
@@ -41,14 +40,15 @@ const StudentsTable = () => {
                       {column.type === "static" ? (
                         value
                       ) : column.type === "Button" ? (
-                        <Button variant="contained" sx={classes.viewDetailsBtn} onClick={StudentDetailsDrawer.toggleDrawer}>
-                          {value}
-                        </Button>
+                        <StudentDetailsDrawer/>
+                        // <Button variant="contained" sx={classes.viewDetailsBtn} onClick={StudentDetailsDrawer.toggleDrawer}>
+                        //   {value}
+                        // </Button>
                       ) : null}
                     </TableCell>
                   );
                 })}
-              </TableRow>
+              </TableRow> 
             ))}
           </TableBody> 
         </Table>

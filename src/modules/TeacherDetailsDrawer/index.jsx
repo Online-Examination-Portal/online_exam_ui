@@ -1,11 +1,11 @@
-import { Box, Button, Typography, IconButton, TextField } from '@mui/material';
+import { Box, Button, Typography, IconButton, TextField, FormControl, Select, MenuItem, InputLabel } from '@mui/material';
 import React, { useState } from 'react';
 import * as classes from './styles'
 import CloseIcon from "@mui/icons-material/Close";
 // import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import { EditServiceStyledDrawer } from "../../components/common/styledDrawers";
 
-const StudentDetailsDrawer = () => {
+const TeacherDetailsDrawer = () => {
     const [isOpen, setIsOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -15,7 +15,7 @@ const StudentDetailsDrawer = () => {
     return(  
         <React.Fragment> 
         <Box> 
-        <Button
+        <Button 
           // startIcon={<AddRoundedIcon />}
           onClick={toggleDrawer}
           sx={classes.viewDetailsButton}
@@ -30,7 +30,7 @@ const StudentDetailsDrawer = () => {
         {/* <Drawer anchor="right" open={isOpen} onClose={toggleDrawer}> */}
         <Box sx={classes.drawerHeader}>
             <Typography variant="h4" sx={{ fontWeight: 600 }}>
-              Students Details 
+              Teacher's Details 
             </Typography>
             <IconButton onClick={toggleDrawer} color="secondary">
               <CloseIcon />
@@ -38,14 +38,15 @@ const StudentDetailsDrawer = () => {
           </Box>
           <Box gap={4} sx={classes.drawerTextField}>
           <TextField
-              id="studentId"
-              label="Student Id"
+              id="teacherId"
+              label="Teacher Id"
               type="text"
               variant="outlined"
               size="small"
               InputLabelProps={{
                 shrink: true,
               }}
+              sx={{bgcolor: '#F1FAFF'}}
             />
             <TextField
               id="name"
@@ -56,58 +57,59 @@ const StudentDetailsDrawer = () => {
               InputLabelProps={{
                 shrink: true,
               }}
+              sx={{bgcolor: '#F1FAFF'}}
             />
+            {/* dropdown for course */}
+            <FormControl>
+            <InputLabel shrink >
+            Course
+            </InputLabel>
+                <Select 
+                id='course'
+                placeholder='Course'
+                size='small'
+                sx={{bgcolor: '#F1FAFF'}}
+                >
+                    {/* <MenuItem value=""><em>Course</em></MenuItem> */}
+                    <MenuItem value='option1'>Course 1</MenuItem>
+                    <MenuItem value='option2'>Course 2</MenuItem>
+                    <MenuItem value='option3'>Course 3</MenuItem>
+                </Select>
+            </FormControl>
+            <Box gap={1} sx={{display: 'flex', flexDirection: 'column'}}>
             <TextField
-              id="course_name"
-              label="Course Name"
-              type="text"
-              variant="outlined"
-              size="small"
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-            <TextField
-              id="batch_code"
-              label="Batch Code"
+              id="batch"
+              label="Batches"
               type="text"
               variant="outlined"
               size="small" 
               InputLabelProps={{
                 shrink: true,
               }}
-            />
-            <Typography>Other Details</Typography>
-            <TextField
-              id="phone_no"
-              label="Phone Number"
-              type="number"
-              variant="outlined"
-              size="small"
-              InputLabelProps={{
-                shrink: true,
-              }}
+              sx={{bgcolor: '#F1FAFF'}}
             />
             <TextField
-              id="address"
-              label="Address"
+              id="batch"
               type="text"
               variant="outlined"
-              size="small"
+              size="small" 
               InputLabelProps={{
                 shrink: true,
               }}
+              sx={{bgcolor: '#F1FAFF'}}
             />
             <TextField
-              id="emer_phoneno"
-              label="Emergency Contact Number"
-              type="number"
+              id="batch"
+              type="text"
               variant="outlined"
-              size="small"
+              size="small" 
               InputLabelProps={{
                 shrink: true,
               }}
+              sx={{bgcolor: '#F1FAFF'}}
             />
+            </Box>
+            
           </Box>
           
           <Box sx={classes.okButtonContainer}>
@@ -122,4 +124,4 @@ const StudentDetailsDrawer = () => {
     )
 }
 
-export default StudentDetailsDrawer;
+export default TeacherDetailsDrawer;

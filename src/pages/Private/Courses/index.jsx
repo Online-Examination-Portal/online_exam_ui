@@ -1,13 +1,12 @@
 import React from "react";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Banner from "../../../components/private/courses/banner";
 import CourseBox from "../../../components/private/courses/courseBox";
 import * as classes from "./styles";
 import CourseDrawer from "../../../modules/CourseDrawer";
-import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
 
-const Courses = () => {
+const Courses = () => { 
   return ( 
     <Box sx={classes.courseContainer}>
       <Box sx={classes.innerContainer}>
@@ -24,17 +23,11 @@ const Courses = () => {
             </Typography>
             </Box>
         <Box>
-          <Button
-            startIcon={<AddRoundedIcon />}
-            onClick={CourseDrawer.toggleDrawer}
-            sx={classes.addCourse}
-          >
-            Add Courses 
-          </Button>
+          <CourseDrawer/>
           </Box>
           </Box>
 
-          <CourseDrawer/>
+          
         </Box>
         <Banner />
         <CourseBox />
