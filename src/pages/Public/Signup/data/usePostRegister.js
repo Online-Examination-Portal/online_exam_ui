@@ -10,7 +10,7 @@ const usePostRegister = () => {
     setError(msg);
     setSuccessData(undefined);
   };
-
+ 
   const statusObj = [
     {
       status_code: 201,

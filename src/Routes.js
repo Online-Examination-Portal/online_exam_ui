@@ -10,6 +10,7 @@ import Courses from "./pages/Private/Courses";
 import Teachers from "./pages/Private/Teachers";
 import ValidateOtp from "./pages/Public/OtpValidator";
 import Students from "./pages/Private/Students";
+import TestPage from "./pages/TestPage/testPage";
 
 const routes = (isAuthenticated) => [
   {
@@ -31,6 +32,7 @@ const routes = (isAuthenticated) => [
       { path: "login", element: <Login /> },
       { path: "signup", element: <SignUp /> },
       { path: "validate", element: <ValidateOtp /> },
+      { path: "testpage", element: <TestPage /> },
     ],
   },
   {

@@ -223,7 +223,7 @@ const SignUp = () => {
             sx={classes.textFields}
             value={orgName}
             onChange={(e) => setOrgName(e.target.value)}
-          />
+          /> 
           <FormControl>
             <FormLabel sx={classes.inputLabels}>Role</FormLabel>
             {!isRolesLoading && roles ? (

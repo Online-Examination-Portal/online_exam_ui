@@ -10,7 +10,7 @@ const useGetRoles = () => {
     setError(true);
     setSuccessData(undefined);
   };
-
+ 
   const statusObj = [
     {
       status_code: 200,
@@ -35,7 +35,7 @@ const useGetRoles = () => {
       callBack: defaultFallback,
     },
   ];
-
+ 
   const getRoles = (body) => {
     const url = GET_ROLES;
     callGetData({
