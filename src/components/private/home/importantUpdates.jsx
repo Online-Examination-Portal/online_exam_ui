@@ -40,7 +40,7 @@ const ImpUpdates = () => {
             {updateImpUpdates.rows.map((row, i) => (
               <CustomTableRow key={i} row={row} />
             ))}
-          </TableBody>
+          </TableBody> 
         </Table>
       </TableContainer>
     </Paper>
@@ -55,11 +55,12 @@ const CustomTableRow = ({ row, i }) => {
       onMouseEnter={() => setIsIconVisible(true)}
       onMouseLeave={() => setIsIconVisible(false)}
       sx={classes.updatesTablerow}
+      key={i}
     >
       {updateImpUpdates.columnName.map((column) => {
         const value = row[column.id];
         return (
-          <TableCell>
+          <TableCell key={i}>
             {column.type === "url" ? (
               <Box sx={{ cursor: "pointer" }}>{value}</Box>
             ) : column.type === "timeStamp" ? (

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -14,9 +14,57 @@ import Invitation from "../../components/private/teachers/Invitations";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import { EditServiceStyledDrawer } from "../../components/common/styledDrawers";
 import * as classes from "./styles";
+import { INVITE_TEACHER_ROLE } from "../../components/private/constants";
+
+import usePostInvite from "../../components/private/teachers/data/usePostInvite";
+
+import AppSnackbar from "../../components/common/AppSnackbar";
 
 const TeacherDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [data, isError, isLoading, invite] = usePostInvite();
+
+  const [email, setEmail] = useState("");
+
+  const [snackbarStates, setSnackbarStates] = useState({
+    open: false,
+    message: "",
+    severity: "success",
+  });
+
+  const  sendInvite = () => {
+    console.log(" sendInvite");
+    // e.preventDefault();
+    const inviteTeacherInfo = {
+      email: email,
+      for_role: INVITE_TEACHER_ROLE,
+    };
+    invite(inviteTeacherInfo);
+  };
+
+  useEffect(() => {
+    if (data) {
+      setSnackbarStates({
+        open: true,
+        message: "Invitation sent",
+        severity: "success",
+      });
+    } else if (isError !== "") {
+      setSnackbarStates({
+        open: true,
+        message: "Something went wrong",
+        severity: "error",
+      });
+    }
+  }, [data, isError, isLoading]);
+
+  const resetSnackbar = (state) => {
+    setSnackbarStates({
+      open: state,
+      message: "",
+      severity: "success",
+    });
+  };
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
@@ -77,8 +125,16 @@ const TeacherDrawer = () => {
                   sx={classes.EmailTextField}
                 />
               </FormControl>
-              <Button sx={classes.sendInviteButton}>Send Invite</Button>
+              <Button sx={classes.sendInviteButton} onClick={ sendInvite} type='submit'>Send Invite</Button>
             </Box>
+            {snackbarStates.open ? (
+            <AppSnackbar
+              open={snackbarStates.open}
+              message={snackbarStates.message}
+              severity={snackbarStates.severity}
+              setOpen={(state) => resetSnackbar(state)}
+            />
+          ) : null}
             <Box sx={classes.inviteTableHeader}>
               <Typography variant="h6" color="#194D6B">
                 Manage Teachers
@@ -90,9 +146,9 @@ const TeacherDrawer = () => {
                 remove a teacher from the organization.
               </Typography>
             </Box>
-            <Box sx={classes.tableWrapper}>
+            {/* <Box sx={classes.tableWrapper}>
               <Invitation />
-            </Box>
+            </Box> */}
             <Box
               sx={{
                 flex: "0 1 auto",

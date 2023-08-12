@@ -44,7 +44,7 @@ const SignUp = () => {
     usePostRegister();
 
   const [snackbarStates, setSnackbarStates] = useState({
-    open: false,
+    open: false, 
     message: "",
     severity: "success",
   });
@@ -93,7 +93,7 @@ const SignUp = () => {
       message: "",
       severity: "success",
     });
-  };
+  }; 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -107,7 +107,7 @@ const SignUp = () => {
       phone_number: phoneNo,
       date_of_birth: dayjs(dob).format("YYYY-MM-DD"),
       role: role,
-      organization_id: 1,
+      // organization_id: 1,
     };
     register(userInfo);
   };
