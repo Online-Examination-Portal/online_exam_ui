@@ -16,6 +16,7 @@ import { EditServiceStyledDrawer } from "../../components/common/styledDrawers";
 import * as classes from "./styles";
 import { INVITE_TEACHER_ROLE } from "../../components/private/constants";
 
+
 import usePostInvite from "../../components/private/teachers/data/usePostInvite";
 
 import AppSnackbar from "../../components/common/AppSnackbar";
@@ -146,9 +147,9 @@ const TeacherDrawer = () => {
                 remove a teacher from the organization.
               </Typography>
             </Box>
-            {/* <Box sx={classes.tableWrapper}>
+            <Box sx={classes.tableWrapper}>
               <Invitation />
-            </Box> */}
+            </Box>
             <Box
               sx={{
                 flex: "0 1 auto",
