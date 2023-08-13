@@ -15,6 +15,7 @@ import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import { EditServiceStyledDrawer } from "../../components/common/styledDrawers";
 import * as classes from "./styles";
 import { INVITE_TEACHER_ROLE } from "../../components/private/constants";
+import useGetInvite from "../../components/private/teachers/data/useGetInvites";
 
 
 import usePostInvite from "../../components/private/teachers/data/usePostInvite";
@@ -24,6 +25,7 @@ import AppSnackbar from "../../components/common/AppSnackbar";
 const TeacherDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [data, isError, isLoading, invite] = usePostInvite();
+  const [showInvite, isInviteError, isInviteLoading, getTeacherInvite] = useGetInvite();
 
   const [email, setEmail] = useState("");
 
@@ -33,15 +35,27 @@ const TeacherDrawer = () => {
     severity: "success",
   });
 
-  const  sendInvite = () => {
+  const  sendInvite = (e) => {
     console.log(" sendInvite");
-    // e.preventDefault();
+    e.preventDefault();
     const inviteTeacherInfo = {
       email: email,
       for_role: INVITE_TEACHER_ROLE,
     };
     invite(inviteTeacherInfo);
+    getTeacherInvite();
   };
+
+  useEffect(() => {
+    if (isInviteError) {
+      setSnackbarStates({
+        open: true,
+        message: "Error! Unable to load user roles",
+        severity: "error",
+      });
+    }
+  }, [showInvite, isInviteError]);
+
 
   useEffect(() => {
     if (data) {
@@ -124,6 +138,8 @@ const TeacherDrawer = () => {
                   label="Email Ids"
                   placeholder="Enter your email"
                   sx={classes.EmailTextField}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </FormControl>
               <Button sx={classes.sendInviteButton} onClick={ sendInvite} type='submit'>Send Invite</Button>

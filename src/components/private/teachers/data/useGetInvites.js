@@ -1,8 +1,8 @@
 import en from "../../../../Lang/en.json";
-import { GET_ROLES } from "../../../../utilities/apis";
+import { GET_TEACHER_INVITE } from "../../../../utilities/apis";
 import useAPICall from "../../../../hooks/useAPICalls";
 
-const useGetRoles = () => {
+const useGetInvite = () => {
   const [data, error, isLoading, callGetData, setSuccessData, setError] =
     useAPICall(undefined, "");
 
@@ -36,8 +36,8 @@ const useGetRoles = () => {
     },
   ];
  
-  const getRoles = (body) => {
-    const url = GET_ROLES;
+  const getTeacherInvite = (body) => {
+    const url = GET_TEACHER_INVITE;
     callGetData({
       url,
       method: "get",
@@ -46,7 +46,7 @@ const useGetRoles = () => {
       body,
     });
   };
-  return [data, error, isLoading, getRoles, setSuccessData, setError];
+  return [data, error, isLoading, getTeacherInvite, setSuccessData, setError];
 };
 
-export default useGetRoles;
+export default useGetInvite;

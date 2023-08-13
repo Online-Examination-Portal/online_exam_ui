@@ -27,7 +27,7 @@ const Invitation = () => {
             {invitationData.columnName.map((column) => {
               const value = row[column.id];
               return (
-                <TableCell key={i}>
+                <TableCell>
                   {column.type === "IconButton" ? (
                     <IconButton sx={{ color: "#4E90B5" }}>
                       <AccountCircleIcon />

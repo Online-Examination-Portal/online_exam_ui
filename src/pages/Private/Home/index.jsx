@@ -19,7 +19,7 @@ const Home = () => {
         </Typography>
       </Box>
       <InsightsCard />
-      {/* <ImpUpdates /> */}
+      <ImpUpdates />
     </Box>
   );
 };
