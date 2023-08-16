@@ -6,4 +6,6 @@ export const VALIDATE_OTP = `${process.env.REACT_APP_ENDPOINT}/accounts/api/veri
 
 // admin urls
 export const INVITE_TEACHER = `${process.env.REACT_APP_ENDPOINT}/organization/api/invite/`;
-export const GET_TEACHER_INVITE = `${process.env.REACT_APP_ENDPOINT}/organization/api/get-invitations/`
+export const LIST_TEACHER_INVITES = `${process.env.REACT_APP_ENDPOINT}/organization/api/list-invitations/`;
+export const GET_INVITE_STATUS = `${process.env.REACT_APP_ENDPOINT}/organization/api/get-invitation-status-choices/`;
+export const GET_INVITE_URL = `${process.env.REACT_APP_ENDPOINT}/organization/api/get-invitation/{invitation_id}/`;

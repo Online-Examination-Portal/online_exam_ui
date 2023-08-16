@@ -1,20 +1,20 @@
 import en from "../../../../Lang/en.json";
-import { REGISTER } from "../../../../utilities/apis";
+import { GET_INVITE_URL } from "../../../../utilities/apis";
 import useAPICall from "../../../../hooks/useAPICalls";
 
-const usePostRegister = () => {
+const useGetInvite = () => {
   const [data, error, isLoading, callGetData, setSuccessData, setError] =
     useAPICall(undefined, "");
 
   const defaultFallback = (msg = en.something_went_wrong) => {
-    setError(msg);
+    setError(true);
     setSuccessData(undefined);
   };
  
-  const statusObj = [ 
-    { 
-      status_code: 201,
-      status_txt: "Created",
+  const statusObj = [
+    {
+      status_code: 200,
+      status_txt: "OK",
       callBack: (res) => {
         const data = res.data;
         if (data && typeof data === "object") {
@@ -35,18 +35,19 @@ const usePostRegister = () => {
       callBack: defaultFallback,
     },
   ];
-
-  const postRegister = (body) => {
-    const url = REGISTER;
+ 
+  const getInvite = (invitation_id) => {
+    const url = GET_INVITE_URL.replace("{invitation_id}", invitation_id);
+    console.log("getinviteURL:", GET_INVITE_URL);
+    console.log('invitationID:',invitation_id);
     callGetData({
       url,
-      method: "post",
+      method: "get",
       statusObj,
       defaultFallback,
-      body,
     });
   };
-  return [data, error, isLoading, postRegister, setSuccessData, setError];
+  return [data, error, isLoading, getInvite, setSuccessData, setError];
 };
 
-export default usePostRegister;
+export default useGetInvite;

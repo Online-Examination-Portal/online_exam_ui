@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -12,22 +12,42 @@ import {
   Box,
   IconButton,
 } from "@mui/material";
-import { invitationData } from "./data/invitationData";
 import * as classes from "./styles";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
+// Import API data
+import useGetInvite from "../../../modules/AddTeacherDrawer/data/useGetInvites";
+import useGetInviteStatus from "../../../modules/AddTeacherDrawer/data/useGetInviteStatus";
+
 const Invitation = () => {
   const [selectedValue, setSelectedValue] = useState("");
+  const [inviteData, isInviteError, isInviteLoading, getTeacherInvites] = useGetInvite();
+  const [statusData, isStatusError, isStatusLoading, getStatus] = useGetInviteStatus();
+
+  useEffect(() => {
+    if(inviteData){
+       console.log('inviteData', inviteData)
+    }
+    getTeacherInvites();
+  },[inviteData]); 
+
+  useEffect(() => {
+    getStatus();
+  }, [])
+
 
   return (
+    <>
+    {inviteData && 
     <Table stickyHeader sx={{ height: "100%", width: "100%" }}>
       <TableBody>
-        {invitationData.rows.map((row, i) => (
+       
+        {inviteData.rows.map((row, i) => (
           <TableRow key={i} row={row}>
-            {invitationData.columnName.map((column) => {
+            {inviteData.columnName.map((column) => {
               const value = row[column.id];
               return (
-                <TableCell>
+                <TableCell> 
                   {column.type === "IconButton" ? (
                     <IconButton sx={{ color: "#4E90B5" }}>
                       <AccountCircleIcon />
@@ -42,20 +62,31 @@ const Invitation = () => {
                     </Typography>
                   ) : column.type === "dropdown" ? (
                     <FormControl>
-                      <Select
-                        value={selectedValue}
-                        onChange={(e) => setSelectedValue(e.target.value)}
-                        displayEmpty
-                        inputProps={{ "aria-label": "Without label" }}
-                        sx={classes.roleInvitaion}
-                      >
-                        <MenuItem value="">
-                          <em>Role</em>
-                        </MenuItem>
-                        <MenuItem value="option1">Teacher</MenuItem>
-                        <MenuItem value="option2">Student</MenuItem>
-                        <MenuItem value="option3">Admin</MenuItem>
-                      </Select>
+                      {!isStatusLoading && statusData ? (
+                          <Select
+                          id= 'status'
+                          value={selectedValue}
+                          onChange={(e) => setSelectedValue(e.target.value)}
+                          displayEmpty
+                          inputProps={{ "aria-label": "Without label" }}
+                          sx={classes.roleInvitaion}
+                        >
+                          {Object.keys(statusData).map((key) => (
+                  <MenuItem key={key} value={key}>
+                    {statusData[key]}
+                  </MenuItem>
+                ))}
+                          {/* <MenuItem value="">
+                            <em>Role</em>
+                          </MenuItem>
+                          <MenuItem value="0">Teacher</MenuItem>
+                          <MenuItem value="1">Student</MenuItem>
+                          <MenuItem value="2">Admin</MenuItem> */}
+                        </Select>
+                      ): null}
+                        
+                      
+                      
                     </FormControl>
                   ) : column.type === "button" ? (
                     <Button sx={classes.invitationRemove}>Remove</Button>
@@ -65,8 +96,11 @@ const Invitation = () => {
             })}
           </TableRow>
         ))}
+          
       </TableBody>
     </Table>
+    }
+    </>
   );
 };
 

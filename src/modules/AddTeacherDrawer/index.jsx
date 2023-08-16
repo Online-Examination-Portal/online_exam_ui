@@ -15,18 +15,18 @@ import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import { EditServiceStyledDrawer } from "../../components/common/styledDrawers";
 import * as classes from "./styles";
 import { INVITE_TEACHER_ROLE } from "../../components/private/constants";
-import useGetInvite from "../../components/private/teachers/data/useGetInvites";
 
+// Import API data
+import useGetInvite from "./data/useGetInvites";
+import usePostInvite from "./data/usePostInvite";
 
-import usePostInvite from "../../components/private/teachers/data/usePostInvite";
-
+// Import Components
 import AppSnackbar from "../../components/common/AppSnackbar";
 
 const TeacherDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [data, isError, isLoading, invite] = usePostInvite();
-  const [showInvite, isInviteError, isInviteLoading, getTeacherInvite] = useGetInvite();
-
+  const [inviteData, isInviteError, isInviteLoading, getTeacherInvite] = useGetInvite();
   const [email, setEmail] = useState("");
 
   const [snackbarStates, setSnackbarStates] = useState({
@@ -35,11 +35,11 @@ const TeacherDrawer = () => {
     severity: "success",
   });
 
-  const  sendInvite = (e) => {
-    console.log(" sendInvite");
+  const sendInvite = (e) => { 
+    console.log("sendInvite");
     e.preventDefault();
     const inviteTeacherInfo = {
-      email: email,
+      send_to: email,
       for_role: INVITE_TEACHER_ROLE,
     };
     invite(inviteTeacherInfo);
@@ -54,7 +54,7 @@ const TeacherDrawer = () => {
         severity: "error",
       });
     }
-  }, [showInvite, isInviteError]);
+  }, [inviteData, isInviteError, isInviteLoading]);
 
 
   useEffect(() => {
@@ -84,6 +84,7 @@ const TeacherDrawer = () => {
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <React.Fragment>
       <Box>

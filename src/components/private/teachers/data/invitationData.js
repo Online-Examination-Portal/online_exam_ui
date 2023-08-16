@@ -7,7 +7,7 @@ export const invitationData = {
            type: 'IconButton'
         },
         {
-            id: "email",
+            id: "email", 
             label: 'Email',
             type: 'email',
 
@@ -35,7 +35,7 @@ export const invitationData = {
             email: 'abc@gmail.com',
             status: "Pending invite",
             role: 'Teacher'
-        },
+        }, 
         {
             id: 2, 
             email: 'xyz@gmail.com',

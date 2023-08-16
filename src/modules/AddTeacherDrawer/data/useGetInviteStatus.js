@@ -1,20 +1,20 @@
-import en from "../../../../Lang/en.json";
-import { INVITE_TEACHER } from "../../../../utilities/apis";
-import useAPICall from "../../../../hooks/useAPICalls";
+// import en from "../../../../Lang/en.json";
+import { GET_INVITE_STATUS } from "../../../utilities/apis";
+import useAPICall from "../../../hooks/useAPICalls";
 
-const usePostInvite = () => {
+const useGetInviteStatus = () => {
   const [data, error, isLoading, callGetData, setSuccessData, setError] =
     useAPICall(undefined, "");
 
-  const defaultFallback = (msg = en.something_went_wrong) => {
-    setError(msg);
+  const defaultFallback = (msg = "something went wrong") => {
+    setError(true);
     setSuccessData(undefined);
   };
  
   const statusObj = [
     {
-      status_code: 201,
-      status_txt: "Created",
+      status_code: 200,
+      status_txt: "OK",
       callBack: (res) => {
         const data = res.data;
         if (data && typeof data === "object") {
@@ -35,18 +35,18 @@ const usePostInvite = () => {
       callBack: defaultFallback,
     },
   ];
-
-  const postInvite = (body) => {
-    const url = INVITE_TEACHER;
+ 
+  const getStatus = (body) => {
+    const url = GET_INVITE_STATUS;
     callGetData({
       url,
-      method: "post",
+      method: "get",
       statusObj,
       defaultFallback,
       body,
     });
   };
-  return [data, error, isLoading, postInvite, setSuccessData, setError];
+  return [data, error, isLoading, getStatus, setSuccessData, setError];
 };
 
-export default usePostInvite;
+export default useGetInviteStatus;

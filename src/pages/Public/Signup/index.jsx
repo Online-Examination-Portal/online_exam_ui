@@ -13,17 +13,19 @@ import {
   MenuItem,
   InputLabel,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import dayjs from "dayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { useSearchParams } from "react-router-dom";
 
 // Import API data
 import useGetRoles from "./data/useGetRoles";
 import usePostRegister from "./data/usePostRegister";
+import useGetInvite from "./data/useGetInvite";
 
 // Import Assets
 import "./register.css";
@@ -38,13 +40,16 @@ import * as classes from "./styles";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const [roles, isRolesError, isRolesLoading, getRoles] = useGetRoles();
   const [registerResponse, isRegisterError, isRegisterLoading, register] =
     usePostRegister();
+  const [inviteData, isInviteError, isInviteLoading, getInvite] =
+    useGetInvite();
 
   const [snackbarStates, setSnackbarStates] = useState({
-    open: false, 
+    open: false,
     message: "",
     severity: "success",
   });
@@ -57,6 +62,31 @@ const SignUp = () => {
   const [dob, setDob] = useState({});
   const [orgName, setOrgName] = useState("");
   const [role, setRole] = useState("");
+  const[organizationID, setOrganizationID] = useState('');
+  const[invitationID, setInvitationID] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const invitationIDParam = searchParams.get("i_id");
+  console.log("invitationIDParam:", invitationIDParam);
+
+  useEffect(() => {
+    if (invitationIDParam) {
+      getInvite(invitationIDParam);
+    }
+  }, [invitationIDParam]);
+
+  // console.log('searchParams', searchParams.get("i_id"));
+
+  useEffect(() => {
+    if (inviteData) {
+      console.log("inviteData:", inviteData.organization.name);
+      setOrgName(inviteData.organization.name);
+      setEmail(inviteData.sent_to);
+      setRole(inviteData.for_role);
+      setOrganizationID(inviteData.organization.id);
+      setInvitationID(inviteData.id);
+
+    }
+  }, [inviteData]);
 
   useEffect(() => {
     if (registerResponse) {
@@ -93,7 +123,8 @@ const SignUp = () => {
       message: "",
       severity: "success",
     });
-  }; 
+  };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -107,9 +138,10 @@ const SignUp = () => {
       phone_number: phoneNo,
       date_of_birth: dayjs(dob).format("YYYY-MM-DD"),
       role: role,
-      // organization_id: 1,
+      organization_id: organizationID,
+      invitation_id: invitationID,
     };
-    register(userInfo);
+    register(userInfo); 
   };
 
   return (
@@ -159,6 +191,7 @@ const SignUp = () => {
             sx={classes.textFields}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            disabled={inviteData ? true : false}
           />
           <FormControl>
             <FormLabel sx={classes.inputLabels}>Gender</FormLabel>
@@ -223,7 +256,8 @@ const SignUp = () => {
             sx={classes.textFields}
             value={orgName}
             onChange={(e) => setOrgName(e.target.value)}
-          /> 
+            disabled={inviteData ? true : false}
+          />
           <FormControl>
             <FormLabel sx={classes.inputLabels}>Role</FormLabel>
             {!isRolesLoading && roles ? (
@@ -234,6 +268,8 @@ const SignUp = () => {
                 sx={classes.textFields}
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
+                disabled={inviteData ? true : false}
+
               >
                 {Object.keys(roles).map((key) => (
                   <MenuItem key={key} value={key}>
