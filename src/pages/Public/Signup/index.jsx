@@ -13,7 +13,7 @@ import {
   MenuItem,
   InputLabel,
 } from "@mui/material";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import dayjs from "dayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -40,12 +40,11 @@ import * as classes from "./styles";
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const { id } = useParams();
 
   const [roles, isRolesError, isRolesLoading, getRoles] = useGetRoles();
   const [registerResponse, isRegisterError, isRegisterLoading, register] =
     usePostRegister();
-  const [inviteData, isInviteError, isInviteLoading, getInvite] =
+  const [inviteData, getInvite] =
     useGetInvite();
 
   const [snackbarStates, setSnackbarStates] = useState({
@@ -77,10 +76,10 @@ const SignUp = () => {
   // console.log('searchParams', searchParams.get("i_id"));
 
   useEffect(() => {
-    if (inviteData) {
+    if (inviteData) { 
       console.log("inviteData:", inviteData.organization.name);
       setOrgName(inviteData.organization.name);
-      setEmail(inviteData.sent_to);
+      setEmail(inviteData.sent_to); 
       setRole(inviteData.for_role);
       setOrganizationID(inviteData.organization.id);
       setInvitationID(inviteData.id);
@@ -128,8 +127,23 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const userInfo = {
-      first_name: firstName,
+    let userInfo = {};
+    if(organizationID==="" && invitationID===""){
+      userInfo={
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
+        gender: parseInt(gender),
+        password: password,
+        organization_name: orgName,
+        phone_number: phoneNo,
+        date_of_birth: dayjs(dob).format("YYYY-MM-DD"),
+        role: role,
+      }
+    }
+    else{
+      userInfo={
+        first_name: firstName,
       last_name: lastName,
       email: email,
       gender: parseInt(gender),
@@ -140,9 +154,11 @@ const SignUp = () => {
       role: role,
       organization_id: organizationID,
       invitation_id: invitationID,
-    };
+      }
+    }
     register(userInfo); 
-  };
+    }; 
+
 
   return (
     <Box className="container">
