@@ -1,61 +1,68 @@
 export const drawerHeader = {
-    display: "flex",
-    justifyContent: "space-between",
-    gap: "400px",
-    color: "#194D6B",
-    padding: "55px 55px 0px 55px ",
+  display: "flex",
+  justifyContent: "space-between",
+  gap: "400px",
+  flex: "0 1 auto",
+  color: "#194D6B",
 };
-  
+
 export const drawerTextField = {
-    padding: "40px 55px 0px 57px",
-    width: "80%",
-    display: "flex",
-    flexDirection: "column",
+  padding: "24px 0",
+  width: "100%",
+  display: "flex",
+  flexDirection: "column",
+  flex: "1 1 auto",
 };
 
 export const addBatchTextFieldContainer = {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "flex-start",
+  flex: "1 1 auto",
+  overflowY: "auto",
+  paddingTop: "10px",
+  height: "100px",
 };
-  
+
 export const addRemoveIcon = {
-    color: "#194D6B",
-    bgcolor: "#F1FAFF",
+  color: "#194D6B",
+  bgcolor: "#F1FAFF",
+};
+export const inputFields = {
+  flex: "0 1 auto",
 };
 
 export const okButtonContainer = {
-    display: "flex",
-    justifyContent: "flex-end",
-    padding: "200px 55px 0px 57px",
+  display: "flex",
+  flex: "0 1 auto",
+  justifyContent: "flex-end",
 };
-  
-export const okButton = {
-    backgroundColor: "#4E90B5",
-    "&:hover": {
-      backgroundColor: "#194D6B",
-      color: "#fff",
-    },
-    color: "black",
-    borderRadius: "4px",
-    width: "20%",
-    height: "100%",
-};
-  
-export const addCourse = {
-    color: "white",
-    backgroundColor: "#4E90B5",
-    fontFamily: "Cabin-Regular",
-    "&:hover": {
-      backgroundColor: "#194D6B",
-    },
-    borderRadius: "4px",
-  };
 
-  export const drawerContainer = {
-    padding: "16px",
-    height: "100vh",
-    display: "flex",
-    flexFlow: "column",
-  };
-  
+export const okButton = {
+  backgroundColor: "#4E90B5",
+  color: "#fff",
+  borderRadius: "4px",
+  width: "20%",
+  height: "100%",
+
+  "&:hover": {
+    backgroundColor: "#194D6B",
+  },
+};
+
+export const addCourse = {
+  color: "white",
+  backgroundColor: "#4E90B5",
+  fontFamily: "Cabin-Regular",
+  "&:hover": {
+    backgroundColor: "#194D6B",
+  },
+  borderRadius: "4px",
+};
+
+export const drawerContainer = {
+  padding: "16px",
+  height: "100vh",
+  display: "flex",
+  flexFlow: "column",
+};

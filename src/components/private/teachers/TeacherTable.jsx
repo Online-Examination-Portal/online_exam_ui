@@ -5,19 +5,17 @@ import {
   TableHead,
   TableBody,
   TableCell,
-  TableContainer, 
-  TableRow
+  TableContainer,
+  TableRow,
 } from "@mui/material";
 // import ViewDetails from "./ViewDetails.jsx";
 import teachersdata from "./data/teachersdata";
-import * as classes from './styles'
+import * as classes from "./styles";
 import TeacherDetailsDrawer from "../../../modules/TeacherDetailsDrawer";
 
 const TeachersTable = () => {
   return (
-    <Paper
-      sx={classes.teachersPaperComponent}
-    >
+    <Paper sx={classes.teachersPaperComponent}>
       <TableContainer sx={{ height: "100%" }}>
         <Table stickyHeader sx={{ width: "100%" }}>
           <TableHead>
@@ -27,19 +25,16 @@ const TeachersTable = () => {
               <TableCell align="center">Course</TableCell>
               <TableCell align="center">Total Batches</TableCell>
               <TableCell align="center">View Details</TableCell>
-            </TableRow> 
+            </TableRow>
           </TableHead>
           <TableBody>
             {teachersdata.map((data) => (
-              <TableRow
-                key={data.id}
-                sx={classes.teachersTableBodyRow}
-              >
+              <TableRow key={data.id} sx={classes.teachersTableBodyRow}>
                 <TableCell align="center">{data.ID}</TableCell>
                 <TableCell align="center">{data.name}</TableCell>
                 <TableCell align="center">{data.course}</TableCell>
                 <TableCell align="center">{data.totalbatch}</TableCell>
-                <TableCell align="center">{<TeacherDetailsDrawer/>}</TableCell>
+                <TableCell align="center">{<TeacherDetailsDrawer />}</TableCell>
                 {/*<TableCell>
                    <Box
                   // sx={{
