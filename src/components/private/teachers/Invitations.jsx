@@ -21,85 +21,84 @@ import useGetInviteStatus from "../../../modules/AddTeacherDrawer/data/useGetInv
 
 const Invitation = () => {
   const [selectedValue, setSelectedValue] = useState("");
-  const [inviteData, isInviteError, isInviteLoading, getTeacherInvites] = useGetInvite();
-  const [statusData, isStatusError, isStatusLoading, getStatus] = useGetInviteStatus();
-
-  useEffect(() => {
-    if(inviteData){
-       console.log('inviteData', inviteData)
-    }
-    getTeacherInvites();
-  },[inviteData]); 
+  const [inviteData, isInviteError, isInviteLoading, getTeacherInvites] =
+    useGetInvite();
+  const [statusData, isStatusError, isStatusLoading, getStatus] =
+    useGetInviteStatus();
 
   useEffect(() => {
     getStatus();
-  }, [])
-
+    getTeacherInvites();
+  }, []);
 
   return (
     <>
-    {inviteData && 
-    <Table stickyHeader sx={{ height: "100%", width: "100%" }}>
-      <TableBody>
-       
-        {inviteData.rows.map((row, i) => (
-          <TableRow key={i} row={row}>
-            {inviteData.columnName.map((column) => {
-              const value = row[column.id];
-              return (
-                <TableCell> 
-                  {column.type === "IconButton" ? (
-                    <IconButton sx={{ color: "#4E90B5" }}>
-                      <AccountCircleIcon />
-                    </IconButton>
-                  ) : column.type === "email" ? (
-                    <Box sx={{ fontSize: "15px", color: "#4E90B5" }}>
-                      {value}
-                    </Box>
-                  ) : column.type === "static" ? (
-                    <Typography variant="caption" sx={classes.invitationStatus}>
-                      {value}
-                    </Typography>
-                  ) : column.type === "dropdown" ? (
-                    <FormControl>
-                      {!isStatusLoading && statusData ? (
-                          <Select
-                          id= 'status'
-                          value={selectedValue}
-                          onChange={(e) => setSelectedValue(e.target.value)}
-                          displayEmpty
-                          inputProps={{ "aria-label": "Without label" }}
-                          sx={classes.roleInvitaion}
-                        >
-                          {Object.keys(statusData).map((key) => (
-                  <MenuItem key={key} value={key}>
-                    {statusData[key]}
-                  </MenuItem>
-                ))}
-                          {/* <MenuItem value="">
+      {isInviteLoading
+        ? "...Loading"
+        : inviteData && (
+            <Table stickyHeader sx={{ height: "100%", width: "100%" }}>
+              <TableBody>
+                {inviteData.rows.map((row, i) => (
+                  <TableRow key={i} row={row}>
+                    {inviteData.columnName.map((column) => {
+                      const value = row[column.id];
+                      return (
+                        <TableCell>
+                          {column.type === "IconButton" ? (
+                            <IconButton sx={{ color: "#4E90B5" }}>
+                              <AccountCircleIcon />
+                            </IconButton>
+                          ) : column.type === "email" ? (
+                            <Box sx={{ fontSize: "15px", color: "#4E90B5" }}>
+                              {value}
+                            </Box>
+                          ) : column.type === "static" ? (
+                            <Typography
+                              variant="caption"
+                              sx={classes.invitationStatus}
+                            >
+                              {value}
+                            </Typography>
+                          ) : column.type === "dropdown" ? (
+                            <FormControl>
+                              {!isStatusLoading && statusData ? (
+                                <Select
+                                  id="status"
+                                  value={selectedValue}
+                                  onChange={(e) =>
+                                    setSelectedValue(e.target.value)
+                                  }
+                                  displayEmpty
+                                  inputProps={{ "aria-label": "Without label" }}
+                                  sx={classes.roleInvitaion}
+                                >
+                                  {Object.keys(statusData).map((key) => (
+                                    <MenuItem key={key} value={key}>
+                                      {statusData[key]}
+                                    </MenuItem>
+                                  ))}
+                                  {/* <MenuItem value="">
                             <em>Role</em>
                           </MenuItem>
                           <MenuItem value="0">Teacher</MenuItem>
                           <MenuItem value="1">Student</MenuItem>
                           <MenuItem value="2">Admin</MenuItem> */}
-                        </Select>
-                      ): null}
-                        
-                      
-                      
-                    </FormControl>
-                  ) : column.type === "button" ? (
-                    <Button sx={classes.invitationRemove}>Remove</Button>
-                  ) : null}
-                </TableCell>
-              );
-            })}
-          </TableRow>
-        ))}
-          
-      </TableBody>
-    </Table>
-    }
+                                </Select>
+                              ) : null}
+                            </FormControl>
+                          ) : column.type === "button" ? (
+                            <Button sx={classes.invitationRemove}>
+                              Remove
+                            </Button>
+                          ) : null}
+                        </TableCell>
+                      );
+                    })}
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          )}
     </>
   );
 };

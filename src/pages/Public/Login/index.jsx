@@ -15,8 +15,7 @@ import {
   FormControl,
   FormHelperText,
 } from "@mui/material";
-import { UserDetailsContext } from "../../../App";
-import { AuthStateContext } from "../../../App";
+import { UserDetailsContext, AuthStateContext } from "../../../App";
 import * as classes from "./styles";
 
 const Login = () => {
@@ -49,7 +48,7 @@ const Login = () => {
       setUserDetails(data);
       setIsAuthenticated(true);
       redirect("/home");
-    } else if (isError !== "") {
+    } else if (isError === "Invalid Credentials, Please try again") {
       setSnackbarState(true);
     }
   }, [isError, data, isLoading]);

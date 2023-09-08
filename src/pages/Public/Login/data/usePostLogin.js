@@ -7,7 +7,7 @@ const usePostLogin = () => {
     useAPICall(undefined, "");
 
   const defaultFallback = (msg = en.something_went_wrong) => {
-    setError("Invalid Credentials, Please try again");
+    setError(msg);
     setSuccessData(undefined);
   };
 
@@ -28,10 +28,11 @@ const usePostLogin = () => {
             gender: data.member.user.gender,
           };
           setSuccessData(userInfo);
+          setError("");
           sessionStorage.setItem("token", data.token);
           sessionStorage.setItem("userInfo", JSON.stringify(userInfo));
         } else {
-          defaultFallback();
+          defaultFallback("Invalid Credentials, Please try again");
         }
       },
     },

@@ -10,7 +10,7 @@ const useGetInvite = () => {
     setError(true);
     setSuccessData(undefined);
   };
- 
+
   const statusObj = [
     {
       status_code: 200,
@@ -18,33 +18,49 @@ const useGetInvite = () => {
       callBack: (res) => {
         const data = res.data;
         if (data && typeof data === "object") {
-          console.log("getData:", data)
-          const responseData = {columnName : [
-            {
-              id: 'profile',
-              label: 'profile',
-              type: 'IconButton'
-           },
-           {
-               id: "sent_to", 
-               label: 'Email',
-               type: 'email',
-   
-           },
-           { 
-               id: "status",
-               label: 'Status',
-               type: 'static', 
-   
-           },
-           {
-               id: 'remove',
-               label: 'remove',
-               type: 'button'
-           }
-          ],
-          rows: data
-        }
+          const results = data.results.map((item) => {
+            if (item.status === 0) {
+              return {
+                ...item,
+                status: "Pending",
+              };
+            } else if (item.status === 1) {
+              return {
+                ...item,
+                status: "Accepted",
+              };
+            } else if (item.status === 2) {
+              return {
+                ...item,
+                status: "Rejected",
+              };
+            }
+          });
+          const responseData = {
+            columnName: [
+              {
+                id: "profile",
+                label: "profile",
+                type: "IconButton",
+              },
+              {
+                id: "sent_to",
+                label: "Email",
+                type: "email",
+              },
+              {
+                id: "status",
+                label: "Status",
+                type: "static",
+              },
+              {
+                id: "remove",
+                label: "remove",
+                type: "button",
+              },
+            ],
+            rows: results,
+          };
           setSuccessData(responseData);
         } else {
           defaultFallback();
@@ -62,8 +78,8 @@ const useGetInvite = () => {
       callBack: defaultFallback,
     },
   ];
- 
-  const getTeacherInvites = (body) => { 
+
+  const getTeacherInvites = (body) => {
     const url = LIST_TEACHER_INVITES;
     callGetData({
       url,
