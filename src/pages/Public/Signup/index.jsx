@@ -12,6 +12,7 @@ import {
   Select,
   MenuItem,
   InputLabel,
+  ButtonGroup
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
@@ -44,8 +45,7 @@ const SignUp = () => {
   const [roles, isRolesError, isRolesLoading, getRoles] = useGetRoles();
   const [registerResponse, isRegisterError, isRegisterLoading, register] =
     usePostRegister();
-  const [inviteData, getInvite] =
-    useGetInvite();
+  const [inviteData, , , getInvite] = useGetInvite();
 
   const [snackbarStates, setSnackbarStates] = useState({
     open: false,
@@ -61,8 +61,8 @@ const SignUp = () => {
   const [dob, setDob] = useState({});
   const [orgName, setOrgName] = useState("");
   const [role, setRole] = useState("");
-  const[organizationID, setOrganizationID] = useState('');
-  const[invitationID, setInvitationID] = useState('');
+  const [organizationID, setOrganizationID] = useState("");
+  const [invitationID, setInvitationID] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
   const invitationIDParam = searchParams.get("i_id");
   console.log("invitationIDParam:", invitationIDParam);
@@ -71,19 +71,16 @@ const SignUp = () => {
     if (invitationIDParam) {
       getInvite(invitationIDParam);
     }
-  }, [invitationIDParam]);
-
-  // console.log('searchParams', searchParams.get("i_id"));
+  }, [getInvite, invitationIDParam]);
 
   useEffect(() => {
-    if (inviteData) { 
+    if (inviteData) {
       console.log("inviteData:", inviteData.organization.name);
       setOrgName(inviteData.organization.name);
-      setEmail(inviteData.sent_to); 
+      setEmail(inviteData.sent_to);
       setRole(inviteData.for_role);
       setOrganizationID(inviteData.organization.id);
       setInvitationID(inviteData.id);
-
     }
   }, [inviteData]);
 
@@ -114,7 +111,7 @@ const SignUp = () => {
 
   useEffect(() => {
     getRoles();
-  }, []);
+  }, [getRoles]);
 
   const resetSnackbar = (state) => {
     setSnackbarStates({
@@ -124,12 +121,11 @@ const SignUp = () => {
     });
   };
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     let userInfo = {};
-    if(organizationID==="" && invitationID===""){
-      userInfo={
+    if (organizationID === "" && invitationID === "") {
+      userInfo = {
         first_name: firstName,
         last_name: lastName,
         email: email,
@@ -139,26 +135,24 @@ const SignUp = () => {
         phone_number: phoneNo,
         date_of_birth: dayjs(dob).format("YYYY-MM-DD"),
         role: role,
-      }
-    }
-    else{
-      userInfo={
+      };
+    } else {
+      userInfo = {
         first_name: firstName,
-      last_name: lastName,
-      email: email,
-      gender: parseInt(gender),
-      password: password,
-      organization_name: orgName,
-      phone_number: phoneNo,
-      date_of_birth: dayjs(dob).format("YYYY-MM-DD"),
-      role: role,
-      organization_id: organizationID,
-      invitation_id: invitationID,
-      }
+        last_name: lastName,
+        email: email,
+        gender: parseInt(gender),
+        password: password,
+        organization_name: orgName,
+        phone_number: phoneNo,
+        date_of_birth: dayjs(dob).format("YYYY-MM-DD"),
+        role: role,
+        organization_id: organizationID,
+        invitation_id: invitationID,
+      };
     }
-    register(userInfo); 
-    }; 
-
+    register(userInfo);
+  };
 
   return (
     <Box className="container">
@@ -218,10 +212,22 @@ const SignUp = () => {
               value={gender}
               onChange={(e) => setGender(e.target.value)}
             >
-              <FormControlLabel value="0" control={<Radio />} label="Male" />
-              <FormControlLabel value="1" control={<Radio />} label="Female" />
-              <FormControlLabel value="2" control={<Radio />} label="Other" />
+              <FormControlLabel value="1" control={<Radio />} label="Male" />
+              <FormControlLabel value="2" control={<Radio />} label="Female" />
+              <FormControlLabel value="3" control={<Radio />} label="Other" />
             </RadioGroup>
+            {/* <ButtonGroup
+              variant="contained"
+              aria-label="outlined primary button group"
+              size="small"
+              sx={{ mb: "30px" }}
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+            >
+              <Button value="1">Male</Button>
+              <Button value="2">Female</Button>
+              <Button value="3">Other</Button>
+            </ButtonGroup> */}
           </FormControl>
           <InputLabel sx={classes.inputLabels}>Password</InputLabel>
           <TextField
@@ -285,7 +291,6 @@ const SignUp = () => {
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
                 disabled={inviteData ? true : false}
-
               >
                 {Object.keys(roles).map((key) => (
                   <MenuItem key={key} value={key}>

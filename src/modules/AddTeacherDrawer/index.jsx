@@ -37,7 +37,7 @@ const TeacherDrawer = () => {
 
   const sendInvite = (e) => { 
     console.log("sendInvite");
-    e.preventDefault();
+    e.preventDefault(); 
     const inviteTeacherInfo = {
       send_to: email,
       for_role: INVITE_TEACHER_ROLE,
@@ -64,6 +64,7 @@ const TeacherDrawer = () => {
         message: "Invitation sent",
         severity: "success",
       });
+      setEmail('');
     } else if (isError !== "") {
       setSnackbarStates({
         open: true,

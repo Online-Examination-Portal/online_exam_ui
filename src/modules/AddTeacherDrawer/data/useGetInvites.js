@@ -2,7 +2,7 @@ import en from "../../../Lang/en.json";
 import { LIST_TEACHER_INVITES } from "../../../utilities/apis";
 import useAPICall from "../../../hooks/useAPICalls";
 
-const useGetInvite = () => {
+const  useGetInvite = () => {
   const [data, error, isLoading, callGetData, setSuccessData, setError] =
     useAPICall(undefined, "");
 
@@ -11,14 +11,14 @@ const useGetInvite = () => {
     setSuccessData(undefined);
   };
  
-  const statusObj = [
+  const statusObj = [ 
     {
       status_code: 200,
       status_txt: "OK",
       callBack: (res) => {
         const data = res.data;
         if (data && typeof data === "object") {
-          console.log("getData:", data)
+          // console.log("getData:", data)
           const responseData = {columnName : [
             {
               id: 'profile',
@@ -32,7 +32,7 @@ const useGetInvite = () => {
    
            },
            { 
-               id: "status",
+               id: "status", 
                label: 'Status',
                type: 'static', 
    

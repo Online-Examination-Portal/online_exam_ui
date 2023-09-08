@@ -3,7 +3,7 @@ import {
   Table,
   TableBody,
   TableRow,
-  TableCell,
+  TableCell, 
   Typography,
   Button,
   FormControl,
@@ -21,20 +21,13 @@ import useGetInviteStatus from "../../../modules/AddTeacherDrawer/data/useGetInv
 
 const Invitation = () => {
   const [selectedValue, setSelectedValue] = useState("");
-  const [inviteData, isInviteError, isInviteLoading, getTeacherInvites] = useGetInvite();
-  const [statusData, isStatusError, isStatusLoading, getStatus] = useGetInviteStatus();
-
-  useEffect(() => {
-    if(inviteData){
-       console.log('inviteData', inviteData)
-    }
-    getTeacherInvites();
-  },[inviteData]); 
+  const [inviteData, , , getTeacherInvites] = useGetInvite();
+  const [statusData, , isStatusLoading, getStatus] = useGetInviteStatus();
 
   useEffect(() => {
     getStatus();
-  }, [])
-
+    getTeacherInvites();
+  },[]);  
 
   return (
     <>
@@ -55,7 +48,7 @@ const Invitation = () => {
                   ) : column.type === "email" ? (
                     <Box sx={{ fontSize: "15px", color: "#4E90B5" }}>
                       {value}
-                    </Box>
+                    </Box> 
                   ) : column.type === "static" ? (
                     <Typography variant="caption" sx={classes.invitationStatus}>
                       {value}
@@ -64,7 +57,7 @@ const Invitation = () => {
                     <FormControl>
                       {!isStatusLoading && statusData ? (
                           <Select
-                          id= 'status'
+                          id= 'status' 
                           value={selectedValue}
                           onChange={(e) => setSelectedValue(e.target.value)}
                           displayEmpty
