@@ -14,7 +14,7 @@ import Invitation from "../../components/private/teachers/Invitations";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import { EditServiceStyledDrawer } from "../../components/common/styledDrawers";
 import * as classes from "./styles";
-import { INVITE_TEACHER_ROLE } from "../../components/private/constants";
+import { INVITE_TEACHER_ROLE } from "../../utilities/constants";
 
 // Import API data
 import useGetInvite from "./data/useGetInvites";

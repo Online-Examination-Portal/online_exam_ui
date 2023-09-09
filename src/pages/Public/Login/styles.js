@@ -11,16 +11,16 @@ export const inputFieldBox = {
   display: "flex",
   flexDirection: "column",
   mt: "54px",
-  width: "80%",
+  width: "100%",
 };
 
-export const label = { 
-    color: "white" 
+export const label = {
+  color: "white",
 };
 
-export const emailField = { 
-    bgcolor: "white", 
-    borderRadius: "6px" 
+export const emailField = {
+  bgcolor: "white",
+  borderRadius: "6px",
 };
 
 export const passwordField = {
@@ -45,7 +45,7 @@ export const RegisterButtonBox = {
   justifyContent: "center",
 };
 
-export const RegisterButton = { 
-    color: "#fff", 
-    fontFamily: "Inter-Regular" 
+export const RegisterButton = {
+  color: "#fff",
+  fontFamily: "Inter-Regular",
 };

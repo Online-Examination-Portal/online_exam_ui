@@ -14,23 +14,16 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
 import AppTextTooltip from "./../../common/AppTextTooltip";
 import { updateImpUpdates } from "./data/impData";
-import * as classes from './styles'
+import * as classes from "./styles";
 
 const ImpUpdates = () => {
   return (
-    <Paper
-      sx={classes.UpdatesPaperComponent}
-    >
-      <Box
-        sx={classes.updatesHeaderContainer}
-      >
+    <Paper sx={classes.UpdatesPaperComponent}>
+      <Box sx={classes.updatesHeaderContainer}>
         <Typography variant="body1" color="primary" sx={{ fontWeight: "bold" }}>
           Important Updates
         </Typography>
-        <Typography
-          variant="caption"
-          sx={classes.unreadUpdates}
-        >
+        <Typography variant="caption" sx={classes.unreadUpdates}>
           20 unread updates
         </Typography>
       </Box>
@@ -40,14 +33,14 @@ const ImpUpdates = () => {
             {updateImpUpdates.rows.map((row, i) => (
               <CustomTableRow key={i} row={row} />
             ))}
-          </TableBody> 
+          </TableBody>
         </Table>
       </TableContainer>
     </Paper>
   );
 };
 
-const CustomTableRow = ({ row, i }) => {
+const CustomTableRow = ({ row }) => {
   const [isIconsVisible, setIsIconVisible] = useState(false);
 
   return (
@@ -55,12 +48,11 @@ const CustomTableRow = ({ row, i }) => {
       onMouseEnter={() => setIsIconVisible(true)}
       onMouseLeave={() => setIsIconVisible(false)}
       sx={classes.updatesTablerow}
-      key={i}
     >
-      {updateImpUpdates.columnName.map((column) => {
+      {updateImpUpdates.columnName.map((column, keyId) => {
         const value = row[column.id];
         return (
-          <TableCell key={i}>
+          <TableCell key={keyId}>
             {column.type === "url" ? (
               <Box sx={{ cursor: "pointer" }}>{value}</Box>
             ) : column.type === "timeStamp" ? (

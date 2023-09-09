@@ -3,25 +3,28 @@ export const signupOuterContainer = {
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "flex-start",
-  width: "40%",
-  height: "90%",
+  width: "100%",
+  height: "100%",
   overflow: "auto",
   scrollbarWidth: "none",
+  zIndex: 2,
+
   "&::-webkit-scrollbar": {
-    display: "none",
+    // display: "none",
   },
 };
 
 export const signupInnerContainer = {
   display: "flex",
   flexDirection: "column",
-  width: "80%",
+  width: "40%",
 };
 
 export const nameFieldBox = {
   mb: "30px",
   display: "flex",
   alignItems: "center",
+  justifyContent: "space-between",
 };
 
 export const nameFieldLabel = {
@@ -29,6 +32,7 @@ export const nameFieldLabel = {
   fontSize: "14px",
   display: "flex",
   flexDirection: "column",
+  width: "45%",
 };
 
 export const nameTextField = {

@@ -65,48 +65,49 @@ const Login = () => {
           <Typography variant="h6" gutterBottom sx={{ textAlign: "center" }}>
             Welcome back! Please enter your details
           </Typography>
-          <Box sx={classes.inputFieldBox}>
-            <InputLabel sx={classes.label}>E-mail</InputLabel>
-            <FormControl error={isError} sx={{ mb: "30px" }}>
+          <form onSubmit={handleSubmit} style={{ width: "80%" }}>
+            <Box sx={classes.inputFieldBox}>
+              <InputLabel sx={classes.label}>E-mail</InputLabel>
+              <FormControl error={isError} sx={{ mb: "30px" }}>
+                <TextField
+                  id="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  type="email"
+                  variant="outlined"
+                  size="small"
+                  sx={classes.emailField}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                {!isEmailValid ? (
+                  <FormHelperText sx={{ fontFamily: "Cabin-Regular" }}>
+                    Invalid Email
+                  </FormHelperText>
+                ) : null}
+              </FormControl>
+
+              <InputLabel sx={classes.label}>Password</InputLabel>
               <TextField
-                id="email"
-                name="email"
-                placeholder="Enter your email"
-                type="email"
-                variant="outlined"
+                id="password"
+                placeholder="Enter your password"
+                type="password"
                 size="small"
-                sx={classes.emailField}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                sx={classes.passwordField}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
-              {!isEmailValid ? (
-                <FormHelperText sx={{ fontFamily: "Cabin-Regular" }}>
-                  Invalid Email
-                </FormHelperText>
-              ) : null}
-            </FormControl>
 
-            <InputLabel sx={classes.label}>Password</InputLabel>
-            <TextField
-              id="password"
-              placeholder="Enter your password"
-              type="password"
-              size="small"
-              sx={classes.passwordField}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-
-            <Button
-              variant="contained"
-              type="submit"
-              size="normal"
-              onClick={handleSubmit}
-              sx={classes.SignInButton}
-            >
-              Sign In
-            </Button>
-          </Box>
+              <Button
+                variant="contained"
+                type="submit"
+                size="normal"
+                sx={classes.SignInButton}
+              >
+                Sign In
+              </Button>
+            </Box>
+          </form>
           <Box sx={classes.RegisterButtonBox}>
             <Typography variant="body2" sx={{ color: "black" }}>
               Don't have an account ?
