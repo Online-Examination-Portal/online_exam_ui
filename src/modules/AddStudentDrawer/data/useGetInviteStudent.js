@@ -1,13 +1,13 @@
 import en from "../../../Lang/en.json";
-import { LIST_TEACHER_INVITES } from "../../../utilities/apis";
+import { LIST_STUDENT_INVITES } from "../../../utilities/apis";
 import useAPICall from "../../../hooks/useAPICalls";
 
-const  useGetInvite = () => {
+const  useGetInviteStudent = () => {
   const [data, error, isLoading, callGetData, setSuccessData, setError] =
     useAPICall(undefined, "");
 
   const defaultFallback = (msg = en.something_went_wrong) => {
-    setError(true); 
+    setError(true);
     setSuccessData(undefined);
   };
 
@@ -79,8 +79,8 @@ const  useGetInvite = () => {
     },
   ];
 
-  const getTeacherInvites = (body) => {
-    const url = LIST_TEACHER_INVITES;
+  const getStudentInvite = (body) => {
+    const url = LIST_STUDENT_INVITES;
     callGetData({
       url,
       method: "get",
@@ -89,7 +89,7 @@ const  useGetInvite = () => {
       body,
     });
   };
-  return [data, error, isLoading, getTeacherInvites, setSuccessData, setError];
+  return [data, error, isLoading, getStudentInvite, setSuccessData, setError];
 };
 
-export default useGetInvite;
+export default useGetInviteStudent;

@@ -1,20 +1,20 @@
-import en from "../../../../Lang/en.json";
-import { GET_INVITE_URL } from "../../../../utilities/apis";
-import useAPICall from "../../../../hooks/useAPICalls";
+import en from "../../../Lang/en.json";
+import { INVITE_STUDENT } from "../../../utilities/apis";
+import useAPICall from "../../../hooks/useAPICalls";
 
-const useGetInvite = () => {
+const usePostInviteStudent = () => {
   const [data, error, isLoading, callGetData, setSuccessData, setError] =
     useAPICall(undefined, "");
 
   const defaultFallback = (msg = en.something_went_wrong) => {
-    setError(true);
+    setError(msg);
     setSuccessData(undefined);
   };
-  
+ 
   const statusObj = [
-    { 
-      status_code: 200,
-      status_txt: "OK",
+    {
+      status_code: 201,
+      status_txt: "Created",
       callBack: (res) => {
         const data = res.data;
         if (data && typeof data === "object") {
@@ -35,19 +35,18 @@ const useGetInvite = () => {
       callBack: defaultFallback,
     },
   ];
- 
-  const getInvite = (invitation_id) => {
-    const url = GET_INVITE_URL.replace("{invitation_id}", invitation_id);
-    console.log("getinviteURL:", GET_INVITE_URL);
-    console.log('invitationID:',invitation_id);
+
+  const postInviteStudent = (body) => {
+    const url = INVITE_STUDENT;
     callGetData({
       url,
-      method: "get",
+      method: "post",
       statusObj,
       defaultFallback,
+      body,
     });
   };
-  return [data, error, isLoading, getInvite, setSuccessData, setError];
+  return [data, error, isLoading, postInviteStudent, setSuccessData, setError];
 };
 
-export default useGetInvite;
+export default usePostInviteStudent;

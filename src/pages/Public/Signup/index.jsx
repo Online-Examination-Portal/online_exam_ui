@@ -65,23 +65,22 @@ const SignUp = () => {
   const [invitationID, setInvitationID] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
   const invitationIDParam = searchParams.get("i_id");
-  console.log("invitationIDParam:", invitationIDParam);
 
   useEffect(() => {
     if (invitationIDParam) {
       getInvite(invitationIDParam);
     }
-  }, [getInvite, invitationIDParam]);
+  }, [invitationIDParam]);
 
   useEffect(() => {
     if (inviteData) {
-      console.log("inviteData:", inviteData.organization.name);
+      // console.log("inviteData:", inviteData.organization.name);
       setOrgName(inviteData.organization.name);
       setEmail(inviteData.sent_to);
       setRole(inviteData.for_role);
       setOrganizationID(inviteData.organization.id);
       setInvitationID(inviteData.id);
-    }
+    } 
   }, [inviteData]);
 
   useEffect(() => {
@@ -111,7 +110,7 @@ const SignUp = () => {
 
   useEffect(() => {
     getRoles();
-  }, [getRoles]);
+  }, []);
 
   const resetSnackbar = (state) => {
     setSnackbarStates({
@@ -205,7 +204,7 @@ const SignUp = () => {
           />
           <FormControl>
             <FormLabel sx={classes.inputLabels}>Gender</FormLabel>
-            <RadioGroup
+            {/* <RadioGroup
               row
               size="small"
               sx={{ mb: "30px" }}
@@ -215,8 +214,8 @@ const SignUp = () => {
               <FormControlLabel value="1" control={<Radio />} label="Male" />
               <FormControlLabel value="2" control={<Radio />} label="Female" />
               <FormControlLabel value="3" control={<Radio />} label="Other" />
-            </RadioGroup>
-            {/* <ButtonGroup
+            </RadioGroup> */}
+            <ButtonGroup
               variant="contained"
               aria-label="outlined primary button group"
               size="small"
@@ -227,7 +226,7 @@ const SignUp = () => {
               <Button value="1">Male</Button>
               <Button value="2">Female</Button>
               <Button value="3">Other</Button>
-            </ButtonGroup> */}
+            </ButtonGroup> 
           </FormControl>
           <InputLabel sx={classes.inputLabels}>Password</InputLabel>
           <TextField

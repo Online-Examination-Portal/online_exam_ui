@@ -17,9 +17,7 @@ const useGetInviteStatus = () => {
       status_txt: "OK",
       callBack: (res) => {
         const data = res.data;
-        if (data && typeof data === "object") {
-          console.log("statusP_or_A", data);
-          
+        if (data && typeof data === "object") {          
           setSuccessData(data);
         } else {
           defaultFallback();

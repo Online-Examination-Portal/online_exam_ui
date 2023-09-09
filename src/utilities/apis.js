@@ -9,3 +9,10 @@ export const INVITE_TEACHER = `${process.env.REACT_APP_ENDPOINT}/organization/ap
 export const LIST_TEACHER_INVITES = `${process.env.REACT_APP_ENDPOINT}/organization/api/list-invitations/`;
 export const GET_INVITE_STATUS = `${process.env.REACT_APP_ENDPOINT}/organization/api/get-invitation-status-choices/`;
 export const GET_INVITE_URL = `${process.env.REACT_APP_ENDPOINT}/organization/api/get-invitation/{invitation_id}/`;
+
+//student urls
+export const INVITE_STUDENT = `${process.env.REACT_APP_ENDPOINT}/organization/api/invite/`;
+export const LIST_STUDENT_INVITES = `${process.env.REACT_APP_ENDPOINT}/organization/api/list-invitations/`;
+export const GET_INVITE_STATUS_STUDENT = `${process.env.REACT_APP_ENDPOINT}/organization/api/get-invitation-status-choices/`;
+// export const GET_INVITE_URL = `${process.env.REACT_APP_ENDPOINT}/organization/api/get-invitation/{invitation_id}/`;
+
