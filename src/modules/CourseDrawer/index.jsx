@@ -1,4 +1,4 @@
-import { Box, Button, Typography, IconButton, TextField } from "@mui/material";
+import { Box, Button, Typography, IconButton, TextField, FormControl, Select, MenuItem, FormLabel, InputLabel } from "@mui/material";
 import React, { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
@@ -8,6 +8,9 @@ import { EditServiceStyledDrawer } from "../../components/common/styledDrawers";
 
 const CourseDrawer = ({ isOpen, toggleDrawer }) => {
   const [textFields, setTextFields] = useState([]);
+  const [courseName, setCourseName] = useState();
+  const [selectTeacher, setSelectedTeacher] = useState();
+  const [batch, setBatch] = useState();
 
   const handleTextChange = (e, index) => {
     const updatedTextFields = [...textFields]; //why shallow copy
@@ -17,6 +20,7 @@ const CourseDrawer = ({ isOpen, toggleDrawer }) => {
 
   const handleAddTextField = () => {
     setTextFields([...textFields, ""]);
+
   };
 
   const handleRemoveTextField = () => {
@@ -33,7 +37,6 @@ const CourseDrawer = ({ isOpen, toggleDrawer }) => {
       onClose={toggleDrawer}
     >
       <Box sx={classes.drawerContainer}>
-        {/* <Drawer anchor="right" open={isOpen} onClose={toggleDrawer}> */}
         <Box sx={classes.drawerHeader}>
           <Typography variant="h4" sx={{ fontWeight: 600 }}>
             Add Course
@@ -52,16 +55,24 @@ const CourseDrawer = ({ isOpen, toggleDrawer }) => {
             size="small"
             sx={classes.inputFields}
           />
-          <TextField
+          <FormControl>
+            <InputLabel>Select Teacher</InputLabel>
+            <Select
             fullWidth
             id="select_teacher"
             label="Select Teacher"
             type="text"
             variant="outlined"
             size="small"
+            value={selectTeacher}
             sx={classes.inputFields}
-          />
+            >
+              <MenuItem value="1">A</MenuItem>
+              <MenuItem value="2">B</MenuItem>
+              <MenuItem value="3">C</MenuItem>
 
+            </Select>
+          </FormControl>
           <Box gap={4} sx={classes.addBatchTextFieldContainer}>
             {textFields.map((value, index) => (
               <TextField

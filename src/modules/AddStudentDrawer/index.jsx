@@ -1,36 +1,115 @@
-import { Box, Button, Typography, IconButton, FormControl, InputLabel, OutlinedInput } from '@mui/material';
-import React, { useState } from 'react'
-import * as classes from './styles'
+import {
+  Box,
+  Button,
+  Typography,
+  IconButton,
+  FormControl,
+  InputLabel,
+  OutlinedInput,
+  FormHelperText,
+} from "@mui/material";
+import React, { useState, useEffect } from "react";
+import * as classes from "./styles";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import { EditServiceStyledDrawer } from "../../components/common/styledDrawers";
 import CloseIcon from "@mui/icons-material/Close";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
-import InvitationStudent from '../../components/private/students/invitationStudents';
+import InvitationStudent from "../../components/private/students/invitationStudents";
+import { INVITE_STUDENT_ROLE } from "../../utilities/constants";
 
+// Import API data
+import usePostInviteStudent from "./data/usePostInviteStudent";
+import useGetInviteStudent from "./data/useGetInviteStudent";
+
+// Import Components
+import AppSnackbar from "../../components/common/AppSnackbar";
 
 const AddStudentDrawer = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const toggleDrawer = () => {
-        setIsOpen(!isOpen);
-      };
+  const [isOpen, setIsOpen] = useState(false);
+  const [data, isError, isLoading, inviteStudent] = usePostInviteStudent();
+  const [inviteStudentData, isInviteError, isInviteLoading, getStudentInvite] = useGetInviteStudent();
 
-    return(
-      <React.Fragment>
-        <Box>
-        <Button 
-            startIcon={<AddRoundedIcon />}
-            onClick={toggleDrawer}
-            sx={classes.addStudentButton}
-          >
-            Add Student
-          </Button>
-          
-          <EditServiceStyledDrawer
+  const [email, setEmail] = useState("");
+  const [isEmailValid, setIsEmailValid] = useState(true);
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+    return emailRegex.test(email);
+  };
+
+  const [snackbarStates, setSnackbarStates] = useState({
+    open: false, 
+    message: "",
+    severity: "success",
+  });
+
+  const sendInvite = (e) => {
+    e.preventDefault();
+    const inviteStudentInfo = {
+      send_to: email,
+      for_role: INVITE_STUDENT_ROLE,
+    };
+    inviteStudent(inviteStudentInfo);
+    getStudentInvite();
+    setIsEmailValid(validateEmail(email));
+  };
+
+  useEffect(() => {
+    if (isInviteError) {
+      setSnackbarStates({
+        open: true,
+        message: "Error! Unable to load user roles",
+        severity: "error",
+      });
+    }
+  }, [inviteStudentData, isInviteError, isInviteLoading]);
+
+  useEffect(() => {
+    if (data) {
+      setSnackbarStates({
+        open: true,
+        message: "Invitation sent",
+        severity: "success",
+      });
+      setEmail("");
+    } else if (isError !== "") {
+      setSnackbarStates({
+        open: true,
+        message: "Something went wrong",
+        severity: "error",
+      });
+    }
+  }, [data, isError, isLoading]);
+
+  const resetSnackbar = (state) => {
+    setSnackbarStates({
+      open: state,
+      message: "",
+      severity: "success",
+    });
+  };
+
+  const toggleDrawer = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <React.Fragment>
+      <Box>
+        <Button
+          startIcon={<AddRoundedIcon />}
+          onClick={toggleDrawer}
+          sx={classes.addStudentButton}
+        >
+          Add Student
+        </Button>
+
+        <EditServiceStyledDrawer
           anchor="right"
-          open={isOpen} 
+          open={isOpen}
           onClose={toggleDrawer}
         >
-          <Box sx={classes.drawerContainer}> 
+          <Box sx={classes.drawerContainer}>
             <Box sx={classes.drawerHeaderContainer}>
               <Typography variant="h5" sx={{ fontWeight: 600 }}>
                 Add / Manage Students
@@ -58,7 +137,7 @@ const AddStudentDrawer = () => {
               </Box>
             </Box>
             <Box sx={classes.EmailIdBox}>
-              <FormControl size="small" fullWidth>
+              <FormControl size="small" fullWidth error={isError}>
                 <InputLabel htmlFor="email" sx={{ color: "#4E90B5" }}>
                   Email Ids
                 </InputLabel>
@@ -68,10 +147,25 @@ const AddStudentDrawer = () => {
                   label="Email Ids"
                   placeholder="Enter your email"
                   sx={classes.EmailTextField}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
+                {!isEmailValid ? (
+                  <FormHelperText sx={{ fontFamily: "Cabin-Regular" }}>
+                    Invalid Email
+                  </FormHelperText>
+                ) : null}
               </FormControl>
-              <Button sx={classes.sendInviteButton}>Send Invite</Button>
-            </Box> 
+              <Button sx={classes.sendInviteButton} onClick={sendInvite} type="submit">Send Invite</Button>
+            </Box>
+            {snackbarStates.open ? (
+              <AppSnackbar
+                open={snackbarStates.open}
+                message={snackbarStates.message}
+                severity={snackbarStates.severity}
+                setOpen={(state) => resetSnackbar(state)}
+              />
+            ) : null}
             <Box sx={classes.inviteTableHeader}>
               <Typography variant="h6" color="#194D6B">
                 Manage Students
@@ -97,9 +191,9 @@ const AddStudentDrawer = () => {
             </Box>
           </Box>
         </EditServiceStyledDrawer>
-        </Box>
-      </React.Fragment>
-    );
-}
+      </Box>
+    </React.Fragment>
+  );
+};
 
-export default AddStudentDrawer
+export default AddStudentDrawer;

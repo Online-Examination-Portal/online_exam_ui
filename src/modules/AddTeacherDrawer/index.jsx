@@ -7,6 +7,7 @@ import {
   IconButton,
   FormControl,
   OutlinedInput,
+  FormHelperText,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
@@ -26,17 +27,23 @@ import AppSnackbar from "../../components/common/AppSnackbar";
 const TeacherDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [data, isError, isLoading, invite] = usePostInvite();
-  const [inviteData, isInviteError, isInviteLoading, getTeacherInvite] = useGetInvite();
+  const [inviteData, isInviteError, isInviteLoading, getTeacherInvite] =
+    useGetInvite();
   const [email, setEmail] = useState("");
+  const [isEmailValid, setIsEmailValid] = useState(true);
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+    return emailRegex.test(email);
+  };
 
   const [snackbarStates, setSnackbarStates] = useState({
-    open: false,
+    open: false, 
     message: "",
     severity: "success",
   });
 
-  const sendInvite = (e) => { 
-    console.log("sendInvite");
+  const sendInvite = (e) => {
     e.preventDefault();
     const inviteTeacherInfo = {
       send_to: email,
@@ -44,6 +51,7 @@ const TeacherDrawer = () => {
     };
     invite(inviteTeacherInfo);
     getTeacherInvite();
+    setIsEmailValid(validateEmail(email));
   };
 
   useEffect(() => {
@@ -56,7 +64,6 @@ const TeacherDrawer = () => {
     }
   }, [inviteData, isInviteError, isInviteLoading]);
 
-
   useEffect(() => {
     if (data) {
       setSnackbarStates({
@@ -64,6 +71,7 @@ const TeacherDrawer = () => {
         message: "Invitation sent",
         severity: "success",
       });
+      setEmail("");
     } else if (isError !== "") {
       setSnackbarStates({
         open: true,
@@ -129,7 +137,7 @@ const TeacherDrawer = () => {
               </Box>
             </Box>
             <Box sx={classes.EmailIdBox}>
-              <FormControl size="small" fullWidth>
+              <FormControl size="small" fullWidth error={isError}>
                 <InputLabel htmlFor="email" sx={{ color: "#4E90B5" }}>
                   Email Ids
                 </InputLabel>
@@ -142,22 +150,32 @@ const TeacherDrawer = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
+                {!isEmailValid ? (
+                  <FormHelperText sx={{ fontFamily: "Cabin-Regular" }}>
+                    Invalid Email
+                  </FormHelperText>
+                ) : null}
               </FormControl>
-              <Button sx={classes.sendInviteButton} onClick={ sendInvite} type='submit'>Send Invite</Button>
+              <Button
+                sx={classes.sendInviteButton}
+                onClick={sendInvite}
+                type="submit"
+              >
+                Send Invite
+              </Button>
             </Box>
             {snackbarStates.open ? (
-            <AppSnackbar
-              open={snackbarStates.open}
-              message={snackbarStates.message}
-              severity={snackbarStates.severity}
-              setOpen={(state) => resetSnackbar(state)}
-            />
-          ) : null}
+              <AppSnackbar
+                open={snackbarStates.open}
+                message={snackbarStates.message}
+                severity={snackbarStates.severity}
+                setOpen={(state) => resetSnackbar(state)}
+              />
+            ) : null}
             <Box sx={classes.inviteTableHeader}>
               <Typography variant="h6" color="#194D6B">
                 Manage Teachers
               </Typography>
-              {/* Ask about break */}
               <Typography variant="caption">
                 You can see the status of all the invites sent to the teachers
                 and their respective role. You can change the role or completely
