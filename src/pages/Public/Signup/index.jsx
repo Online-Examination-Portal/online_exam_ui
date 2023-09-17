@@ -66,6 +66,7 @@ const SignUp = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const invitationIDParam = searchParams.get("i_id");
 
+  console.log(gender)
   useEffect(() => {
     if (invitationIDParam) {
       getInvite(invitationIDParam);

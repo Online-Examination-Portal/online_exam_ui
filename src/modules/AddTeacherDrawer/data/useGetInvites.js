@@ -2,12 +2,12 @@ import en from "../../../Lang/en.json";
 import { LIST_TEACHER_INVITES } from "../../../utilities/apis";
 import useAPICall from "../../../hooks/useAPICalls";
 
-const  useGetInvite = () => {
+const useGetInvite = () => {
   const [data, error, isLoading, callGetData, setSuccessData, setError] =
     useAPICall(undefined, "");
 
   const defaultFallback = (msg = en.something_went_wrong) => {
-    setError(true); 
+    setError(true);
     setSuccessData(undefined);
   };
 
@@ -37,6 +37,7 @@ const  useGetInvite = () => {
             }
           });
           const responseData = {
+            totalCount: data.count,
             columnName: [
               {
                 id: "profile",
@@ -79,14 +80,14 @@ const  useGetInvite = () => {
     },
   ];
 
-  const getTeacherInvites = (body) => {
+  const getTeacherInvites = (params) => {
     const url = LIST_TEACHER_INVITES;
     callGetData({
       url,
-      method: "get",
+      method: "GET",
       statusObj,
       defaultFallback,
-      body,
+      params,
     });
   };
   return [data, error, isLoading, getTeacherInvites, setSuccessData, setError];
