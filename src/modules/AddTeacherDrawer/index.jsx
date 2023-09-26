@@ -15,7 +15,7 @@ import Invitation from "../../components/private/teachers/Invitations";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import { EditServiceStyledDrawer } from "../../components/common/styledDrawers";
 import * as classes from "./styles";
-import { INVITE_TEACHER_ROLE } from "../../utilities/constants";
+import { INVITE_TEACHER_ROLE, PAGE_SIZE } from "../../utilities/constants";
 
 // Import API data
 import useGetInvite from "./data/useGetInvites";
@@ -38,7 +38,7 @@ const TeacherDrawer = () => {
   };
 
   const [snackbarStates, setSnackbarStates] = useState({
-    open: false, 
+    open: false,
     message: "",
     severity: "success",
   });
@@ -50,7 +50,9 @@ const TeacherDrawer = () => {
       for_role: INVITE_TEACHER_ROLE,
     };
     invite(inviteTeacherInfo);
-    getTeacherInvite();
+    getTeacherInvite(
+      
+    );
     setIsEmailValid(validateEmail(email));
   };
 
@@ -183,7 +185,12 @@ const TeacherDrawer = () => {
               </Typography>
             </Box>
             <Box sx={classes.tableWrapper}>
-              <Invitation />
+              <Invitation
+                inviteData={inviteData}
+                isInviteError={isInviteError}
+                isInviteLoading={isInviteLoading}
+                getTeacherInvite={getTeacherInvite}
+              />
             </Box>
             <Box
               sx={{

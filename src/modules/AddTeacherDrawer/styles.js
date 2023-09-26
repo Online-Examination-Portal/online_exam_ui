@@ -28,7 +28,7 @@ export const inviteTeachersContainer = {
   flexDirection: "row",
   flex: "0 1 auto",
   mb: 1,
-  mt: 1
+  mt: 1,
 };
 
 export const inviteTeachersHeading = {
@@ -51,11 +51,14 @@ export const inviteTableHeader = {
 
 export const tableWrapper = {
   mt: 1,
-  flex: "1 1 auto",
-  height: "100px",
-  backgroundColor: "#eeeeee",
-  overflowX: "hidden",
   mb: 2,
+  height: "100px",
+  display: "flex",
+  flex: "1 1 auto",
+  overflowX: "hidden",
+  flexDirection: "column",
+  backgroundColor: "#eeeeee",
+  justifyContent: "space-between",
 };
 export const EmailTextField = {
   borderRadius: "4px",
