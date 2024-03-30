@@ -29,7 +29,7 @@ import usePostRegister from "./data/usePostRegister";
 import useGetInvite from "./data/useGetInvite";
 
 // Import Assets
-import "./register.css";
+import "./register.css"; 
 import topImage from "../../../assets/image/bg1.png";
 import downImage from "../../../assets/image/bg2.png";
 
@@ -75,7 +75,6 @@ const SignUp = () => {
 
   useEffect(() => {
     if (inviteData) {
-      // console.log("inviteData:", inviteData.organization.name);
       setOrgName(inviteData.organization.name);
       setEmail(inviteData.sent_to);
       setRole(inviteData.for_role);
@@ -205,28 +204,15 @@ const SignUp = () => {
           />
           <FormControl>
             <FormLabel sx={classes.inputLabels}>Gender</FormLabel>
-            {/* <RadioGroup
-              row
-              size="small"
-              sx={{ mb: "30px" }}
-              value={gender}
-              onChange={(e) => setGender(e.target.value)}
-            >
-              <FormControlLabel value="1" control={<Radio />} label="Male" />
-              <FormControlLabel value="2" control={<Radio />} label="Female" />
-              <FormControlLabel value="3" control={<Radio />} label="Other" />
-            </RadioGroup> */}
             <ButtonGroup
               variant="contained"
-              aria-label="outlined primary button group"
               size="small"
-              sx={{ mb: "30px" }}
+              sx={{ mb: "30px", justifyContent: 'space-between', boxShadow: 'none'}}
               value={gender}
-              onChange={(e) => setGender(e.target.value)}
             >
-              <Button value="1">Male</Button>
-              <Button value="2">Female</Button>
-              <Button value="3">Other</Button>
+              <Button onClick={()=> setGender(1)} sx={{width: '30%', backgroundColor: gender === 1 ? '#4BB543' : '#4E90B5'}}>Male</Button>
+              <Button onClick={()=> setGender(2)} sx={{width: '30%', backgroundColor: gender === 2 ? '#4BB543' : '#4E90B5'}}>Female</Button>
+              <Button onClick={()=> setGender(3)} sx={{width: '30%', backgroundColor: gender === 3 ? '#4BB543' : '#4E90B5'}}>Other</Button>
             </ButtonGroup> 
           </FormControl>
           <InputLabel sx={classes.inputLabels}>Password</InputLabel>

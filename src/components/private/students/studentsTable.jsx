@@ -1,18 +1,30 @@
 import {
+  Box,
   Paper,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
+  TablePagination,
   TableRow,
 } from "@mui/material";
-import React from "react";
+import React, {useState} from "react";
 import * as classes from "./styles";
 import { studentData } from "./data/studentData";
 import StudentDetailsDrawer from "../../../modules/StudentDetailsDrawer";
+import { PAGE_SIZE } from "../../../utilities/constants";
+import TablePaginationActions from "../../common/TablePaginationAction";
 
 const StudentsTable = () => {
+
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(PAGE_SIZE);
+
+  const handleChangePage = () => {
+
+  }
+
   return (
     <Paper sx={classes.studentsPaperComponent}>
       <TableContainer sx={{ height: "100%" }}>
@@ -41,9 +53,6 @@ const StudentsTable = () => {
                         value
                       ) : column.type === "Button" ? (
                         <StudentDetailsDrawer/>
-                        // <Button variant="contained" sx={classes.viewDetailsBtn} onClick={StudentDetailsDrawer.toggleDrawer}>
-                        //   {value}
-                        // </Button>
                       ) : null}
                     </TableCell>
                   );
@@ -52,6 +61,24 @@ const StudentsTable = () => {
             ))}
           </TableBody> 
         </Table>
+        <TablePagination
+                count={100}
+                page={page}
+                component="div"
+                labelRowsPerPage=""
+                rowsPerPage={rowsPerPage}
+                onPageChange={handleChangePage}
+                ActionsComponent={TablePaginationActions}
+                SelectProps={{ style: { display: "none" } }}
+                labelDisplayedRows={({ from, to, count }) => {
+                  return (
+                    <Box
+                      component={"span"}
+                      sx={{ mr: "30px" }}
+                    >{`${from}-${to} of ${count}`}</Box>
+                  );
+                }}
+              />
       </TableContainer>
     </Paper>
   );

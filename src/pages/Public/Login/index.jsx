@@ -53,7 +53,7 @@ const Login = () => {
     }
   }, [isError, data, isLoading]);
 
-  return (
+  return ( 
     <React.Fragment>
       <Box className="outer_container">
         <img src={topImage} alt="top_image" className="top_image" />
