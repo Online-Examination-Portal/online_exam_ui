@@ -6,11 +6,10 @@ import {
   TableBody,
   TableCell,
   TableContainer,
-  TableRow,
+  TableRow, 
   TablePagination,
   Box,
 } from "@mui/material";
-// import ViewDetails from "./ViewDetails.jsx";
 import teachersdata from "./data/teachersdata";
 import * as classes from "./styles";
 import TeacherDetailsDrawer from "../../../modules/TeacherDetailsDrawer";

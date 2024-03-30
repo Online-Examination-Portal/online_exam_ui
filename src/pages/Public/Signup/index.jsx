@@ -29,7 +29,7 @@ import usePostRegister from "./data/usePostRegister";
 import useGetInvite from "./data/useGetInvite";
 
 // Import Assets
-import "./register.css";
+import "./register.css"; 
 import topImage from "../../../assets/image/bg1.png";
 import downImage from "../../../assets/image/bg2.png";
 
@@ -75,7 +75,6 @@ const SignUp = () => {
 
   useEffect(() => {
     if (inviteData) {
-      // console.log("inviteData:", inviteData.organization.name);
       setOrgName(inviteData.organization.name);
       setEmail(inviteData.sent_to);
       setRole(inviteData.for_role);

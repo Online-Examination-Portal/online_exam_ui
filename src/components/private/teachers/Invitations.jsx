@@ -5,11 +5,11 @@ import {
   TableRow,
   TableCell,
   Typography,
-  Button,
+  Button, 
   FormControl,
   Select,
   MenuItem,
-  Box,
+  Box, 
   IconButton,
   TablePagination,
 } from "@mui/material";
@@ -24,7 +24,7 @@ const Invitation = (props) => {
   const { inviteData, isInviteError, isInviteLoading, getTeacherInvite } =
     props;
   const [selectedValue, setSelectedValue] = useState("");
-  const [statusData, isStatusError, isStatusLoading, getStatus] =
+  const [statusData, , isStatusLoading, getStatus] =
     useGetInviteStatus();
   const [page, setPage] = useState(0);
   const [maxPageReached, setMaxPageReached] = useState(0);
@@ -126,12 +126,6 @@ const Invitation = (props) => {
                                           {statusData[key]}
                                         </MenuItem>
                                       ))}
-                                      {/* <MenuItem value="">
-                            <em>Role</em>
-                          </MenuItem>
-                          <MenuItem value="0">Teacher</MenuItem>
-                          <MenuItem value="1">Student</MenuItem>
-                          <MenuItem value="2">Admin</MenuItem> */}
                                     </Select>
                                   ) : null}
                                 </FormControl>

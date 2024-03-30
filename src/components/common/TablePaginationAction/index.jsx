@@ -8,8 +8,8 @@ const TablePaginationActions = (props) => {
   const { count, page, rowsPerPage, onPageChange } = props;
   const pageCount = Math.ceil(count / rowsPerPage);
   
-  const handlePageClick = (e, newPage) => {
-    onPageChange(e, newPage);
+  const handlePageClick = (e, newPage) => { 
+    onPageChange(e, newPage); 
   };
 
   const handleBackButtonClick = (event) => {
