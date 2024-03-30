@@ -1,19 +1,18 @@
 import React from 'react'
-import { Typography } from '@mui/material'
+import { Button } from '@mui/material'
+import { Typography } from '@mui/material';
+import * as classes from './styles'
 
 function ViewDetails( ){
     return(
-        <Typography
-        variant="caption"
-        sx={{
-          backgroundColor: "#007CFF",
-          borderRadius: "18px",
-          color: "#ffffff",
-          padding: "4px 8px",
-        }}
+        <Button
+        variant="contained"
+        sx={classes.viewDetailsBtn}
       >
-        View Details
+         <Typography fontWeight="100" fontSize={"10px"}>
+         View Details
       </Typography>
-    )
+      </Button>
+    )  
 }
 export default ViewDetails

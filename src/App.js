@@ -26,7 +26,7 @@ const App = () => {
     () => ({ userDetails, setUserDetails }),
     [userDetails, setUserDetails]
   );
-  
+
   return (
     <AuthStateContext.Provider value={AuthStateContextValue}>
       <UserDetailsContext.Provider value={UserDetailsContextValue}>

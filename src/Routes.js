@@ -6,20 +6,22 @@ import ProtectedLayout from "./hoc/ProtectedLayout";
 import Login from "./pages/Public/Login";
 import SignUp from "./pages/Public/Signup";
 import Home from "./pages/Private/Home";
+import Courses from "./pages/Private/Courses";
 import Teachers from "./pages/Private/Teachers";
+import ValidateOtp from "./pages/Public/OtpValidator";
+import Students from "./pages/Private/Students";
+import TestPage from "./pages/TestPage/testPage";
 
 const routes = (isAuthenticated) => [
   {
     path: "/",
     element: !isAuthenticated ? <ProtectedLayout /> : <Navigate to="/login" />,
     children: [
-      {
-        path: "home",
-        element: <Home />,
-      },
-      { path: "teachers", element: <Teachers/> },
-      { path: "students", element: <>Students</> },
-      { path: "courses", element: <>Courses</> },
+      { path: "", element: <Home /> },
+      { path: "home", element: <Home /> },
+      { path: "teachers", element: <Teachers /> },
+      { path: "students", element: <Students /> },
+      { path: "courses", element: <Courses /> },
     ],
   },
   {
@@ -29,6 +31,8 @@ const routes = (isAuthenticated) => [
     children: [
       { path: "login", element: <Login /> },
       { path: "signup", element: <SignUp /> },
+      { path: "validate", element: <ValidateOtp /> },
+      { path: "testpage", element: <TestPage /> },
     ],
   },
   {
