@@ -1,36 +1,74 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
-import TeachersTable from "../../../components/private/teachers/teacherstable";
-
+import {
+  Box,
+  Typography,
+  InputAdornment,
+  TextField,
+  Button,
+} from "@mui/material";
+import TeachersTable from "../../../components/private/teachers/TeacherTable";
+import TeacherDrawer from "../../../modules/AddTeacherDrawer/index";
+import * as classes from "./styles";
+import SearchIcon from "@mui/icons-material/Search";
+import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
 const Teachers = () => {
   return (
-    <Box
-      className="home"
-      sx={{
-        width: "80%",
-        display: "flex",
-        height: "100vh",
-        bgcolor: "#F1FAFF",
-        flexFlow: "column",
-      }}
-    >
-      <Box sx={{ padding: "16px 32px", flex: "0 1 auto" }}>
-        <Typography
-          variant="h2"
-          color=" #194D6B"
-          sx={{ "& span": { color: "primary.main" } }}
+    <Box sx={classes.teachersContainer}>
+      <Box sx={classes.teachersheader}>
+        <Box sx={{ flex: "0 1 auto" }}>
+          <Typography variant="h3" color=" #194D6B" sx={classes.heading}>
+            Teachers
+          </Typography>
+          <Typography variant="body2" sx={{ mb: 4, color: "#4E90B5" }}>
+            Track your teacher's details here.
+          </Typography>
+        </Box>
+        <Box sx={classes.teacherDrawerComponent}>
+          <TeacherDrawer />
+        </Box>
+        {/* <Box>
+          <Button
+          startIcon={<AddRoundedIcon />}
+          onClick={TeacherDrawer.toggleDrawer}
+          sx={classes.addTeacherButton}
         >
-          Teachers
-        </Typography>
-        <Typography variant="h6" sx={{ mb: 4, color: "#4E90B5" }}>
-          Track your teacher's details here.
-        </Typography>
-        <Typography variant="h6" sx={{ color: "#4E90B5" }}>
+          Add Teacher
+        </Button>
+          </Box> */}
+      </Box>
+
+      {/* <Box sx={classes.teacherDrawerComponent}>
+          <TeacherDrawer />
+        </Box> */}
+
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          padding: "16px 32px",
+        }}
+      >
+        <Typography variant="body1" sx={{ color: "#4E90B5" }}>
           Teacher's details
         </Typography>
+        <TextField
+          id="search"
+          placeholder="Search Teacher"
+          type="search"
+          size="small"
+          variant="outlined"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start" sx={{ color: "#4E90B5" }}>
+                <SearchIcon />
+              </InputAdornment>
+            ),
+          }}
+          sx={classes.searchBarStyle}
+        />
       </Box>
-      <TeachersTable/>
+      <TeachersTable />
     </Box>
   );
 };

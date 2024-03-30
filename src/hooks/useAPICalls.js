@@ -25,7 +25,7 @@ const useAPICall = (defaultData, defaultError) => {
       data: body,
       headers: {
         ...(config.headers || {}),
-        token: sessionStorage.getItem("token") || "",
+        authorization: sessionStorage.getItem("token") ? `token ${sessionStorage.getItem("token")}` :  "",
       },
       params,
     };
